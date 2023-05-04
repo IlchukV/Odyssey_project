@@ -1,0 +1,109 @@
+.header {
+    max-width: 1600px;
+    height: 60px;
+    margin: 0 auto;
+    // position: relative;
+    // top: 0;
+    // left: 0;
+    padding-top: 18px;
+    background-color: $buttonBgColor;
+    
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+   }
+
+.header__container {
+    position: relative;
+}
+
+.header__wraper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 34px;
+    position: relative;
+
+}
+
+.logo__site {
+    display: flex;
+    align-items: center;
+    color: $mainLightColor;
+    fill: $mainLightColor;
+    transition: color $duration $timingFunction,
+        transform $duration $timingFunction;
+
+    &:hover,
+    &:focus {
+        transform: scale(1.25);
+    }
+}
+
+.logo__site:hover .logo__name {
+    color: $accentColor;
+}
+
+.logo__name {
+    display: none;
+}
+
+.navigation-list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 0;
+}
+
+.navigation-list__link {
+    text-transform: uppercase;
+    color: $mainLightColor;
+    line-height: 1.667;
+    transition: color $duration $timingFunction;
+
+    &:hover {
+        color: $accentColor;
+        cursor: pointer;
+        outline: none;
+    }
+}
+
+.navigation-list__link-current::after {
+    bottom: -3px;
+
+    display: block;
+    content: '';
+    width: 100%;
+    height: 3px;
+    background-color: $accentColor;
+}
+
+
+.navigation-list__item {
+    font-weight: 500;
+    line-height: 1.17px;
+
+    &:not(:last-child) {
+        margin-right: 32px;
+    }
+}
+
+@include tablet {
+    .logo__name {
+        display: block;
+        color: $mainLightColor;
+        font-weight: 500;
+        font-size: 30px;
+        line-height: 1.17;
+    }
+
+    .logo {
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
+    }
+
+    .logo__svg {
+        margin-right: 10px;
+    }
+}

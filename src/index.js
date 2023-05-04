@@ -7,3 +7,4 @@ import './js/fetch-video-key';
 import './js/them-switcher';
 import './js/button-up';
 import './js/swiper';
+import './js/refs';
