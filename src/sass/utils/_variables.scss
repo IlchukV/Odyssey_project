@@ -1,0 +1,42 @@
+$mainLightColor: #ffffff;
+$accentColor: #ff6b08;
+$informationColor: #ff001b;
+$mainBgColor: #F5F5F5;;
+$buttonBgColor: rgba(0, 0, 0, 0.56);
+$header-focus: rgba(255, 143, 68, 0.863);
+$accentModalColor: #ff6b01;
+$secondModalColor: #8C8C8C;
+$buttonBgAccent: #ff6b01;
+$duration: 250ms;
+$timingFunction: cubic-bezier(0.4, 0, 0.2, 1);
+$bg-header-gradient: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56));
+$button-black-text: #000000;
+$scrollbar-and-circle-on-switcher-color: #932727;
+$reg-form-title-color: #212121;
+$pagination-background: #F7F7F7;
+
+
+
+:root[data-theme="light"] {
+    --body-and-modals-bgc: #ffffff;
+    --before-postionX: 2px;
+    --before-postionY: 2px;
+    --mainDarkColor: #000000;
+    --footerBgColor: #F5F5F5;;
+    --footerTxtColor: #B7B7B7;
+    --backgroundPage: transparent;
+
+    --team-sm-bnt-accent: #ff6b01;
+}
+
+:root[data-theme="dark"] {
+    --body-and-modals-bgc: #212121;
+    --before-postionX: 30px;
+    --before-postionY: 2px;
+    --mainDarkColor: #ffffff;
+    --footerBgColor: #212121;
+    --footerTxtColor: #ffffff;
+    --backgroundPage: #ffffff;
+
+    --team-sm-bnt-accent: #932727;
+}

@@ -1,0 +1,53 @@
+.footer {
+    background: var(--footerBgColor);
+
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 400;
+
+    padding-bottom: 29px;
+    padding-top: 28px;
+
+    color: var(--footerTxtColor);
+    padding-bottom: 29px;
+    padding-top: 28px;
+
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+    @include tablet {
+        font-size: 16px;
+        line-height: 19px;
+        padding-bottom: 30px;
+        padding-top: 30px;
+    }
+
+    @include desktop {
+        padding-bottom: 28px;
+        padding-top: 30px;
+    }
+}
+
+.footer__link {
+    color: var(--footerTxtColor);
+    transition: color $duration $timingFunction;
+    border-bottom: var(--footerTxtColor) 1px solid;
+
+    &:hover,
+    &:focus {
+        color: $accentColor;
+        border-bottom: $accentColor 1px solid;
+        cursor: pointer;
+    }
+}
+
+.footer__container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+
+    @include tablet {
+        display: block;
+    }
+}
