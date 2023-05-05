@@ -1,0 +1,32 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.42);
+}
+
+.modal-window {
+  position: relative;
+  width: 846px;
+  height: 598px;
+  background: $button-black-text;
+  margin: 100px auto;
+  box-shadow: 1px 1px 14px 4px rgba(255, 107, 8, 0.42);
+  border-radius: 20px;
+}
+
+.modal-close-btn {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+
+  left: 782px;
+  top: 40px;
+
+  border-style: none;
+  cursor: pointer;
+
+  background-color: $button-black-text;
+}
