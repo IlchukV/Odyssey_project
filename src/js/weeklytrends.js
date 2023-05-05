@@ -34,7 +34,7 @@ function createWeeklyCard(card) {
     console.log(card.poster_path)
     return `<li class = "weeklytrends_gallery_item">
          <a href = "#">
-        <img width = "280" height = "406" src = "https://image.tmdb.org/t/p/w500/${card.poster_path}" alt = ""></img>
+        <img class = weeklytrends_gallery_image src = "https://image.tmdb.org/t/p/w500/${card.poster_path}" alt = ""></img>
         </a>
         </li>`
 };

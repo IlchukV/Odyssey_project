@@ -1,4 +1,21 @@
 // weeklyTreds
 .weeklytrends_gallery_list{
     display: flex;
+    justify-content: center;
+    gap: 16px;
+    
+}
+.weeklytrends_gallery_image {
+    width: 280px;
+    height: 406px;
+
+    @include tablet {
+        width: 224px;
+        height: 325px;
+    }
+
+    @include desktop {
+        width: 395px;
+        height: 574px;
+    }
 }
