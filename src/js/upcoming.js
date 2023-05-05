@@ -22,31 +22,32 @@ async function fetchUpcomingMovieAndGenre() {
   return { response, genres };
 }
 
-fetchUpcomingMovieAndGenre().then(({ response, genres }) => {
-  const movie =
-    response.data.results[
-      Math.floor(response.data.results.length * Math.random())
-    ];
+fetchUpcomingMovieAndGenre()
+  .then(({ response, genres }) => {
+    const movie =
+      response.data.results[
+        Math.floor(response.data.results.length * Math.random())
+      ];
 
-  const genreList = genres.data.genres
-    .filter(el => movie.genre_ids.includes(el.id))
-    .filter((el, index) => index <= 1)
-    .map(el => el.name);
+    const genreList = getGenres(movie, genres);
 
-  refs.upcomingMoviesSection.innerHTML = UpcomingMovieMarkup(movie, genreList);
+    let date = dateFormate(movie);
 
-  if (window.screen.width > 767) {
-    document.querySelector(
-      '.movie__picture'
-    ).style.backgroundImage = `url('${IMG_URL}${movie.backdrop_path}')`;
-    return;
-  }
-  document.querySelector(
-    '.movie__picture'
-  ).style.backgroundImage = `url('${IMG_URL}${movie.poster_path}')`;
-});
+    refs.upcomingMoviesSection.innerHTML = UpcomingMovieMarkup(
+      movie,
+      genreList,
+      date
+    );
 
-function UpcomingMovieMarkup(el, genres) {
+    if (window.screen.width > 767) {
+      getPositionOfPosterInDom().style.backgroundImage = `url('${IMG_URL}${movie.backdrop_path}')`;
+      return;
+    }
+    getPositionOfPosterInDom().style.backgroundImage = `url('${IMG_URL}${movie.poster_path}')`;
+  })
+  .catch(console.log);
+
+function UpcomingMovieMarkup(el, genres, date) {
   return `<div div class= "container" >
                 <h2 class="section-title">UPCOMING THIS MONTH</h2>
                 <div class="movie">
@@ -56,9 +57,7 @@ function UpcomingMovieMarkup(el, genres) {
                         <ul class="movie__categories">
                             <div class="movie-categories-separate">
                                 <li class="movie__item">
-                                    Release date <span class="movie__item--accent">${
-                                      el.release_date
-                                    }</span>
+                                    Release date <span class="movie__item--accent">${date}</span>
                                 </li>
                                 <li class="movie__item">
                                     Vote / Votes
@@ -96,4 +95,22 @@ function UpcomingMovieMarkup(el, genres) {
                     </div>
                 </div>
             </div>`;
+}
+
+function getPositionOfPosterInDom() {
+  return (poster = document.querySelector('.movie__picture'));
+}
+
+function getGenres(movie, genres) {
+  return (genreList = genres.data.genres
+    .filter(el => movie.genre_ids.includes(el.id))
+    .filter((el, index) => index <= 1)
+    .map(el => el.name));
+}
+
+function dateFormate(movie) {
+  let date = movie.release_date.replaceAll('-', '.').split('.');
+  date.reverse();
+  date = date.join('.');
+  return date;
 }
