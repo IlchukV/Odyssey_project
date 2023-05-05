@@ -305,7 +305,6 @@ button {
   margin-bottom: 24px;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: -55px;
   border-radius: 5px;
 }
 @media screen and (min-width: 768px) {
@@ -409,7 +408,7 @@ button {
   align-items: center;
   width: 36px;
   height: 18px;
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
   color: #000000;
   margin-right: 4px;
   border-radius: 5px;
@@ -421,14 +420,14 @@ button {
   align-items: center;
   width: 40px;
   height: 18px;
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
   color: #000000;
   margin-left: 4px;
   border-radius: 5px;
 }
 
 .movie__item--default {
-  color: #ffffff;
+  color: #111111;
   margin-left: 78px;
 }
 
@@ -445,6 +444,8 @@ button {
 
 .movie__descr {
   margin-bottom: 20px;
+  font-size: 14px;
+  line-height: 142.857143%; /* 20/14 */
 }
 @media screen and (min-width: 768px) {
   .movie__descr {
@@ -470,6 +471,8 @@ button {
   height: 100%;
   border-radius: 74px;
   border: none;
+  font-size: 14px;
+  line-height: 114.285714%; /* 16/14 */
   color: #111111;
   background-color: transparent;
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);

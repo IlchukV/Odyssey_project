@@ -1,33 +1,52 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://api.themoviedb.org/3/movie/upcoming';
+const BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = 'e1aeaa11db3ac22382c707ccfcac931e';
+const IMG_URL = 'https://image.tmdb.org/t/p/w500/';
 
 const refs = {
   upcomingMoviesSection: document.querySelector('.upcoming'),
 };
 
-async function fetchUpcomingMovie() {
-  const searchParams = new URLSearchParams({
-    api_key: `${API_KEY}`,
-  });
-  const response = await axios.get(`${BASE_URL}?${searchParams}`);
-
-  return response.data;
-}
-
-fetchUpcomingMovie().then(data => {
-  const movie = data.results[Math.floor(data.results.length * Math.random())];
-
-  console.log(movie);
-  refs.upcomingMoviesSection.innerHTML = UpcomingMovieMarkup(movie);
-
-  console.log(document.querySelector('.movie__picture'));
-  document.querySelector('.movie__picture').style.backgroundImage =
-    'url("9JBEPLTPSm0d1mbEcLxULjJq9Eh.jpg")';
+const searchParams = new URLSearchParams({
+  api_key: `${API_KEY}`,
 });
 
-function UpcomingMovieMarkup(el) {
+async function fetchUpcomingMovieAndGenre() {
+  const response = await axios.get(
+    `${BASE_URL}/movie/upcoming?${searchParams}`
+  );
+  const genres = await axios.get(
+    `${BASE_URL}/genre/movie/list?${searchParams}`
+  );
+  return { response, genres };
+}
+
+fetchUpcomingMovieAndGenre().then(({ response, genres }) => {
+  const movie =
+    response.data.results[
+      Math.floor(response.data.results.length * Math.random())
+    ];
+
+  const genreList = genres.data.genres
+    .filter(el => movie.genre_ids.includes(el.id))
+    .filter((el, index) => index <= 1)
+    .map(el => el.name);
+
+  refs.upcomingMoviesSection.innerHTML = UpcomingMovieMarkup(movie, genreList);
+
+  if (window.screen.width > 767) {
+    document.querySelector(
+      '.movie__picture'
+    ).style.backgroundImage = `url('${IMG_URL}${movie.backdrop_path}')`;
+    return;
+  }
+  document.querySelector(
+    '.movie__picture'
+  ).style.backgroundImage = `url('${IMG_URL}${movie.poster_path}')`;
+});
+
+function UpcomingMovieMarkup(el, genres) {
   return `<div div class= "container" >
                 <h2 class="section-title">UPCOMING THIS MONTH</h2>
                 <div class="movie">
@@ -37,12 +56,16 @@ function UpcomingMovieMarkup(el) {
                         <ul class="movie__categories">
                             <div class="movie-categories-separate">
                                 <li class="movie__item">
-                                    Release date <span class="movie__item--accent">${el.release_date}</span>
+                                    Release date <span class="movie__item--accent">${
+                                      el.release_date
+                                    }</span>
                                 </li>
                                 <li class="movie__item">
                                     Vote / Votes
                                     <span class="movie__item--group"
-                                        ><span class="movie__item--left">${el.vote_average}</span>/<span
+                                        ><span class="movie__item--left">${
+                                          el.vote_average
+                                        }</span>/<span
                                             class="movie__item--right"
                                             >${el.vote_count}</span
                                         ></span
@@ -51,12 +74,14 @@ function UpcomingMovieMarkup(el) {
                             </div>
                             <div>
                                 <li class="movie__item">
-                                    Popularity <span class="movie__item--default">99.9</span>
+                                    Popularity <span class="movie__item--default">${Math.round(
+                                      el.popularity
+                                    )}</span>
                                 </li>
                                 <li class="movie__item">
                                     Genre
                                     <span class="movie__item--default movie__item--margin"
-                                        >Comedy, action</span
+                                        >${genres.join(', ')}</span
                                     >
                                 </li>
                             </div>
