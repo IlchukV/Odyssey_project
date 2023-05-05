@@ -1,4 +1,5 @@
 import axios from 'axios';
+import noPoster from '../images/noposter.jpg';
 
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = 'e1aeaa11db3ac22382c707ccfcac931e';
@@ -8,18 +9,20 @@ const refs = {
   upcomingMoviesSection: document.querySelector('.upcoming'),
 };
 
-const searchParams = new URLSearchParams({
-  api_key: `${API_KEY}`,
-  region: 'UA',
-});
-
 async function fetchUpcomingMovieAndGenre() {
+  const searchParams = new URLSearchParams({
+    api_key: `${API_KEY}`,
+    region: 'UA',
+  });
+
   const response = await axios.get(
     `${BASE_URL}/movie/upcoming?${searchParams}`
   );
+
   const genres = await axios.get(
     `${BASE_URL}/genre/movie/list?${searchParams}&release_date.gte=2023-05-01&release_date.lte=2023-05-31&with_release_type=1`
   );
+
   return { response, genres };
 }
 
@@ -41,7 +44,17 @@ fetchUpcomingMovieAndGenre()
     );
 
     if (window.screen.width > 767) {
-      getPositionOfPosterInDom().style.backgroundImage = `url('${IMG_URL}${movie.backdrop_path}')`;
+      const isBackdropPath = movie.backdrop_path
+        ? movie.backdrop_path
+        : noPoster;
+
+      if (isBackdropPath === noPoster) {
+        getPositionOfPosterInDom().style.backgroundImage = `url('${isBackdropPath}')`;
+
+        return;
+      }
+      getPositionOfPosterInDom().style.backgroundImage = `url('${IMG_URL}${isBackdropPath}')`;
+
       return;
     }
     getPositionOfPosterInDom().style.backgroundImage = `url('${IMG_URL}${movie.poster_path}')`;
@@ -99,14 +112,14 @@ function UpcomingMovieMarkup(el, genres, date) {
 }
 
 function getPositionOfPosterInDom() {
-  return (poster = document.querySelector('.movie__picture'));
+  return document.querySelector('.movie__picture');
 }
 
 function getGenres(movie, genres) {
-  return (genreList = genres.data.genres
+  return genres.data.genres
     .filter(el => movie.genre_ids.includes(el.id))
     .filter((el, index) => index <= 1)
-    .map(el => el.name));
+    .map(el => el.name);
 }
 
 function dateFormate(movie) {
