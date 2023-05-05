@@ -11,3 +11,4 @@ import './js/refs';
 import './js/details-modal';
 import './js/local-storage';
 import './js/hero';
+import './js/trailer';
