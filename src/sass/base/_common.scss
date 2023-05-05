@@ -1,1 +1,58 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
+
+@font-face {
+    font-family: 'Roboto';
+    src: local('Roboto'), url('../fonts/Roboto-Bold.woff2') format('woff2'),
+        url('../fonts/Roboto-Bold.woff') format('woff'),
+        url('../fonts/Roboto-Bold.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: local('Roboto'), url('../fonts/Roboto-Medium.woff2') format('woff2'),
+        url('../fonts/Roboto-Medium.woff') format('woff'),
+        url('../fonts/Roboto-Medium.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: local('Roboto'), url('../fonts/Roboto-Regular.woff2') format('woff2'),
+        url('../fonts/Roboto-Regular.woff') format('woff'),
+        url('../fonts/Roboto-Regular.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 400;
+}
+
+
+.section {
+    padding-top: 10px;
+    padding-bottom: 40px;
+
+    @include tablet {
+        padding-top: 20px;
+        padding-bottom: 60px;
+    }
+
+    &__title {
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 12px;
+        line-height: 1.33;
+        font-weight: 500;
+        margin-bottom: 10px;
+
+        @include desktop {
+            font-size: 20px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+    }
+}
+
+button {
+    cursor: pointer;
+}
