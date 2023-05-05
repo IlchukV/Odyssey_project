@@ -14,8 +14,16 @@ async function getMovies() {
 }
 
 function createWeeklyGalery({ results }) {
-    console.log(results)
-    weeklyGallery.innerHTML = createListHtml(results);
+    const randomResults = [];
+    while (randomResults.length < 3) { 
+        const randomIndex = Math.floor(Math.random() * results.length);
+        const randomElement = results[randomIndex];
+        if(!randomResults.includes(randomElement)){
+        randomResults.push(randomElement);
+   }
+    }
+
+    weeklyGallery.innerHTML = createListHtml(randomResults);
 }
 
 function createListHtml(resultArray) { 
@@ -30,7 +38,5 @@ function createWeeklyCard(card) {
         </a>
         </li>`
 };
-
-
 
 getMovies();
