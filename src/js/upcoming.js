@@ -10,6 +10,7 @@ const refs = {
 
 const searchParams = new URLSearchParams({
   api_key: `${API_KEY}`,
+  region: 'UA',
 });
 
 async function fetchUpcomingMovieAndGenre() {
@@ -17,7 +18,7 @@ async function fetchUpcomingMovieAndGenre() {
     `${BASE_URL}/movie/upcoming?${searchParams}`
   );
   const genres = await axios.get(
-    `${BASE_URL}/genre/movie/list?${searchParams}`
+    `${BASE_URL}/genre/movie/list?${searchParams}&release_date.gte=2023-05-01&release_date.lte=2023-05-31&with_release_type=1`
   );
   return { response, genres };
 }
