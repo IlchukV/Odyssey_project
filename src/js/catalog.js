@@ -11,25 +11,66 @@ const nextPageBtn = document.getElementById("next-page");
 const localPageIndicator = document.querySelector(".page-indicator");
 
 // ! Функция, которая отправляет GET-запрос по переданному URL и возвращает полученный ответ в виде объекта.
+
 async function fetchMovies(url) {
     const response = await fetch(url);
     return response.json();
 }
 
+async function getTrendingMovies() {
+    await fetchMovies(currentPage);
+}
+
+async function searchMovies(query) {
+    await fetchMovies(currentPage, query);
+    searchInput.value = '';
+}
+
 // ! Функция, которая принимает массив объектов фильмов и формирует из него HTML-код,
 // ! который затем добавляется внутрь элемента с классом movies - list.
 
-function displayMovies(movies) {
-    const movieItems = movies
-        .map((movie) => {
-            return `<div class="movie-item">
-        <img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" alt="${movie.title}">
-        <h3>${movie.title}</h3>
-        </div>`;
-        })
-        .join("");
+// function displayMovies(movies) {
+//     const movieItems = movies
+//         .map((movie) => {
+//             return `<div class="movie-item">
+//         <img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" alt="${movie.title}">
+//         <h3>${movie.title}</h3>
+//         </div>`;
+//         })
+//         .join("");
 
-    moviesList.innerHTML = movieItems;
+//     moviesList.innerHTML = movieItems;
+// }
+
+async function displayMovies(movies) {
+    const movieItems = [];
+
+    for (const movie of movies) {
+        const detailsUrl = `https://api.themoviedb.org/3/movie/${movie.id}?api_key=${apiKey}&language=en-US`;
+
+        const details = await fetchMovies(detailsUrl);
+
+        const genres = details.genres.map((genre) => genre.name).join(', ');
+        const releaseDate = new Date(details.release_date).getFullYear();
+
+        const movieItem = `
+      <div class="movie-item">
+        <img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" alt="${movie.title}">
+        <div class="movie-details">
+          <h3>${movie.title}</h3>
+          <div class="movie-info">
+            <span class="movie-genre">${genres}</span>
+            <span class="movie-separator">|</span>
+            <span class="movie-year">${releaseDate}</span>
+          </div>
+        </div>
+      </div>
+    `;
+
+        movieItems.push(movieItem);
+    }
+
+    moviesList.innerHTML = movieItems.join('');
 }
 
 // !Функция, которая отправляет GET-запрос к API для получения списка популярных фильмов за неделю и вызывает функцию displayMovies() 
@@ -44,7 +85,7 @@ async function getTrendingMovies() {
     updatePaginationInfo();
 }
 
-//! Функция, которая отправляет GET-запрос к API для поиска фильмов по переданному запросу query и вызывает функцию displayMovies() 
+// ! Функция, которая отправляет GET-запрос к API для поиска фильмов по переданному запросу query и вызывает функцию displayMovies() 
 // ! для отображения результата на странице.
 // ! Также функция обновляет общее количество страниц и вызывает функцию updatePaginationInfo() для отображения пагинации.
 
