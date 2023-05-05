@@ -1,6 +1,6 @@
 
 import axios from "axios";
-const KEY = "6669975baff3d190a56a2f384e21121b";
+const KEY = "e1aeaa11db3ac22382c707ccfcac931e";
 
 const weeklyGallery = document.querySelector(".weeklytrends_gallery_list");
 
@@ -34,7 +34,7 @@ function createWeeklyCard(card) {
     console.log(card.poster_path)
     return `<li class = "weeklytrends_gallery_item">
          <a href = "#">
-        <img class = weeklytrends_gallery_image src = "https://image.tmdb.org/t/p/w500/${card.poster_path}" alt = ""></img>
+        <img class = "weeklytrends_gallery_image" src = "https://image.tmdb.org/t/p/w500/${card.poster_path}" alt = ""></img>
         </a>
         </li>`
 };
