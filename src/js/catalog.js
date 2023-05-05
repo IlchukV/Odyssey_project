@@ -115,12 +115,28 @@ function updatePaginationInfo() {
 
 async function goToPage(pageNumber) {
     currentPage = pageNumber;
+    localStorage.setItem('currentPage', currentPage);
+    localStorage.setItem('currentQuery', currentQuery);
+
     if (currentQuery) {
         await searchMovies(currentQuery);
     } else {
         await getTrendingMovies();
     }
 }
+
+document.addEventListener('DOMContentLoaded', async () => {
+    currentPage = Number(localStorage.getItem('currentPage')) || 1;
+    currentQuery = localStorage.getItem('currentQuery') || '';
+
+    if (currentQuery) {
+        searchInput.value = currentQuery;
+        await searchMovies(currentQuery);
+    } else {
+        await getTrendingMovies();
+    }
+});
+
 
 searchForm.addEventListener('submit', async (event) => {
     event.preventDefault();

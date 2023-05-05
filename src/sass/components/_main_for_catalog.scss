@@ -1,31 +1,85 @@
+/* Базовые стили */
+.search-input {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+}
+
+.submit-btn {
+    width: 48px;
+    height: 48px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.movies-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.section-canalog {
+    background-color: #282828;
+}
+
+/* Адаптивные стили */
+@include mobile {
+    .search-input {
+        font-size: 14px;
+    }
+}
+
+@include tablet {
+    .search-input {
+        font-size: 16px;
+    }
+}
+
+@include desktop {
+    .search-input {
+        font-size: 18px;
+
+    }
+}
+
+@include retina {
+    .search-input {
+        font-size: 16px;
+    }
+}
+
+
 .page-indicator {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-// .page-number {
-//     display: inline-block;
-//     width: 32px;
-//     height: 32px;
-//     line-height: 32px;
-//     text-align: center;
-//     margin: 0 8px;
-//     font-weight: bold;
-//     cursor: pointer;
-//     border-radius: 50%;
-//     border: none;
-//     background-color: #fff;
-//     color: #333;
-//     transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-// }
+.page-number {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    margin: 0 8px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 50%;
+    border: none;
+    background-color: #fff;
+    color: #333;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
 
-// .page-number.active {
-//     background-color: #333;
-//     color: #fff;
-// }
+.page-number.active {
+    background-color: #333;
+    color: #fff;
+}
 
-// .page-number:hover {
-//     background-color: #333;
-//     color: #fff;
-// }
+.page-number:hover {
+    background-color: #333;
+    color: #fff;
+}
