@@ -4,17 +4,36 @@ img {
 
 /* Базовые стили */
 .search-input {
-    width: 100%;
+    width: 334px;
+    height: 48px;
     padding: 8px;
-    font-size: 16px;
+    font-size: 18px;
+    border-radius: 8px;
+}
+
+.search-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding-top: 80px;
+    padding-bottom: 48px;
+}
+
+.search-block_search-form {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
 }
 
 .submit-btn {
     width: 48px;
     height: 48px;
-    background-color: transparent;
-    border: none;
+    background-color: #fff;
+    border-radius: 100%;
     cursor: pointer;
+    background: linear-gradient(141.22deg, #FFC226 9.4%, #F84119 91.91%);
 }
 
 .movies-list {
@@ -45,7 +64,7 @@ img {
 }
 
 .section-catalog {
-    max-width: 1600px;
+    // max-width: 1600px;
     background-color: #282828;
 }
 
