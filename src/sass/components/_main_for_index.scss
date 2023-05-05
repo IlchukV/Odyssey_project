@@ -1,4 +1,49 @@
 // weeklyTreds
+.weeklytrends{
+    display: block;
+}
+
+.weeklytrends_nav{
+    display: flex;
+    justify-content: space-between;
+}
+
+.weeklytrends_title {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 18.75px;
+    text-transform: uppercase;
+    @include tablet {
+        font-size: 24px;
+        line-height: 28.13px;
+    }
+
+    @include desktop {
+        font-size: 28px;
+        line-height: 32.81px;
+    }
+}
+
+.weeklytrends_seeAll_link{
+    color: $seeAllBtnColor;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 18.75px;
+    @include tablet{
+        font-size: 24px;
+        line-height: 28.13px;
+    }
+
+    @include desktop{
+        font-size: 28px;
+        line-height: 32.81px;
+    }
+}
+
 .weeklytrends_gallery_list{
     display: flex;
     justify-content: center;
