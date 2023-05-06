@@ -17,17 +17,7 @@ $pagination-background: #F7F7F7;
 $seeAllBtnColor: #F87719;
 
 
-:root[data-theme="light"] {
-    --body-and-modals-bgc: #ffffff;
-    --before-postionX: 2px;
-    --before-postionY: 2px;
-    --mainDarkColor: #000000;
-    --footerBgColor: #F5F5F5;;
-    --footerTxtColor: #B7B7B7;
-    --backgroundPage: transparent;
 
-    --team-sm-bnt-accent: #ff6b01;
-}
 
 :root[data-theme="dark"] {
     --body-and-modals-bgc: #212121;
@@ -37,6 +27,19 @@ $seeAllBtnColor: #F87719;
     --footerBgColor: #212121;
     --footerTxtColor: #ffffff;
     --backgroundPage: #ffffff;
-
+    --weeklytrendsTxtColor: #ffffff;
     --team-sm-bnt-accent: #932727;
+}
+
+:root[data-theme="light"] {
+    --body-and-modals-bgc: #ffffff;
+    --before-postionX: 2px;
+    --before-postionY: 2px;
+    --mainDarkColor: #000000;
+    --footerBgColor: #F5F5F5;
+    ;
+    --footerTxtColor: #B7B7B7;
+    --backgroundPage: transparent;
+    --weeklytrendsTxtColor: #ffffff;
+    --team-sm-bnt-accent: #ff6b01;
 }

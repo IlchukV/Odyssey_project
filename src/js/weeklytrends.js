@@ -1,4 +1,3 @@
-
 import axios from "axios";
 const KEY = "e1aeaa11db3ac22382c707ccfcac931e";
 
