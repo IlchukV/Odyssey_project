@@ -37,7 +37,7 @@ img {
         background-color: $mainLightColor;
         border-radius: 100%;
         cursor: pointer;
-        background: linear-gradient(141.22deg, #FFC226 9.4%, #F84119 91.91%);
+        background: $submit-btn-catalog;
         border: none;
     }
 }
@@ -55,10 +55,24 @@ img {
     margin-left: 15px;
     margin-right: 15px;
     margin-bottom: 32px;
-}
 
-.movie-item:nth-of-type(n+11) {
-    display: none;
+    &:nth-child(10) {
+        margin-bottom: 0;
+    }
+
+    &:nth-of-type(n+11) {
+        display: none;
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0) 63.48%, rgba(0, 0, 0, 0.9) 92.16%);
+    }
 }
 
 .movie-item h3 {
@@ -100,24 +114,13 @@ img {
     overflow: hidden;
 }
 
-.movie-item::before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 63.48%, rgba(0, 0, 0, 0.9) 92.16%);
-}
-
 .movie-info {
     font-size: 20px;
     color: $pagination-background;
     width: 250px;
-
 }
 
-// ! Звезды hейтинга
+// ! Звезды рейтинга
 
 .star-full {
     width: 18px;
@@ -138,36 +141,28 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 60px;
+    padding-bottom: 70px;
 }
 
 .page-number {
     display: inline-block;
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
     line-height: 32px;
     text-align: center;
-    margin: 0 8px;
-    font-weight: bold;
+    margin: 0 16px;
     cursor: pointer;
     border-radius: 50%;
-    border: none;
-    background-color: #fff;
-    color: #333;
-    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    border: 1px solid $pagination-number-color;
+    background: transparent;
+    color: $pagination-number-color;
+
+    &.active {
+        background: $pagination-color;
+        color: $mainLightColor;
+    }
 }
-
-.page-number.active {
-    background-color: #333;
-    color: #fff;
-}
-
-.page-number:hover {
-    background-color: #333;
-    color: #fff;
-}
-
-
-
 
 /* Адаптивные стили */
 @include mobile {

@@ -42,32 +42,32 @@ async function displayMovies(movies) {
 
         const ratingStars = createRatingStars(details.vote_average);
         const movieItem = `
-      <div class="movie-item">
-        <img
-          src="https://image.tmdb.org/t/p/w200${movie.poster_path}" 
-          srcset="
-            https://image.tmdb.org/t/p/w200${movie.poster_path} 200w,
-            https://image.tmdb.org/t/p/w300${movie.poster_path} 300w,
-            https://image.tmdb.org/t/p/w500${movie.poster_path} 500w
-          "
-          sizes="(max-width: 768px) 200px, (max-width: 1024px) 300px, 500px"
-          alt="${movie.title}"
-        >
-        <div class="movie-details">
-          <h3>${movie.title}</h3>
-            <div class="movie-genres-and-rating">
-          <div class="movie-info">
-            <span class="movie-genre">${genres}</span>
-            <span class="movie-separator">|</span>
-            <span class="movie-year">${releaseDate}</span>
-          </div>
-          <div class="movie-rating">
-            ${ratingStars}
-          </div>
-        </div>
-        </div>
-      </div>
-    `;
+                <div class="movie-item">
+                    <img
+                    src="https://image.tmdb.org/t/p/w200${movie.poster_path}" 
+                    srcset="
+                        https://image.tmdb.org/t/p/w200${movie.poster_path} 200w,
+                        https://image.tmdb.org/t/p/w300${movie.poster_path} 300w,
+                        https://image.tmdb.org/t/p/w500${movie.poster_path} 500w
+                    "
+                    sizes="(max-width: 768px) 200px, (max-width: 1024px) 300px, 500px"
+                    alt="${movie.title}"
+                    >
+                    <div class="movie-details">
+                    <h3>${movie.title}</h3>
+                        <div class="movie-genres-and-rating">
+                    <div class="movie-info">
+                        <span class="movie-genre">${genres}</span>
+                        <span class="movie-separator">|</span>
+                        <span class="movie-year">${releaseDate}</span>
+                    </div>
+                    <div class="movie-rating">
+                        ${ratingStars}
+                    </div>
+                    </div>
+                    </div>
+                </div>
+                `;
         movieItems.push(movieItem);
     }
 
@@ -82,9 +82,10 @@ function createRatingStars(rating) {
     const halfStar = rating % 2 >= 1 ? 1 : 0;
     const emptyStars = maxStars - fullStars - halfStar;
 
-    const fullStarIcon = '<li class="fas fa-star star-full"></li>';
-    const halfStarIcon = '<li class="fas fa-star-half-alt star-full"></li>';
-    const emptyStarIcon = '<li class="far fa-star star-full"></li>';
+    const fullStarIcon = `<li class="fas fa-star star-full"></li>`;
+    const halfStarIcon = `<li class="fas fa-star-half-alt star-full"></li>`;
+    const emptyStarIcon = `<li class="far fa-star star-full"></li>`;
+
 
     return (
         fullStarIcon.repeat(fullStars) +
@@ -92,9 +93,6 @@ function createRatingStars(rating) {
         emptyStarIcon.repeat(emptyStars)
     );
 }
-
-
-
 
 // !Функция, которая отправляет GET-запрос к API для получения списка популярных фильмов за неделю и вызывает функцию displayMovies() 
 // !для отображения результата на странице.
@@ -171,9 +169,10 @@ function updatePaginationInfo() {
     prevArrow.addEventListener("click", () => goToPage(currentPage - 1));
     localPageIndicator.appendChild(prevArrow);
 
-    const maxVisiblePages = 5;
+    const maxVisiblePages = 3;
     const firstVisiblePage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
-    const lastVisiblePage = Math.min(totalPages, firstVisiblePage + maxVisiblePages - 1);
+    const lastVisiblePage = Math.min(24, firstVisiblePage + maxVisiblePages - 1);
+    // const lastVisiblePage = Math.min(totalPages, firstVisiblePage + maxVisiblePages - 1);
 
     // *проверяет, находится ли первая страница в пагинации на первом месте, 
     // *и если нет, то создает кнопку "1" и добавляет ее в пагинацию.
@@ -195,7 +194,7 @@ function updatePaginationInfo() {
     for (let i = firstVisiblePage; i <= lastVisiblePage; i++) {
         const pageButton = document.createElement("button");
         pageButton.classList.add("page-number");
-        pageButton.textContent = i;
+        pageButton.textContent = i.toString().padStart(2, '0');
         if (i === currentPage) {
             pageButton.classList.add("active");
         }
@@ -203,22 +202,17 @@ function updatePaginationInfo() {
         localPageIndicator.appendChild(pageButton);
     }
 
-    // *проверяет, находится ли последняя доступная страница в пагинации на последнем месте, 
-    // * и если нет, то добавляет кнопку с номером последней страницы и многоточие, 
-    // * если есть страницы после последней доступной страницы.
-    if (lastVisiblePage < totalPages) {
-        if (lastVisiblePage < totalPages - 1) {
-            const ellipsis = document.createElement("span");
-            ellipsis.textContent = "...";
-            localPageIndicator.appendChild(ellipsis);
-        }
+    // * Создает и добавляет элементы пагинации на страницу
 
-        const lastPageButton = document.createElement("button");
-        lastPageButton.classList.add("page-number");
-        lastPageButton.textContent = totalPages;
-        lastPageButton.addEventListener("click", () => goToPage(totalPages));
-        localPageIndicator.appendChild(lastPageButton);
-    }
+    const ellipsis = document.createElement("span");
+    ellipsis.textContent = "...";
+    localPageIndicator.appendChild(ellipsis);
+
+    const lastPageButton = document.createElement("button");
+    lastPageButton.classList.add("page-number");
+    lastPageButton.textContent = 24;
+    lastPageButton.addEventListener("click", () => goToPage(24));
+    localPageIndicator.appendChild(lastPageButton);
 
     const nextArrow = document.createElement("button");
     nextArrow.classList.add("arrow-button");
@@ -226,6 +220,31 @@ function updatePaginationInfo() {
     nextArrow.disabled = currentPage === totalPages;
     nextArrow.addEventListener("click", () => goToPage(currentPage + 1));
     localPageIndicator.appendChild(nextArrow);
+}
+
+// * проверяет наличие кнопки "предыдущая страница"
+
+if (prevPageBtn) {
+    prevPageBtn.addEventListener('click', async () => {
+        currentPage--;
+        if (currentQuery) {
+            await searchMovies(currentQuery);
+        } else {
+            await getTrendingMovies();
+        }
+    });
+}
+
+// * проверяет наличие кнопки "следующая страница"
+if (nextPageBtn) {
+    nextPageBtn.addEventListener('click', async () => {
+        currentPage++;
+        if (currentQuery) {
+            await searchMovies(currentQuery);
+        } else {
+            await getTrendingMovies();
+        }
+    });
 }
 
 // ! Функция, которая обновляет текущую страницу на переданную pageNumber, сохраняет значение в локальном 
@@ -249,30 +268,6 @@ function resetToFirstPage() {
     localStorage.removeItem('currentQuery');
     searchInput.value = '';
     getTrendingMovies();
-}
-
-// * проверяет наличие кнопки "предыдущая страница"
-if (prevPageBtn) {
-    prevPageBtn.addEventListener('click', async () => {
-        currentPage--;
-        if (currentQuery) {
-            await searchMovies(currentQuery);
-        } else {
-            await getTrendingMovies();
-        }
-    });
-}
-
-// * проверяет наличие кнопки "следующая страница"
-if (nextPageBtn) {
-    nextPageBtn.addEventListener('click', async () => {
-        currentPage++;
-        if (currentQuery) {
-            await searchMovies(currentQuery);
-        } else {
-            await getTrendingMovies();
-        }
-    });
 }
 
 getTrendingMovies();
