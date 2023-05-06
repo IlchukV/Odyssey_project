@@ -4,7 +4,7 @@ import 'swiper/swiper.min.css';
 const swiper = new Swiper('.swiper', {
   modules: [Pagination, Autoplay, Navigation],
   autoplay: {
-    delay: 3000,
+    delay: 7000,
     disableOnInteraction: false,
   },
   pagination: {
