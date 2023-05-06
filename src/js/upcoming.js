@@ -6,7 +6,7 @@ const API_KEY = 'e1aeaa11db3ac22382c707ccfcac931e';
 const IMG_URL = 'https://image.tmdb.org/t/p/w500/';
 
 const refs = {
-  upcomingMoviesSection: document.querySelector('.upcoming'),
+  upcomingMoviesSection: document.querySelector('.container--upcoming'),
 };
 
 async function fetchUpcomingMovieAndGenre() {
@@ -62,7 +62,7 @@ fetchUpcomingMovieAndGenre()
   .catch(console.log);
 
 function UpcomingMovieMarkup(el, genres, date) {
-  return `<div div class= "container" >
+  return `
                 <h2 class="section-title">UPCOMING THIS MONTH</h2>
                 <div class="movie">
                     <div class="movie__picture"></div>
@@ -108,7 +108,7 @@ function UpcomingMovieMarkup(el, genres, date) {
                         </div>
                     </div>
                 </div>
-            </div>`;
+            `;
 }
 
 function getPositionOfPosterInDom() {
