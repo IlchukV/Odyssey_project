@@ -134,3 +134,58 @@
     line-height: 1.6;
   }
 }
+.catalog-library {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 40px 0px;
+  background-color: #111;
+}
+.catalog-library.hidden {
+  display: none;
+}
+
+.catalog-library__list {
+  margin: -8px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.catalog-library__item {
+  position: relative;
+  margin: 8px;
+  width: 100%;
+  height: auto;
+
+  @include tablet {
+    width: calc((100% - 6 * 8px) / 3);
+  }
+}
+
+.catalog-library__img {
+  width: 100%;
+  height: auto;
+
+  @include desktop {
+    height: 574px;
+  }
+}
+
+.catalog-library__description {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.catalog-library__text {
+  font-size: 20px;
+  line-height: 1.2;
+  color: #b7b7b7;
+
+  &:first-child {
+    text-transform: uppercase;
+    color: $mainLightColor;
+  }
+}
