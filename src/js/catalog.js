@@ -29,19 +29,6 @@ async function searchMovies(query) {
 // ! Функция, которая принимает массив объектов фильмов и формирует из него HTML-код,
 // ! который затем добавляется внутрь элемента с классом movies - list.
 
-// function displayMovies(movies) {
-//     const movieItems = movies
-//         .map((movie) => {
-//             return `<div class="movie-item">
-//         <img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" alt="${movie.title}">
-//         <h3>${movie.title}</h3>
-//         </div>`;
-//         })
-//         .join("");
-
-//     moviesList.innerHTML = movieItems;
-// }
-
 async function displayMovies(movies) {
     const movieItems = [];
 
@@ -55,7 +42,9 @@ async function displayMovies(movies) {
 
         const movieItem = `
       <div class="movie-item">
-        <img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" alt="${movie.title}">
+        <img src="https://image.tmdb.org/t/p/w200${movie.poster_path}"
+             srcset="https://image.tmdb.org/t/p/w400${movie.poster_path} 2x"
+             alt="${movie.title}">
         <div class="movie-details">
           <h3>${movie.title}</h3>
           <div class="movie-info">
@@ -72,6 +61,37 @@ async function displayMovies(movies) {
 
     moviesList.innerHTML = movieItems.join('');
 }
+
+// async function displayMovies(movies) {
+//     const movieItems = [];
+
+//     for (const movie of movies) {
+//         const detailsUrl = `https://api.themoviedb.org/3/movie/${movie.id}?api_key=${apiKey}&language=en-US`;
+
+//         const details = await fetchMovies(detailsUrl);
+
+//         const genres = details.genres.map((genre) => genre.name).join(', ');
+//         const releaseDate = new Date(details.release_date).getFullYear();
+
+//         const movieItem = `
+//       <div class="movie-item">
+//         <img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" alt="${movie.title}">
+//         <div class="movie-details">
+//           <h3>${movie.title}</h3>
+//           <div class="movie-info">
+//             <span class="movie-genre">${genres}</span>
+//             <span class="movie-separator">|</span>
+//             <span class="movie-year">${releaseDate}</span>
+//           </div>
+//         </div>
+//       </div>
+//     `;
+
+//         movieItems.push(movieItem);
+//     }
+
+//     moviesList.innerHTML = movieItems.join('');
+// }
 
 // !Функция, которая отправляет GET-запрос к API для получения списка популярных фильмов за неделю и вызывает функцию displayMovies() 
 // !для отображения результата на странице.
@@ -97,6 +117,24 @@ async function searchMovies(query) {
     updatePaginationInfo();
     searchInput.value = '';
 }
+
+// !!export function showNoResultsModal() {
+//     Здесь вызывайте вашу модальную библиотеку или реализуйте отображение модального окна
+// }
+// async function searchMovies(query) {
+//     const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}&page=${currentPage}`;
+//     const data = await fetchMovies(url);
+//     totalPages = data.total_pages;
+
+//     if (data.results.length === 0) {
+//         showNoResultsModal(); // Если результатов нет, показываем модальное окно
+//     } else {
+//         displayMovies(data.results);
+//         updatePaginationInfo();
+//     }
+
+//     searchInput.value = '';
+// }
 
 searchForm.addEventListener('submit', async (event) => {
     event.preventDefault();
