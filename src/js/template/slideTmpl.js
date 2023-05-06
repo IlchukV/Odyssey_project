@@ -3,6 +3,12 @@ function ratingPercent(voites) {
 }
 
 url = new URL('../../images/raiting_contour.png', import.meta.url);
+urlRetina = new URL('../../images/raiting_contour@2x.png', import.meta.url);
+urlMob = new URL('../../images/raiting_contour_mobile.png', import.meta.url);
+urlRetinaMob = new URL(
+  '../../images/raiting_contour_mobile@2x.png',
+  import.meta.url
+);
 
 export default function (data) {
   return data.results
@@ -15,10 +21,16 @@ export default function (data) {
       <div class="raiting__fill-image" style="width:${ratingPercent(
         vote_average
       )}%"></div>
-      <img class="raiting__image" src="${url}" alt="hero">
+      <picture>
+        <source srcset="${url} 1x, .${urlRetina} 2x" media="(min-width: 768px)"
+          type="image/png" />
+        <source srcset="${urlMob} 1x, ${urlRetinaMob} 2x" media="(max-width: 768px)"
+          type="image/png" />
+        <img class="raiting__image" src="${urlMob}" alt="hero">
+      </picture>
       </div>
       <p class="hero__description">${overview}</p>
-      <button class="hero__btn" type="button" data-id="${id}">Watch trailer</button>
+      <button class="hero__btn js-hero-trailer" type="button" data-id="${id}">Watch trailer</button>
       </div>
       <div class="hero__image-wrap">
       <img class="hero__image" src="https://image.tmdb.org/t/p/original${backdrop_path}" alt="hero">

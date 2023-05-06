@@ -1,7 +1,9 @@
-.hero{
+.hero {
+
   .not-mobile {
     display: none;
   }
+
   margin-bottom: 40px;
 
    & > .container {
@@ -15,24 +17,24 @@
   &__info {
     position: absolute;
     z-index: 1;
-    top:50%;
-    left:20px;
+    top: calc(50% - 20px);
+    left:8px;
     transform: translateY(-50%);
-    width:60%;
+    width:48%;
   }
 
   &__title{
-    color: $mainLightColor;
-    font-size: 30px;
+    color: var(--title-color);
+    font-size: 24px;
     line-height: 1.19;
     font-weight: 700;
     margin-bottom: 8px;
   }
 
   &__description {
-    color: $mainLightColor;
+    color: var(--description-color);
     font-weight: 400;
-    font-size: 13px;
+    font-size: 12px;
     line-height: 1.14;
     margin-bottom: 16px;
   }
@@ -46,7 +48,8 @@
       position: absolute;
       width: 100%;
       height: 100%;
-      background-size: cover;
+      background-repeat:no-repeat;
+      background-size:cover;
     }
   }
 
@@ -68,97 +71,119 @@
     border:none;
   }
 
-    @include mobile {
-      :root[data-theme="light"] &__image-wrap:before {
-        background-image: url(../images/Subtract_mobile.png);
-        @include retina {
-          background-image: url(../images/Subtract_mobile@2x.png);
-        }
-      }
+  :root[data-theme="light"] &__image-wrap:before {
+    background-image: url(../images/Subtract_mobile.png);
 
-      :root[data-theme="dark"] &__image-wrap:before {
-        background-image: url(../images/Subtract_dark_mobile.png);
-        @include retina {
-          background-image: url(../images/Subtract_dark_mobile@2x.png);
-        }
-      }
-
-      &__title{
-        font-size: 32px;
-      }
-
-      &__description {
-        font-size: 14px;
-      }
-      
-      @include retina {}
+    @include retina {
+      background-image: url(../images/Subtract_mobile@2x.png);
     }
-  
-    @include tablet {
-      :root[data-theme="light"] &__image-wrap:before {
-          background-image: url(../images/Subtract_tablet.png);
-      
-          @include retina {
-            background-image: url(../images/Subtract_tablet@2x.png);
-          }
-        }
-      
-        :root[data-theme="dark"] &__image-wrap:before {
-          background-image: url(../images/Subtract_dark_tablet.png);
-      
-          @include retina {
-            background-image: url(../images/Subtract_dark_tablet@2x.png);
-          }
-        }
-        
-      .not-mobile {
-        display: inline;
-      }
-      @include retina {}
+  }
+
+  :root[data-theme="dark"] &__image-wrap:before {
+    background-image: url(../images/Subtract_dark_mobile.png);
+
+    @include retina {
+      background-image: url(../images/Subtract_dark_mobile@2x.png);
     }
-  
-    @include desktop {
-      :root[data-theme="light"] &__image-wrap:before {
-          background-image: url(../images/Subtract_desktop.png);
-      
-          @include retina {
-            background-image: url(../images/Subtract_desktop@2x.png);
-          }
-        }
-      
-        :root[data-theme="dark"] &__image-wrap:before {
-          background-image: url(../images/Subtract_dark_desktop.png);
-      
-          @include retina {
-            background-image: url(../images/Subtract_dark_desktop@2x.png);
-          }
-        }
+  }
 
-      margin-bottom: 80px;
-
-      &__info {
-        width: 41%;
-      }
-
-      &__title{
-        font-size: 64px;
-        line-height: 1.17;
-        margin-bottom: 16px;
-      }
-
-      &__description {
-        font-size: 16px;
-        line-height: 1.19;
-        margin-bottom: 32px;
-      }
-
-      &__btn {
-        font-size: 16px;
-        line-height: 1.5;
-      }
-  
-      @include retina {}
+  @media screen and (min-width: 375px){
+    &__title{
+      font-size: 32px;
     }
+
+    &__description {
+      font-size: 14px;
+    }
+  }
+
+  @include mobile {
+    &__info {
+      width: 46%;
+      left: 20px;
+    }
+  }
+  
+  @include tablet {
+    :root[data-theme="light"] &__image-wrap:before {
+      background-image: url(../images/Subtract_tablet.png);
+
+      @include retina {
+        background-image: url(../images/Subtract_tablet@2x.png);
+      }
+    }
+
+    :root[data-theme="dark"] &__image-wrap:before {
+      background-image: url(../images/Subtract_dark_tablet.png);
+
+      @include retina {
+        background-image: url(../images/Subtract_dark_tablet@2x.png);
+      }
+    }
+
+    .not-mobile {
+      display: inline;
+    }
+
+    &__info {
+      width: 36%;
+    }
+
+    &__title{
+      font-size: 39px;
+      line-height: 1.18;
+      margin-bottom: 12px;
+    }
+
+    &__description {
+      margin-bottom: 28px;
+    }
+
+    &__btn {
+      font-size: 14px;
+    }
+  }
+  
+  @include desktop {
+    :root[data-theme="light"] &__image-wrap:before {
+      background-image: url(../images/Subtract_desktop.png);
+
+      @include retina {
+        background-image: url(../images/Subtract_desktop@2x.png);
+      }
+    }
+
+    :root[data-theme="dark"] &__image-wrap:before {
+      background-image: url(../images/Subtract_dark_desktop.png);
+  
+      @include retina {
+        background-image: url(../images/Subtract_dark_desktop@2x.png);
+      }
+    }
+
+    margin-bottom: 80px;
+
+    &__info {
+      width: 41%;
+    }
+
+    &__title{
+      font-size: 64px;
+      line-height: 1.17;
+      margin-bottom: 16px;
+    }
+
+    &__description {
+      font-size: 16px;
+      line-height: 1.19;
+      margin-bottom: 36px;
+    }
+
+    &__btn {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+  }
 
 }
 
@@ -166,7 +191,7 @@
 .raiting {
   position: relative;
   display:inline-block;
-  margin-bottom: 28px;
+  margin-bottom: 16px;
   overflow: hidden;
 
   &__fill-image{
@@ -174,13 +199,39 @@
     display: block;
     height: 100%;
     width:0%;
-    background-image: url(../images/raiting_fill.png);
+    background-size: cover;
+    background-image: url(../images/raiting_fill_mobile.png);
+
+    @include retina {
+      background-image: url(../images/raiting_fill_mobile@2x.png);
+    }
+
+    @include tablet {
+      background-image: url(../images/raiting_fill.png);
+      @include retina {
+        background-image: url(../images/raiting_fill@2x.png);
+      }
+    }
+
+  }
+
+  @include tablet {
+    margin-bottom: 20px;
+  }
+
+  @include desktop {
+    margin-bottom: 28px;
   }
 }
 
 /* Swiper */
+
 .swiper {
-  height: 380px;
+  min-height: 380px;
+  height: 118.7vw;
+  @include mobile {
+    height:570px;
+  }
   @include tablet {
     height: 432px;
   }
@@ -188,18 +239,27 @@
     height: 720px;
   }
 }
+
 .swiper-control {
   position: relative;
-  display:flex;
+  display:none;
   justify-content: center;
   align-items: center;
   position: absolute;
   bottom: 5px;
   z-index: 2;
-  left: 0;
+  left: 8px;
 
   &--show{
     display:flex;
+  }
+
+  @media screen and (min-width: 375px){
+    left: 20px;
+  }
+
+  @include desktop {
+    bottom: 20px;
   }
 }
 
@@ -225,10 +285,20 @@
     @include tablet {
       width: 32px;
       height: 32px;
+      font-size: 12px;
+      line-height: 1.16;
+      
+      &:not(:first-child) {
+        margin-left: 12px;
+      }
+    }
+
+    @include desktop {
       width: 40px;
       height: 40px;
       font-size: 14px;
       line-height: 1;
+
       &:not(:first-child) {
         margin-left: 16px;
       }
@@ -250,14 +320,26 @@
 
     .swiper-button-prev,
     .swiper-button-next {
-      background-image: url(../images/slider_nav.svg);
+      //background-image: url(../images/slider_nav.svg);
       background-repeat: no-repeat;
       background-position: center;
-      width: 12px;
+      width: 20px;
       height: 20px;
       cursor: pointer;
+      color: var(--swipe-nav);
+    }
+    .swiper-button-disabled{
+      color: var(--swipe-nav-disabled);
     }
     
     .swiper-button-next{
       transform: rotateY(180deg);
     }
+
+
+        .swiper-prev-svg, .swiper-next-svg{
+          width:100%;
+          height: 100%;
+          stroke: currentColor;
+          fill:none;
+        }

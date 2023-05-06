@@ -30,13 +30,16 @@ $pagination-background: #F7F7F7;
 
     --swipe-bullet-color: #595959;
     --swipe-bullet-color-active: #282828;
-    --swipe-nav-disabled: #595959;
+    --swipe-nav: #595959;
+    --swipe-nav-disabled: #B7B7B7;
+    --title-color:#111111;
+    --description-color:#282828;
 
     --team-sm-bnt-accent: #ff6b01;
 }
 
 :root[data-theme="dark"] {
-    --body-and-modals-bgc: #111111;
+    --body-and-modals-bgc: #000000;
     --before-postionX: 30px;
     --before-postionY: 2px;
     --mainDarkColor: #ffffff;
@@ -46,7 +49,10 @@ $pagination-background: #F7F7F7;
 
     --swipe-bullet-color: #B7B7B7;
     --swipe-bullet-color-active: #ffffff;
-    --swipe-nav-disabled: #F8F8F8;
+    --swipe-nav-disabled: #B7B7B7;
+    --swipe-nav: #F8F8F8;
+    --title-color: #FFFFFF;
+    --description-color: #F8F8F8;
 
     --team-sm-bnt-accent: #932727;
 }

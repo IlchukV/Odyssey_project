@@ -1,6 +1,6 @@
 import slideTmpl from './template/slideTmpl';
 import swiper from './swiper';
-import Notiflix from 'notiflix';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 /*-- Потрібно винести в API--*/
 
@@ -23,11 +23,19 @@ async function getMoviesForDay() {
   }
 }
 /*-- кінець блоку для API--*/
+
 const sliderWrapRefs = document.querySelector('.swiper-wrapper');
+const swipeControl = document.querySelector('.swiper-control');
 
 (async function renderHeroSlides() {
-  const { data } = await getMoviesForDay();
-  const slides = await slideTmpl(data);
-  sliderWrapRefs.innerHTML = await slides;
-  swiper.update();
+  try {
+    const { data } = await getMoviesForDay();
+    const slides = await slideTmpl(data);
+
+    sliderWrapRefs.innerHTML = await slides;
+    swipeControl.classList.add('swiper-control--show');
+    swiper.update();
+  } catch (error) {
+    Notify.failure(`Error ${error.message}`);
+  }
 })();
