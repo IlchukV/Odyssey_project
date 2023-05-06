@@ -2,6 +2,7 @@ const apiKey = "e1aeaa11db3ac22382c707ccfcac931e";
 let currentPage = 1;
 let totalPages = 0;
 let currentQuery = '';
+let isCatalogHomePage = true;
 
 const searchForm = document.getElementById("search-form");
 const searchInput = document.getElementById("search-input");
@@ -118,6 +119,7 @@ async function searchMovies(query) {
     updatePaginationInfo();
     searchInput.value = '';
 }
+
 // !!ВАЖНО
 // !!**-----Это для того, что бы если фильм не найден тогда показывалось модальное окно
 // **   
@@ -171,9 +173,9 @@ function updatePaginationInfo() {
 
     const maxVisiblePages = 3;
     const firstVisiblePage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
-    const lastVisiblePage = Math.min(24, firstVisiblePage + maxVisiblePages - 1);
-    // const lastVisiblePage = Math.min(totalPages, firstVisiblePage + maxVisiblePages - 1);
+    // const lastVisiblePage = Math.min(24, firstVisiblePage + maxVisiblePages - 1);
 
+    const lastVisiblePage = Math.min(totalPages, firstVisiblePage + maxVisiblePages - 1);
     // *проверяет, находится ли первая страница в пагинации на первом месте, 
     // *и если нет, то создает кнопку "1" и добавляет ее в пагинацию.
     if (firstVisiblePage > 1) {
@@ -203,16 +205,19 @@ function updatePaginationInfo() {
     }
 
     // * Создает и добавляет элементы пагинации на страницу
+    if (lastVisiblePage < totalPages) {
+        if (lastVisiblePage < totalPages - 1) {
+            const ellipsis = document.createElement("span");
+            ellipsis.textContent = "...";
+            localPageIndicator.appendChild(ellipsis);
+        }
 
-    const ellipsis = document.createElement("span");
-    ellipsis.textContent = "...";
-    localPageIndicator.appendChild(ellipsis);
-
-    const lastPageButton = document.createElement("button");
-    lastPageButton.classList.add("page-number");
-    lastPageButton.textContent = 24;
-    lastPageButton.addEventListener("click", () => goToPage(24));
-    localPageIndicator.appendChild(lastPageButton);
+        const lastPageButton = document.createElement("button");
+        lastPageButton.classList.add("page-number");
+        lastPageButton.textContent = isCatalogHomePage && currentPage < 24 ? 24 : totalPages;
+        lastPageButton.addEventListener("click", () => goToPage(isCatalogHomePage && currentPage < 24 ? 24 : totalPages));
+        localPageIndicator.appendChild(lastPageButton);
+    }
 
     const nextArrow = document.createElement("button");
     nextArrow.classList.add("arrow-button");
