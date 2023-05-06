@@ -40,58 +40,61 @@ async function displayMovies(movies) {
         const genres = details.genres.map((genre) => genre.name).join(', ');
         const releaseDate = new Date(details.release_date).getFullYear();
 
+        const ratingStars = createRatingStars(details.vote_average);
         const movieItem = `
       <div class="movie-item">
-        <img src="https://image.tmdb.org/t/p/w200${movie.poster_path}"
-             srcset="https://image.tmdb.org/t/p/w400${movie.poster_path} 2x"
-             alt="${movie.title}">
+        <img
+          src="https://image.tmdb.org/t/p/w200${movie.poster_path}" 
+          srcset="
+            https://image.tmdb.org/t/p/w200${movie.poster_path} 200w,
+            https://image.tmdb.org/t/p/w300${movie.poster_path} 300w,
+            https://image.tmdb.org/t/p/w500${movie.poster_path} 500w
+          "
+          sizes="(max-width: 768px) 200px, (max-width: 1024px) 300px, 500px"
+          alt="${movie.title}"
+        >
         <div class="movie-details">
           <h3>${movie.title}</h3>
+            <div class="movie-genres-and-rating">
           <div class="movie-info">
             <span class="movie-genre">${genres}</span>
             <span class="movie-separator">|</span>
             <span class="movie-year">${releaseDate}</span>
           </div>
+          <div class="movie-rating">
+            ${ratingStars}
+          </div>
+        </div>
         </div>
       </div>
     `;
-
         movieItems.push(movieItem);
     }
 
     moviesList.innerHTML = movieItems.join('');
 }
 
-// async function displayMovies(movies) {
-//     const movieItems = [];
+//! Рейтинг со звездами
 
-//     for (const movie of movies) {
-//         const detailsUrl = `https://api.themoviedb.org/3/movie/${movie.id}?api_key=${apiKey}&language=en-US`;
+function createRatingStars(rating) {
+    const maxStars = 5;
+    const fullStars = Math.floor(rating / 2);
+    const halfStar = rating % 2 >= 1 ? 1 : 0;
+    const emptyStars = maxStars - fullStars - halfStar;
 
-//         const details = await fetchMovies(detailsUrl);
+    const fullStarIcon = '<li class="fas fa-star star-full"></li>';
+    const halfStarIcon = '<li class="fas fa-star-half-alt star-full"></li>';
+    const emptyStarIcon = '<li class="far fa-star star-full"></li>';
 
-//         const genres = details.genres.map((genre) => genre.name).join(', ');
-//         const releaseDate = new Date(details.release_date).getFullYear();
+    return (
+        fullStarIcon.repeat(fullStars) +
+        halfStarIcon.repeat(halfStar) +
+        emptyStarIcon.repeat(emptyStars)
+    );
+}
 
-//         const movieItem = `
-//       <div class="movie-item">
-//         <img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" alt="${movie.title}">
-//         <div class="movie-details">
-//           <h3>${movie.title}</h3>
-//           <div class="movie-info">
-//             <span class="movie-genre">${genres}</span>
-//             <span class="movie-separator">|</span>
-//             <span class="movie-year">${releaseDate}</span>
-//           </div>
-//         </div>
-//       </div>
-//     `;
 
-//         movieItems.push(movieItem);
-//     }
 
-//     moviesList.innerHTML = movieItems.join('');
-// }
 
 // !Функция, которая отправляет GET-запрос к API для получения списка популярных фильмов за неделю и вызывает функцию displayMovies() 
 // !для отображения результата на странице.
@@ -117,8 +120,10 @@ async function searchMovies(query) {
     updatePaginationInfo();
     searchInput.value = '';
 }
-
-// !!export function showNoResultsModal() {
+// !!ВАЖНО
+// !!**-----Это для того, что бы если фильм не найден тогда показывалось модальное окно
+// **   
+// **  export function showNoResultsModal() {
 //     Здесь вызывайте вашу модальную библиотеку или реализуйте отображение модального окна
 // }
 // async function searchMovies(query) {

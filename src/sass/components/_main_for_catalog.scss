@@ -76,10 +76,13 @@ img {
     padding-left: 20px;
     padding-bottom: 20px;
     box-sizing: border-box;
-    // transition: all 0.2s ease-in-out;
     color: $mainLightColor;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 
     & h3 {
+        width: 280px;
         font-size: 20px;
         line-height: 1.15;
         text-transform: uppercase;
@@ -88,41 +91,46 @@ img {
     }
 }
 
-.movie-info {
+.movie-genres-and-rating {
     display: flex;
-    align-items: center;
-    font-size: 16px;
-    color: $pagination-background;
+    align-items: end;
+    justify-content: center;
     margin-top: 8px;
+    flex-wrap: nowrap;
+    overflow: hidden;
 }
 
-.movie-separator {
-    margin: 0 6px;
+.movie-item::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 63.48%, rgba(0, 0, 0, 0.9) 92.16%);
 }
 
-/* Адаптивные стили */
-@include mobile {
-    .search-input {
-        font-size: 14px;
-    }
+.movie-info {
+    font-size: 20px;
+    color: $pagination-background;
+    width: 250px;
+
 }
 
-@include tablet {
-    .search-input {
-        font-size: 16px;
-    }
+// ! Звезды hейтинга
+
+.star-full {
+    width: 18px;
+    height: 18px;
+    background: $flooded-stars-catalog;
+    background-clip: text;
+    color: transparent;
 }
 
-@include desktop {
-    .search-input {
-        font-size: 18px;
-    }
-}
-
-@include retina {
-    .search-input {
-        font-size: 16px;
-    }
+.star-half {
+    background: $not-flooded-stars-catalog;
+    background-clip: text;
+    color: transparent;
 }
 
 // Пагинация
@@ -156,4 +164,32 @@ img {
 .page-number:hover {
     background-color: #333;
     color: #fff;
+}
+
+
+
+
+/* Адаптивные стили */
+@include mobile {
+    .search-input {
+        font-size: 14px;
+    }
+}
+
+@include tablet {
+    .search-input {
+        font-size: 16px;
+    }
+}
+
+@include desktop {
+    .search-input {
+        font-size: 18px;
+    }
+}
+
+@include retina {
+    .search-input {
+        font-size: 16px;
+    }
 }
