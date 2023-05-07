@@ -9,7 +9,7 @@
       #0e0e0e 25.78%,
       rgba(14, 14, 14, 0) 60.07%
     ),
-    url(/src/images/hero-library.png);
+    url(/src/images/hero_library.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -36,7 +36,7 @@
 }
 
 .hero-library__title {
-  color: $mainLightColor;
+  color: $bulb-bgc;
   font-size: 32px;
   line-height: 1.2;
   font-weight: 700;
@@ -53,7 +53,7 @@
   }
 }
 .hero-library__text {
-  color: #f8f8f8;
+  color: $bulb-bgc;
   font-size: 14px;
   line-height: 1.14;
   font-weight: 400;
@@ -88,7 +88,7 @@
   }
 }
 .empty-library__text {
-  color: $mainLightColor;
+  color: $bulb-bgc;
   font-size: 20px;
   line-height: 1.4;
   font-weight: 400;
