@@ -86,18 +86,18 @@
   }
 
   :root[data-theme="light"] &__image-wrap:before {
-    background-image: url(../images/Subtract_mobile.png);
+    background-image: url(./../images/Subtract_mobile.png);
 
     @include retina {
-      background-image: url(../images/Subtract_mobile@2x.png);
+      background-image: url(./../images/Subtract_mobile@2x.png);
     }
   }
 
   :root[data-theme="dark"] &__image-wrap:before {
-    background-image: url(../images/Subtract_dark_mobile.png);
+    background-image: url(./../images/Subtract_dark_mobile.png);
 
     @include retina {
-      background-image: url(../images/Subtract_dark_mobile@2x.png);
+      background-image: url(./../images/Subtract_dark_mobile@2x.png);
     }
   }
 
@@ -127,18 +127,18 @@
   
   @include tablet {
     :root[data-theme="light"] &__image-wrap:before {
-      background-image: url(../images/Subtract_tablet.png);
+      background-image: url(./../images/Subtract_tablet.png);
 
       @include retina {
-        background-image: url(../images/Subtract_tablet@2x.png);
+        background-image: url(./../images/Subtract_tablet@2x.png);
       }
     }
 
     :root[data-theme="dark"] &__image-wrap:before {
-      background-image: url(../images/Subtract_dark_tablet.png);
+      background-image: url(./../images/Subtract_dark_tablet.png);
 
       @include retina {
-        background-image: url(../images/Subtract_dark_tablet@2x.png);
+        background-image: url(./../images/Subtract_dark_tablet@2x.png);
       }
     }
 
@@ -172,18 +172,18 @@
   
   @include desktop {
     :root[data-theme="light"] &__image-wrap:before {
-      background-image: url(../images/Subtract_desktop.png);
+      background-image: url(./../images/Subtract_desktop.png);
 
       @include retina {
-        background-image: url(../images/Subtract_desktop@2x.png);
+        background-image: url(./../images/Subtract_desktop@2x.png);
       }
     }
 
     :root[data-theme="dark"] &__image-wrap:before {
-      background-image: url(../images/Subtract_dark_desktop.png);
+      background-image: url(./../images/Subtract_dark_desktop.png);
   
       @include retina {
-        background-image: url(../images/Subtract_dark_desktop@2x.png);
+        background-image: url(./../images/Subtract_dark_desktop@2x.png);
       }
     }
 
@@ -238,10 +238,10 @@
     height: 100%;
     width:0%;
     background-size: cover;
-    background-image: url(../images/raiting_fill_mobile.png);
+    background-image: url(./../images/raiting_fill_mobile.png);
 
     @include retina {
-      background-image: url(../images/raiting_fill_mobile@2x.png);
+      background-image: url(./../images/raiting_fill_mobile@2x.png);
     }
   }
 
@@ -249,10 +249,10 @@
     margin-bottom: 20px;
 
     &__fill-image{
-      background-image: url(../images/raiting_fill_tablet.png);
+      background-image: url(./../images/raiting_fill_tablet.png);
       
       @include retina {
-        background-image: url(../images/raiting_fill_tablet@2x.png);
+        background-image: url(./../images/raiting_fill_tablet@2x.png);
       }
     }
   }
@@ -261,10 +261,10 @@
     margin-bottom: 28px;
 
     &__fill-image{
-      background-image: url(../images/raiting_fill.png);
+      background-image: url(./../images/raiting_fill.png);
     
       @include retina {
-        background-image: url(../images/raiting_fill@2x.png);
+        background-image: url(./../images/raiting_fill@2x.png);
       }
     }
   }
@@ -361,7 +361,6 @@
 
 .swiper-button-prev,
 .swiper-button-next {
-  //background-image: url(../images/slider_nav.svg);
   background-repeat: no-repeat;
   background-position: center;
   width: 20px;
