@@ -6,7 +6,7 @@
 
   margin-bottom: 40px;
 
-  & > .container {
+  &>.container {
     padding: 0;
   }
 
@@ -18,16 +18,16 @@
     position: absolute;
     z-index: 1;
     top: calc(50% - 20px);
-    left:8px;
+    left: 8px;
     transform: translateY(-50%);
-    width:48%;
+    width: 48%;
 
-    &--library{
+    &--library {
       width: 65%;
     }
   }
 
-  &__title{
+  &__title {
     color: var(--title-color);
     font-size: 24px;
     line-height: 1.19;
@@ -44,10 +44,11 @@
   }
 
   &__info--library &__title {
-    color: $library-title;
+    // color: $library-title;
   }
+
   &__info--library &__description {
-    color: $library-description;
+    // color: $library-description;
   }
 
   &__image-wrap {
@@ -59,10 +60,11 @@
       position: absolute;
       width: 100%;
       height: 100%;
-      background-repeat:no-repeat;
-      background-size:cover;
+      background-repeat: no-repeat;
+      background-size: cover;
     }
-    &--library:before{
+
+    &--library:before {
       content: none;
     }
   }
@@ -74,15 +76,15 @@
   }
 
   &__btn {
-    color: $button-text;
-    background: $button-gradient;
+    // color: $button-text;
+    // background: $button-gradient;
     border-radius: 74px;
     font-weight: 500;
     font-size: 12px;
     line-height: 1.17;
     padding: 12px 24px;
     display: inline-block;
-    border:none;
+    border: none;
   }
 
   :root[data-theme="light"] &__image-wrap:before {
@@ -101,10 +103,11 @@
     }
   }
 
-  @media screen and (min-width: 375px){
+  @media screen and (min-width: 375px) {
     &__info--library {
-          width: 76%;
+      width: 76%;
     }
+
     &__title {
       font-size: 32px;
     }
@@ -120,11 +123,11 @@
       left: 20px;
 
       &--library {
-          width: 76%;
-        }
+        width: 76%;
+      }
     }
   }
-  
+
   @include tablet {
     :root[data-theme="light"] &__image-wrap:before {
       background-image: url(../images/Subtract_tablet.png);
@@ -155,7 +158,7 @@
       }
     }
 
-    &__title{
+    &__title {
       font-size: 39px;
       line-height: 1.18;
       margin-bottom: 12px;
@@ -169,7 +172,7 @@
       font-size: 14px;
     }
   }
-  
+
   @include desktop {
     :root[data-theme="light"] &__image-wrap:before {
       background-image: url(../images/Subtract_desktop.png);
@@ -181,7 +184,7 @@
 
     :root[data-theme="dark"] &__image-wrap:before {
       background-image: url(../images/Subtract_dark_desktop.png);
-  
+
       @include retina {
         background-image: url(../images/Subtract_dark_desktop@2x.png);
       }
@@ -204,7 +207,7 @@
       }
     }
 
-    &__title{
+    &__title {
       font-size: 64px;
       line-height: 1.17;
       margin-bottom: 16px;
@@ -228,15 +231,15 @@
 
 .raiting {
   position: relative;
-  display:inline-block;
+  display: inline-block;
   margin-bottom: 16px;
   overflow: hidden;
 
-  &__fill-image{
+  &__fill-image {
     position: absolute;
     display: block;
     height: 100%;
-    width:0%;
+    width: 0%;
     background-size: cover;
     background-image: url(../images/raiting_fill_mobile.png);
 
@@ -248,9 +251,9 @@
   @include tablet {
     margin-bottom: 20px;
 
-    &__fill-image{
+    &__fill-image {
       background-image: url(../images/raiting_fill_tablet.png);
-      
+
       @include retina {
         background-image: url(../images/raiting_fill_tablet@2x.png);
       }
@@ -260,9 +263,9 @@
   @include desktop {
     margin-bottom: 28px;
 
-    &__fill-image{
+    &__fill-image {
       background-image: url(../images/raiting_fill.png);
-    
+
       @include retina {
         background-image: url(../images/raiting_fill@2x.png);
       }
@@ -275,12 +278,15 @@
 .swiper {
   min-height: 380px;
   height: 118.7vw;
+
   @include mobile {
-    height:570px;
+    height: 570px;
   }
+
   @include tablet {
     height: 432px;
   }
+
   @include desktop {
     height: 720px;
   }
@@ -288,7 +294,7 @@
 
 .swiper-control {
   position: relative;
-  display:none;
+  display: none;
   justify-content: center;
   align-items: center;
   position: absolute;
@@ -296,8 +302,8 @@
   z-index: 2;
   left: 8px;
 
-  &--show{
-    display:flex;
+  &--show {
+    display: flex;
   }
 
   @include mobile {
@@ -322,7 +328,7 @@
     color: var(--swipe-bullet-color);
     font-size: 10px;
     line-height: 1;
-    
+
     &:not(:first-child) {
       margin-left: 8px;
     }
@@ -332,7 +338,7 @@
       height: 32px;
       font-size: 12px;
       line-height: 1.16;
-      
+
       &:not(:first-child) {
         margin-left: 12px;
       }
@@ -350,7 +356,7 @@
     }
 
     &-active {
-      background: $button-gradient;
+      // background: $button-gradient;
       color: var(--swipe-bullet-color-active);
       border: none;
     }
@@ -369,17 +375,19 @@
   cursor: pointer;
   color: var(--swipe-nav);
 }
-.swiper-button-disabled{
+
+.swiper-button-disabled {
   color: var(--swipe-nav-disabled);
 }
 
-.swiper-button-next{
+.swiper-button-next {
   transform: rotateY(180deg);
 }
 
-.swiper-prev-svg, .swiper-next-svg{
-  width:100%;
+.swiper-prev-svg,
+.swiper-next-svg {
+  width: 100%;
   height: 100%;
   stroke: currentColor;
-  fill:none;
+  fill: none;
 }

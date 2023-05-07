@@ -23,21 +23,62 @@ img {
     }
 
     &_search-input {
-        width: 320px;
-        height: 48px;
-        padding: 8px;
-        font-size: 18px;
-        border-radius: 8px;
+        @include mobile {
+            width: 200px;
+            height: 44px;
+            padding: 8px;
+            font-size: 18px;
+            border-radius: 8px;
+        }
+
+        @include tablet {
+            width: 200px;
+            height: 44px;
+            padding: 8px;
+            font-size: 18px;
+            border-radius: 8px;
+        }
+
+        @include desktop {
+            width: 320px;
+            height: 48px;
+            padding: 8px;
+            font-size: 18px;
+            border-radius: 8px;
+        }
     }
 
     &_submit-btn {
-        width: 48px;
-        height: 48px;
-        background-color: $mainLightColor;
-        border-radius: 100%;
-        cursor: pointer;
-        background: $submit-btn-catalog;
-        border: none;
+        @include mobile {
+            width: 48px;
+            height: 48px;
+            background-color: $mainLightColor;
+            border-radius: 100%;
+            cursor: pointer;
+            background: $submit-btn-catalog;
+            border: none;
+        }
+
+        @include tablet {
+            width: 44px;
+            height: 44px;
+            background-color: $mainLightColor;
+            border-radius: 100%;
+            cursor: pointer;
+            background: $submit-btn-catalog;
+            border: none;
+        }
+
+        @include desktop {
+            width: 48px;
+            height: 48px;
+            background-color: $mainLightColor;
+            border-radius: 100%;
+            cursor: pointer;
+            background: $submit-btn-catalog;
+            border: none;
+        }
+
     }
 
     &_submit-button-svg {
@@ -192,20 +233,3 @@ img {
 }
 
 /* Адаптивные стили */
-@include mobile {
-    .search-input {
-        font-size: 14px;
-    }
-}
-
-@include tablet {
-    .search-input {
-        font-size: 16px;
-    }
-}
-
-@include desktop {
-    .search-input {
-        font-size: 18px;
-    }
-}
