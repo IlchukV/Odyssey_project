@@ -1,50 +1,40 @@
-<div class="trailer">
-    <div id="player"></div>
-   <script>
-
-        // 2. This code loads the IFrame Player API code asynchronously.
-    const tag = document.createElement('script');
-
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    // 3. This function creates an <iframe> (and YouTube player)
-    //    after the API code downloads.
-    let player;
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player('player', {
-        height: '360',
-        width: '640',
-        videoId: 'LTFGH0rJ-EY',
-        events: {
-          'onReady': onPlayerReady,
-          'onStateChange': onPlayerStateChange
-        }
-      });
-    }
-
-    // 4. The API will call this function when the video player is ready.
-    function onPlayerReady(event) {
-    //   event.target.playVideo();
-    }
-
-    // 5. The API calls this function when the player's state changes.
-    //    The function indicates that when playing a video (state=1),
-    //    the player should play for six seconds and then stop.
-    let done = false;
-    function onPlayerStateChange(event) {
-      if (event.data == YT.PlayerState.PLAYING && !done) {
+<div class="backdrop js-backdrop-trailer visually-hidden">
+    <div class="player-container js-player"></div>
+    <div class="trailer  visually-hidden">
+        <button type="button" class="js-close-btn close-btn">
+            <svg class="close-icon">
+                <use href="./images/icons.svg#icon-close"></use>
+            </svg>
+        </button>
+        <div class="notification">
+            <p>OOPS...</p>
+            <p>We are very sorry!</p>
+            <p>But we couldn’t find the trailer.</p>
+        </div>
+        <div class="wrapper">
+            <picture>
+                <source
+                  srcset="./images/not-found-desk.png 1x, ./images/not-found-desk-2x.png 2x"
+                  media="(min-width: 1280px)"
+                  type="image/png"
+                />
+                <source
+                  srcset="./images/not-found-tab.png 1x, ./images/not-found-tab-2x.png 2x"
+                  media="(min-width: 768px)"
+                  type="image/png"
+                />
+                <source
+                  srcset="./images/not-found-mob.png 1x, ./images/not-found-mob-2x.png 2x"
+                  media="(max-width: 767px)"
+                  type="image/png"
+                />
         
-        done = true;
-      }
-    }
-    function stopVideo() {
-      player.stopVideo();
-    }
-  </script>
+                <img src="./images/not-found-mob.png" alt="film-watching-tools" />
+            </picture>
+        </div>
+       
+    </div>
 </div>
 
 
-
-<button type="button" class="play-btn">Play</button>
+<button class="hero__btn js-hero-trailer" type="button" data-id="${id}">Watch trailer</button>
