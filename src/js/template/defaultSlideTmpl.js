@@ -9,7 +9,7 @@ const mobileUrl = new URL('../../images/Hero_mobile.png', import.meta.url);
 const mobile2xUrl = new URL('../../images/Hero_mobile@2x.png', import.meta.url);
 
 export default `        <div class="hero__card swiper-slide">
-          <div class="hero__info">
+          <div class="hero__info hero__info--default">
             <h1 class="hero__title">Let’s Make Your Own Cinema</h1>
 
             <p class="hero__description">Is a guide to creating a personalized movie theater experience. You'll need a

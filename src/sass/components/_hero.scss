@@ -43,6 +43,13 @@
     margin-bottom: 16px;
   }
 
+  &__info--library &__title {
+    color: $library-title;
+  }
+  &__info--library &__description {
+    color: $library-description;
+  }
+
   &__image-wrap {
     position: relative;
     height: 100%;
@@ -187,7 +194,13 @@
       left: 100px;
 
       &--library {
-          width: 36%;
+        left: 117px;
+        width: 36%;
+      }
+
+      &--default {
+        width: 36%;
+        left: 32px;
       }
     }
 
