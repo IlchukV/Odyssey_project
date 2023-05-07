@@ -1,7 +1,7 @@
 import slideTmpl from './slideTmpl';
 import defaultSlideTmpl from './defaultSlideTmpl';
 import defaultLibarySlideTmpl from './defaultLibarySlideTmpl';
-import swiper from './swiper';
+import swiper from 'swiper';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 /*-- Потрібно винести в API--*/
