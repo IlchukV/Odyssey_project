@@ -1,4 +1,4 @@
-import slideTmpl from './template/slideTmpl';
+import slideTmpl from './slideTmpl';
 import defaultSlideTmpl from './defaultSlideTmpl';
 import defaultLibarySlideTmpl from './defaultLibarySlideTmpl';
 import swiper from './swiper';
