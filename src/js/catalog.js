@@ -12,24 +12,26 @@ const prevPageBtn = document.getElementById("prev-page");
 const nextPageBtn = document.getElementById("next-page");
 const localPageIndicator = document.querySelector(".page-indicator");
 
-// ! Функция, которая отправляет GET-запрос по переданному URL и возвращает полученный ответ в виде объекта.
+// * Отправляет асинхронный запрос по переданному URL и возвращает полученный ответ в виде JSON-объекта.
 
 async function fetchMovies(url) {
     const response = await fetch(url);
     return response.json();
 }
 
+// * Вызывает функцию fetchMovies для получения данных о популярных фильмах на текущей странице.
+
 async function getTrendingMovies() {
     await fetchMovies(currentPage);
 }
 
+// * Для получения данных о фильмах, соответствующих переданному поисковому запросу
 async function searchMovies(query) {
     await fetchMovies(currentPage, query);
     searchInput.value = '';
 }
 
-// ! Функция, которая принимает массив объектов фильмов и формирует из него HTML-код,
-// ! который затем добавляется внутрь элемента с классом movies - list.
+// * Код для списка фильмов и добавляется на страницу. Доп. данные о фильмах
 
 async function displayMovies(movies) {
     const movieItems = [];
@@ -76,8 +78,20 @@ async function displayMovies(movies) {
     moviesList.innerHTML = movieItems.join('');
 }
 
-//! Рейтинг со звездами
 
+// ! Функция для открытия фильма на странице
+// const movieItems = document.querySelectorAll('.movie-item');
+
+// movieItems.forEach((movieItem) => {
+//     const movieDetails = movieItem.querySelector('.movie-details');
+
+//     movieItem.addEventListener('click', () => {
+//         movieDetails.classList.toggle('show');
+//     });
+// });
+
+
+//* Рейтинг со звездами
 function createRatingStars(rating) {
     const maxStars = 5;
     const fullStars = Math.floor(rating / 2);
@@ -96,26 +110,21 @@ function createRatingStars(rating) {
     );
 }
 
-// !Функция, которая отправляет GET-запрос к API для получения списка популярных фильмов за неделю и вызывает функцию displayMovies() 
-// !для отображения результата на странице.
-// !Также функция обновляет общее количество страниц и вызывает функцию updatePaginationInfo() для отображения пагинации.
-
+// *Функция запрашивает популярные фильмы и отображает их, обновляя пагинацию.
 async function getTrendingMovies() {
     try {
         const response = await fetch(`${BASE_URL}trending/movie/day?api_key=${apiKey}&page=${currentPage}`);
         const data = await response.json();
         totalPages = data.total_pages;
         displayMovies(data.results);
-        updatePaginationInfo(); // вызовите функцию здесь
+        updatePaginationInfo();
     } catch (error) {
         console.error(error);
     }
 }
 
-// ! Функция, которая отправляет GET-запрос к API для поиска фильмов по переданному запросу query и вызывает функцию displayMovies() 
-// ! для отображения результата на странице.
-// ! Также функция обновляет общее количество страниц и вызывает функцию updatePaginationInfo() для отображения пагинации.
 
+// *Функция отправляет запрос к API для получения списка фильмов по запросу
 async function searchMovies(query) {
     const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}&page=${currentPage}`;
     const data = await fetchMovies(url);
@@ -125,6 +134,7 @@ async function searchMovies(query) {
     searchInput.value = '';
 }
 
+// *Слушатель событий для формы поиска
 searchForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     const query = searchInput.value.trim();
@@ -137,10 +147,8 @@ searchForm.addEventListener('submit', async (event) => {
 });
 
 
-// ! Функция, которая формирует элементы пагинации на основе текущих значений currentPage и totalPages,
-// ! а также отображает их на странице.Внутри функции создаются кнопки "назад", "вперед" и номера страниц,
-// ! которые позволяют перемещаться между страницами.
-
+// * Функция формирует и отображает элементы пагинации на странице. Включает кнопки "назад", 
+// *"вперед" и номера страниц для перемещения между страницами.
 function updatePaginationInfo() {
     localPageIndicator.innerHTML = "";
 
@@ -164,17 +172,10 @@ function updatePaginationInfo() {
     });
     localPageIndicator.appendChild(prevArrow);
 
-    prevArrow.disabled = currentPage === 1;
-    prevArrow.addEventListener("click", () => {
-        if (currentPage > 1) {
-            goToPage(currentPage - 1);
-        }
-    });
-    localPageIndicator.appendChild(prevArrow);
-
     const maxVisiblePages = 3;
     const firstVisiblePage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
     const lastVisiblePage = Math.min(totalPages, firstVisiblePage + maxVisiblePages - 1);
+
     // *проверяет, находится ли первая страница в пагинации на первом месте, 
     // *и если нет, то создает кнопку "1" и добавляет ее в пагинацию.
     if (firstVisiblePage > 1) {
@@ -225,13 +226,27 @@ function updatePaginationInfo() {
         <path fill="none" stroke="#f8f8f8" style="stroke: var(--color1, #f8f8f8)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.2857" d="M11.5 7l9 9-9 9"></path>
     </svg>`;
 
-    nextArrow.disabled = currentPage === totalPages;
-    nextArrow.addEventListener("click", () => goToPage(currentPage + 1));
+    if (currentPage === totalPages) {
+        nextArrow.classList.add("arrow-disabled");
+    } else {
+        nextArrow.classList.remove("arrow-disabled");
+    }
+
+    nextArrow.addEventListener("click", () => {
+        if (currentPage < totalPages) {
+            currentPage += 1;
+            goToPage(currentPage);
+            if (currentPage === totalPages) {
+                nextArrow.classList.add("arrow-disabled");
+            } else {
+                nextArrow.classList.remove("arrow-disabled");
+            }
+        }
+    });
     localPageIndicator.appendChild(nextArrow);
 }
 
 // * проверяет наличие кнопки "предыдущая страница"
-
 if (prevPageBtn) {
     prevPageBtn.addEventListener('click', async () => {
         currentPage--;
@@ -255,9 +270,12 @@ if (nextPageBtn) {
     });
 }
 
-// ! Функция, которая обновляет текущую страницу на переданную pageNumber, сохраняет значение в локальном 
-// ! хранилище и вызывает соответствующую функцию для отображения соответствующих фильмов.
+// * Функция, которая обновляет текущую страницу на переданную pageNumber, сохраняет значение в локальном
+// * хранилище и вызывает соответствующую функцию для отображения соответствующих фильмов.
 async function goToPage(pageNumber) {
+    if (pageNumber < 1 || pageNumber > totalPages) {
+        return;
+    }
     currentPage = pageNumber;
     localStorage.setItem('currentPage', currentPage);
     localStorage.setItem('currentQuery', currentQuery);
@@ -268,8 +286,8 @@ async function goToPage(pageNumber) {
     }
 }
 
-// ! функция, которая сбрасывает значения текущего запроса и страницы, 
-// ! а также очищает локальное хранилище и элемент ввода поискового запроса.
+// * Функция, которая сбрасывает значения текущего запроса и страницы, 
+// * а также очищает локальное хранилище и элемент ввода поискового запроса.
 function resetToFirstPage() {
     currentPage = 1;
     currentQuery = '';

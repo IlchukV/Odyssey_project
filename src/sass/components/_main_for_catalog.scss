@@ -1,6 +1,5 @@
 img {
     width: 100%;
-    border-radius: 5px;
 }
 
 .section-catalog {
@@ -59,6 +58,9 @@ img {
     margin-left: 15px;
     margin-right: 15px;
     margin-bottom: 32px;
+    transition: transform 0.3s ease;
+    border-radius: 5px;
+    overflow: hidden;
 
     &:nth-child(10) {
         margin-bottom: 0;
@@ -76,6 +78,10 @@ img {
         width: 100%;
         height: 100%;
         background: linear-gradient(180deg, rgba(0, 0, 0, 0) 63.48%, rgba(0, 0, 0, 0.9) 92.16%);
+    }
+
+    &:hover {
+        transform: translateY(-10px);
     }
 }
 
@@ -139,7 +145,7 @@ img {
     color: transparent;
 }
 
-// Пагинация
+// !Пагинация
 .page-indicator {
     display: flex;
     justify-content: center;
@@ -175,6 +181,11 @@ img {
     }
 }
 
+.arrow-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 .prev-page-svg,
 .next-page-svg {
     cursor: pointer;
@@ -196,11 +207,5 @@ img {
 @include desktop {
     .search-input {
         font-size: 18px;
-    }
-}
-
-@include retina {
-    .search-input {
-        font-size: 16px;
     }
 }
