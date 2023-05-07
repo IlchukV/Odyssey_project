@@ -1,16 +1,16 @@
-const desktopUrl = new URL('./../images/Hero-Lib_desktop.png', import.meta.url);
+const desktopUrl = new URL('../images/Hero-Lib_desktop.png', import.meta.url);
 const desktop2xUrl = new URL(
-  './../images/Hero-Lib_desktop@2x.png',
+  '../images/Hero-Lib_desktop@2x.png',
   import.meta.url
 );
-const tabletUrl = new URL('./../images/Hero-Lib_tablet.png', import.meta.url);
+const tabletUrl = new URL('../images/Hero-Lib_tablet.png', import.meta.url);
 const tablet2xUrl = new URL(
-  './../images/Hero-Lib_tablet@2x.png',
+  '../images/Hero-Lib_tablet@2x.png',
   import.meta.url
 );
-const mobileUrl = new URL('./../images/Hero-Lib_mobile.png', import.meta.url);
+const mobileUrl = new URL('../images/Hero-Lib_mobile.png', import.meta.url);
 const mobile2xUrl = new URL(
-  './../images/Hero-Lib_mobile@2x.png',
+  '../images/Hero-Lib_mobile@2x.png',
   import.meta.url
 );
 
