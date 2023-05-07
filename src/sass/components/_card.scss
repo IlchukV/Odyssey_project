@@ -1,0 +1,31 @@
+.card {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 63.48%, rgba(0, 0, 0, 0.9) 92.16%);
+    border-radius: 5px;
+    width: 395px;
+    height: 574px;
+}
+
+.card__image {
+    display: block;
+    width: 395px;
+    height: 574px;
+}
+
+.card__content {
+    padding: 20px;
+}
+
+.card__title {
+    color: $mainLightColor;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.1;
+    margin-bottom: 10px;
+}
+
+.card__description {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.1;
+    color: $card-description;
+}
