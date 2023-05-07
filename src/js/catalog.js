@@ -1,4 +1,5 @@
 const apiKey = "e1aeaa11db3ac22382c707ccfcac931e";
+const BASE_URL = 'https://api.themoviedb.org/3/';
 let currentPage = 1;
 let totalPages = 0;
 let currentQuery = '';
@@ -100,11 +101,15 @@ function createRatingStars(rating) {
 // !Также функция обновляет общее количество страниц и вызывает функцию updatePaginationInfo() для отображения пагинации.
 
 async function getTrendingMovies() {
-    const url = `https://api.themoviedb.org/3/trending/movie/week?api_key=${apiKey}&page=${currentPage}`;
-    const data = await fetchMovies(url);
-    totalPages = data.total_pages;
-    displayMovies(data.results);
-    updatePaginationInfo();
+    try {
+        const response = await fetch(`${BASE_URL}trending/movie/day?api_key=${apiKey}&page=${currentPage}`);
+        const data = await response.json();
+        totalPages = data.total_pages;
+        displayMovies(data.results);
+        updatePaginationInfo(); // вызовите функцию здесь
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 // ! Функция, которая отправляет GET-запрос к API для поиска фильмов по переданному запросу query и вызывает функцию displayMovies() 
@@ -119,27 +124,6 @@ async function searchMovies(query) {
     updatePaginationInfo();
     searchInput.value = '';
 }
-
-// !!ВАЖНО
-// !!**-----Это для того, что бы если фильм не найден тогда показывалось модальное окно
-// **   
-// **  export function showNoResultsModal() {
-//     Здесь вызывайте вашу модальную библиотеку или реализуйте отображение модального окна
-// }
-// async function searchMovies(query) {
-//     const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}&page=${currentPage}`;
-//     const data = await fetchMovies(url);
-//     totalPages = data.total_pages;
-
-//     if (data.results.length === 0) {
-//         showNoResultsModal(); // Если результатов нет, показываем модальное окно
-//     } else {
-//         displayMovies(data.results);
-//         updatePaginationInfo();
-//     }
-
-//     searchInput.value = '';
-// }
 
 searchForm.addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -164,17 +148,32 @@ function updatePaginationInfo() {
         return;
     }
 
-    const prevArrow = document.createElement("button");
+    const prevArrow = document.createElement("span");
     prevArrow.classList.add("arrow-button");
-    prevArrow.innerHTML = `<svg width="28px" height="28px" class="prev-page-svg"><use href="#"></use></svg>`;
+    prevArrow.innerHTML = `
+    <svg width="28px" height="28px" viewBox="0 0 32 32" class="prev-page-svg">
+        <path fill="none" stroke="#b7b7b7" style="stroke: var(--color1, #b7b7b7)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.2857" d="M20.5 7l-9 9 9 9"></path>
+    </svg>`;
+    if (currentPage === 1) {
+        prevArrow.classList.add("disabled");
+    }
+    prevArrow.addEventListener("click", () => {
+        if (currentPage !== 1) {
+            goToPage(currentPage - 1);
+        }
+    });
+    localPageIndicator.appendChild(prevArrow);
+
     prevArrow.disabled = currentPage === 1;
-    prevArrow.addEventListener("click", () => goToPage(currentPage - 1));
+    prevArrow.addEventListener("click", () => {
+        if (currentPage > 1) {
+            goToPage(currentPage - 1);
+        }
+    });
     localPageIndicator.appendChild(prevArrow);
 
     const maxVisiblePages = 3;
     const firstVisiblePage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
-    // const lastVisiblePage = Math.min(24, firstVisiblePage + maxVisiblePages - 1);
-
     const lastVisiblePage = Math.min(totalPages, firstVisiblePage + maxVisiblePages - 1);
     // *проверяет, находится ли первая страница в пагинации на первом месте, 
     // *и если нет, то создает кнопку "1" и добавляет ее в пагинацию.
@@ -219,9 +218,13 @@ function updatePaginationInfo() {
         localPageIndicator.appendChild(lastPageButton);
     }
 
-    const nextArrow = document.createElement("button");
+    const nextArrow = document.createElement("span");
     nextArrow.classList.add("arrow-button");
-    nextArrow.innerHTML = `<svg width="28px" height="28px" class="next-page-svg"><use href="#"></use></svg>`;
+    nextArrow.innerHTML = `
+    <svg width="28px" height="28px" viewBox="0 0 32 32" class="next-page-svg">
+        <path fill="none" stroke="#f8f8f8" style="stroke: var(--color1, #f8f8f8)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.2857" d="M11.5 7l9 9-9 9"></path>
+    </svg>`;
+
     nextArrow.disabled = currentPage === totalPages;
     nextArrow.addEventListener("click", () => goToPage(currentPage + 1));
     localPageIndicator.appendChild(nextArrow);

@@ -40,6 +40,10 @@ img {
         background: $submit-btn-catalog;
         border: none;
     }
+
+    &_submit-button-svg {
+        pointer-events: none;
+    }
 }
 
 .movies-list {
@@ -161,6 +165,19 @@ img {
         background: $pagination-color;
         color: $mainLightColor;
     }
+}
+
+.arrow-button {
+    background: $background-catalog;
+
+    &.disabled {
+        opacity: 0.5;
+    }
+}
+
+.prev-page-svg,
+.next-page-svg {
+    cursor: pointer;
 }
 
 /* Адаптивные стили */
