@@ -1,6 +1,6 @@
 import slideTmpl from './template/slideTmpl';
-import defaultSlideTmpl from './template/defaultSlideTmpl';
-import defaultLibarySlideTmpl from './template/defaultLibarySlideTmpl';
+import defaultSlideTmpl from './defaultSlideTmpl';
+import defaultLibarySlideTmpl from './defaultLibarySlideTmpl';
 import swiper from './swiper';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
