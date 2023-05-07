@@ -11,6 +11,7 @@
   position: relative;
   width: 846px;
   height: 598px;
+  padding: 60px;
   background: $button-black-text;
   margin: 100px auto;
   box-shadow: 1px 1px 14px 4px rgba(255, 107, 8, 0.42);
@@ -21,12 +22,114 @@
   position: absolute;
   width: 24px;
   height: 24px;
-
-  left: 782px;
   top: 40px;
+  right: 40px;
 
   border-style: none;
   cursor: pointer;
 
   background-color: $button-black-text;
+}
+
+.movie-wraper {
+  display: flex;
+  gap: 20px;
+}
+
+.movie-poster {
+  width: 375px;
+  height: 478px;
+  box-shadow: 1px 1px 24px 2px rgba(1, 1, 1, 0.45);
+  border-radius: 5px;
+}
+
+.movie-info {
+  width: 340px;
+}
+
+.movie-title {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  color: $mainLightColor;
+  margin-bottom: 28px;
+}
+
+.movie-characteristics-wrapper {
+  display: flex;
+  gap: 62px;
+  margin-bottom: 20px;
+}
+
+.movie-characteristics-names {
+  width: 95px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--footerTxtColor);
+}
+
+.movie-characteristics-results {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: $mainLightColor;
+}
+
+.movie-vote {
+  margin-bottom: 14px;
+}
+
+.movie-popularity {
+  margin-bottom: 11px;
+}
+
+.movie-vote-wrapper {
+  width: 40px;
+  text-align: center;
+  color: #111111;
+  background-color: $mainLightColor;
+  border-radius: 5px;
+}
+
+.movie-vote-result {
+  display: flex;
+  gap: 4px;
+}
+
+.movie-about {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  text-transform: uppercase;
+  color: var(--footerTxtColor);
+  margin-bottom: 16px;
+}
+
+.movie-description {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #f8f8f8;
+  margin-bottom: 24px;
+}
+
+.addBtn {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+  width: 140px;
+  height: 40px;
+  //   border: none;
+  border: 1px solid;
+  border-radius: 74px;
+  //   border-image: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
+  //   border-image-slice: 1;
+  color: $mainLightColor;
+  background-color:inherit;
+  border: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%) !important;
+  //   box-shadow: none;
 }
