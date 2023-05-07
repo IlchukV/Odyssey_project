@@ -1,9 +1,9 @@
-const desktopUrl = new URL('../images/Hero_desktop.png', import.meta.url);
-const desktop2xUrl = new URL('../images/Hero_desktop@2x.png', import.meta.url);
-const tabletUrl = new URL('../images/Hero_tablet.png', import.meta.url);
-const tablet2xUrl = new URL('../images/Hero_tablet@2x.png', import.meta.url);
-const mobileUrl = new URL('../images/Hero_mobile.png', import.meta.url);
-const mobile2xUrl = new URL('../images/Hero_mobile@2x.png', import.meta.url);
+import desktopUrl from '../images/Hero_desktop.png';
+import desktop2xUrl from '../images/Hero_desktop@2x.png';
+import tabletUrl from '../images/Hero_tablet.png';
+import tablet2xUrl from '../images/Hero_tablet@2x.png';
+import mobileUrl from '../images/Hero_mobile.png';
+import mobile2xUrl from '../images/Hero_mobile@2x.png';
 
 export default `        <div class="hero__card swiper-slide">
           <div class="hero__info hero__info--default">
