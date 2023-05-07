@@ -1,43 +1,73 @@
-$mainLightColor: #ffffff;
+$mainLightColor: #212121;
 $accentColor: #ff6b08;
 $informationColor: #ff001b;
-$mainBgColor: #F5F5F5;;
+
+$mainBgColor: #000000;
+
 $buttonBgColor: rgba(0, 0, 0, 0.56);
 $header-focus: rgba(255, 143, 68, 0.863);
 $accentModalColor: #ff6b01;
-$secondModalColor: #8C8C8C;
-$buttonBgAccent: #ff6b01;
+$secondModalColor: #8c8c8c;
+$buttonBgAccent: #f87719;
 $duration: 250ms;
 $timingFunction: cubic-bezier(0.4, 0, 0.2, 1);
 $bg-header-gradient: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56));
-$button-black-text: #000000;
+$button-black-text: #111111;
+
+$button-text: #111111;
+$button-gradient: linear-gradient(141.22deg, #FFC226 9.4%, #F84119 91.91%);
+$library-title: #ffffff;
+$library-description: #F8F8F8;
+
 $scrollbar-and-circle-on-switcher-color: #932727;
 $reg-form-title-color: #212121;
+
 $pagination-background: #F7F7F7;
 $card-description: #B7B7B7;
 
+$pagination-background: #f7f7f7;
+$bulb-bgc: #f8f8f8;
+$film-info-text-color: #b7b7b7;
 
-
-:root[data-theme="light"] {
-    --body-and-modals-bgc: #ffffff;
-    --before-postionX: 2px;
-    --before-postionY: 2px;
-    --mainDarkColor: #000000;
-    --footerBgColor: #F5F5F5;;
-    --footerTxtColor: #B7B7B7;
-    --backgroundPage: transparent;
-
-    --team-sm-bnt-accent: #ff6b01;
-}
 
 :root[data-theme="dark"] {
     --body-and-modals-bgc: #212121;
     --before-postionX: 30px;
     --before-postionY: 2px;
     --mainDarkColor: #ffffff;
-    --footerBgColor: #212121;
-    --footerTxtColor: #ffffff;
+    --footerBgColor: #111111;
+    --footerTxtColor: #B7B7B7;
     --backgroundPage: #ffffff;
+
+
+    --swipe-bullet-color: #B7B7B7;
+    --swipe-bullet-color-active: #ffffff;
+    --swipe-nav-disabled: #B7B7B7;
+    --swipe-nav: #F8F8F8;
+    --title-color: #FFFFFF;
+    --description-color: #F8F8F8;
 
     --team-sm-bnt-accent: #932727;
 }
+
+:root[data-theme="light"] {
+    --body-and-modals-bgc: #ffffff;
+    --before-postionX: 2px;
+    --before-postionY: 2px;
+    --mainDarkColor: #000000;
+    --footerBgColor: #F5F5F5;
+    ;
+    --footerTxtColor: #595959;
+    --backgroundPage: transparent;
+
+    --swipe-bullet-color: #595959;
+    --swipe-bullet-color-active: #282828;
+    --swipe-nav: #595959;
+    --swipe-nav-disabled: #B7B7B7;
+    --title-color:#111111;
+    --description-color:#282828;
+
+
+    --team-sm-bnt-accent: #ff6b01;
+}
+
