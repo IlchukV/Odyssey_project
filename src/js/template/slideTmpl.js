@@ -4,6 +4,11 @@ function ratingPercent(voites) {
 
 url = new URL('../../images/raiting_contour.png', import.meta.url);
 urlRetina = new URL('../../images/raiting_contour@2x.png', import.meta.url);
+urlTab = new URL('../../images/raiting_contour_tablet.png', import.meta.url);
+urlTabRetina = new URL(
+  '../../images/raiting_contour_tablet@2x.png',
+  import.meta.url
+);
 urlMob = new URL('../../images/raiting_contour_mobile.png', import.meta.url);
 urlRetinaMob = new URL(
   '../../images/raiting_contour_mobile@2x.png',
@@ -22,9 +27,11 @@ export default function (data) {
         vote_average
       )}%"></div>
       <picture>
-        <source srcset="${url} 1x, .${urlRetina} 2x" media="(min-width: 768px)"
+        <source srcset="${url} 1x, .${urlRetina} 2x" media="(min-width: 1280px)"
           type="image/png" />
-        <source srcset="${urlMob} 1x, ${urlRetinaMob} 2x" media="(max-width: 768px)"
+          <source srcset="${urlTab} 1x, .${urlTabRetina} 2x" media="(min-width: 768px)"
+          type="image/png" />
+        <source srcset="${urlMob} 1x, ${urlRetinaMob} 2x" media="(max-width: 767px)"
           type="image/png" />
         <img class="raiting__image" src="${urlMob}" alt="hero">
       </picture>

@@ -1,4 +1,6 @@
 import slideTmpl from './template/slideTmpl';
+import defaultSlideTmpl from './template/defaultSlideTmpl';
+import defaultLibarySlideTmpl from './template/defaultLibarySlideTmpl';
 import swiper from './swiper';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
@@ -25,7 +27,12 @@ async function getMoviesForDay() {
 /*-- кінець блоку для API--*/
 
 const sliderWrapRefs = document.querySelector('.swiper-wrapper');
-const swipeControl = document.querySelector('.swiper-control');
+const swipeControlRefs = document.querySelector('.swiper-control');
+const page = window.location.pathname;
+
+sliderWrapRefs.innerHTML = page.includes('library')
+  ? defaultLibarySlideTmpl
+  : defaultSlideTmpl;
 
 (async function renderHeroSlides() {
   try {
@@ -33,7 +40,7 @@ const swipeControl = document.querySelector('.swiper-control');
     const slides = await slideTmpl(data);
 
     sliderWrapRefs.innerHTML = await slides;
-    swipeControl.classList.add('swiper-control--show');
+    swipeControlRefs.classList.add('swiper-control--show');
     swiper.update();
   } catch (error) {
     Notify.failure(`Error ${error.message}`);

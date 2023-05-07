@@ -6,7 +6,7 @@
 
   margin-bottom: 40px;
 
-   & > .container {
+  & > .container {
     padding: 0;
   }
 
@@ -21,6 +21,10 @@
     left:8px;
     transform: translateY(-50%);
     width:48%;
+
+    &--library{
+      width: 65%;
+    }
   }
 
   &__title{
@@ -50,6 +54,9 @@
       height: 100%;
       background-repeat:no-repeat;
       background-size:cover;
+    }
+    &--library:before{
+      content: none;
     }
   }
 
@@ -88,7 +95,10 @@
   }
 
   @media screen and (min-width: 375px){
-    &__title{
+    &__info--library {
+          width: 76%;
+    }
+    &__title {
       font-size: 32px;
     }
 
@@ -101,6 +111,10 @@
     &__info {
       width: 46%;
       left: 20px;
+
+      &--library {
+          width: 76%;
+        }
     }
   }
   
@@ -127,6 +141,11 @@
 
     &__info {
       width: 36%;
+      left: 32px;
+
+      &--library {
+        width: 46%;
+      }
     }
 
     &__title{
@@ -164,7 +183,12 @@
     margin-bottom: 80px;
 
     &__info {
-      width: 41%;
+      width: 32%;
+      left: 100px;
+
+      &--library {
+          width: 36%;
+      }
     }
 
     &__title{
@@ -188,6 +212,7 @@
 }
 
 /* Rating */
+
 .raiting {
   position: relative;
   display:inline-block;
@@ -205,22 +230,30 @@
     @include retina {
       background-image: url(../images/raiting_fill_mobile@2x.png);
     }
-
-    @include tablet {
-      background-image: url(../images/raiting_fill.png);
-      @include retina {
-        background-image: url(../images/raiting_fill@2x.png);
-      }
-    }
-
   }
 
   @include tablet {
     margin-bottom: 20px;
+
+    &__fill-image{
+      background-image: url(../images/raiting_fill_tablet.png);
+      
+      @include retina {
+        background-image: url(../images/raiting_fill_tablet@2x.png);
+      }
+    }
   }
 
   @include desktop {
     margin-bottom: 28px;
+
+    &__fill-image{
+      background-image: url(../images/raiting_fill.png);
+    
+      @include retina {
+        background-image: url(../images/raiting_fill@2x.png);
+      }
+    }
   }
 }
 
@@ -254,7 +287,7 @@
     display:flex;
   }
 
-  @media screen and (min-width: 375px){
+  @include mobile {
     left: 20px;
   }
 
@@ -264,7 +297,6 @@
 }
 
 .swiper-pagination {
-
   &-bullet {
     transition: color 500ms;
     width: 24px;
@@ -304,42 +336,37 @@
       }
     }
 
-    
-
-    
     &-active {
       background: $button-gradient;
       color: var(--swipe-bullet-color-active);
       border: none;
     }
-  
   }
 }
 
 
 
-    .swiper-button-prev,
-    .swiper-button-next {
-      //background-image: url(../images/slider_nav.svg);
-      background-repeat: no-repeat;
-      background-position: center;
-      width: 20px;
-      height: 20px;
-      cursor: pointer;
-      color: var(--swipe-nav);
-    }
-    .swiper-button-disabled{
-      color: var(--swipe-nav-disabled);
-    }
-    
-    .swiper-button-next{
-      transform: rotateY(180deg);
-    }
+.swiper-button-prev,
+.swiper-button-next {
+  //background-image: url(../images/slider_nav.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  color: var(--swipe-nav);
+}
+.swiper-button-disabled{
+  color: var(--swipe-nav-disabled);
+}
 
+.swiper-button-next{
+  transform: rotateY(180deg);
+}
 
-        .swiper-prev-svg, .swiper-next-svg{
-          width:100%;
-          height: 100%;
-          stroke: currentColor;
-          fill:none;
-        }
+.swiper-prev-svg, .swiper-next-svg{
+  width:100%;
+  height: 100%;
+  stroke: currentColor;
+  fill:none;
+}
