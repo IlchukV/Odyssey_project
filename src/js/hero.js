@@ -30,10 +30,6 @@ const sliderWrapRefs = document.querySelector('.swiper-wrapper');
 const swipeControlRefs = document.querySelector('.swiper-control');
 const page = window.location.pathname;
 
-sliderWrapRefs.innerHTML = page.includes('library')
-  ? defaultLibarySlideTmpl
-  : defaultSlideTmpl;
-
 (async function renderHeroSlides() {
   try {
     const { data } = await getMoviesForDay();
@@ -44,5 +40,8 @@ sliderWrapRefs.innerHTML = page.includes('library')
     swiper.update();
   } catch (error) {
     Notify.failure(`Error ${error.message}`);
+    sliderWrapRefs.innerHTML = page.includes('library')
+      ? defaultLibarySlideTmpl
+      : defaultSlideTmpl;
   }
 })();
