@@ -134,39 +134,13 @@ async function searchMovies(query) {
     searchInput.value = '';
 }
 
-// !! При том, что нет фильма (в работе еще)
-// async function searchMovies(query) {
-//     try {
-//         const url = `${BASE_URL}search/movie?api_key=${apiKey}&query=${query}&page=${currentPage}`;
-//         const data = await fetchMovies(url);
-//         totalPages = data.total_pages;
-//         if (data.results.length === 0) {
-//             showNotFoundMessage();
-//         } else {
-//             displayMovies(data.results);
-//             updatePaginationInfo();
-//             searchInput.value = '';
-//         }
-//     } catch (error) {
-//         console.error(error);
-//     }
-// }
-
+// !! Функция для подключения модального окна, которая показывает, что после поиска данного фильма нет (пробная)
 // function showNotFoundMessage() {
 //     moviesList.innerHTML = '';
-//     const message = document.createElement('p');
-//     message.textContent = 'Фильм не найден';
-//     message.classList.add('not-found-message');
-//     moviesList.appendChild(message);
-
-//     // Проверяем, что блок пагинации видим, и если да, то скрываем его
-//     if (pagination.style.display !== 'none') {
-//         pagination.style.display = 'none';
-//     }
+//     const message = 'Фильм не найден';
+//     showModal(message);
+//     pagination.style.display = 'none';
 // }
-
-
-
 
 // *Слушатель событий для формы поиска
 searchForm.addEventListener('submit', async (event) => {
