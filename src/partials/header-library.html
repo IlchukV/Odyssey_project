@@ -1,32 +1,74 @@
 <header class="header">
-    <div class="container header__container">
-        <div class="header__wraper">
-            <div class="logo">
-                <a href="./index.html" class="logo__site">
-                    <svg class="logo__svg" width="24" height="24">
-                        <use class="logo__icon" href="/src/images/icons.svg#icon-film"></use>
-                    </svg>
-                    <span class="logo__name">Odyssey</span>
-                </a>
-            </div>
+  <div class="container header__container">
+    <div class="header__wraper">
+      <div class="logo">
+        <a href="./index.html" class="logo__site">
+          <svg class="logo__svg" width="30" height="24">
+            <use
+              class="logo__icon"
+              href="/src/images/icons.svg#icon-mobile-menu"
+            ></use>
+          </svg>
+          <span class="logo__name">Odyssey</span>
+        </a>
+      </div>
 
-            <nav class="header-navigation">
-                <ul class="navigation-list">
-                    <li class="navigation-list__item">
-                        <a class="navigation-list__link navigation-list__link-current" href="index.html">Home</a>
-                    </li>
-                    <li class="navigation-list__item">
-                        <a class="navigation-list__link" href="catalog.html">Catalog</a>
-                    </li>
-                    <li class="navigation-list__item">
-                        <a class="navigation-list__link" href="my-library.html">My library</a>
-                    </li>
-                </ul>
+      <nav class="header-navigation">
+        <ul class="navigation-list">
+          <li class="navigation-list__item">
+            <a class="navigation-list__link" href="index.html">Home</a>
+          </li>
+          <li class="navigation-list__item">
+            <a class="navigation-list__link" href="catalog.html">Catalog</a>
+          </li>
+          <li class="navigation-list__item">
+            <a
+              class="navigation-list__link navigation-list__link-current"
+              href="my-library.html"
+              >My library</a
+            >
+          </li>
+        </ul>
+      </nav>
 
-            </nav>
+      <button type="button" class="menu-button js-open-menu">MENU</button>
 
-            <div class="theme-switcher">
-            </div>
-        </div>
+      <div class="theme-switcher">
+        <button type="button" class="theme-switch__button"></button>
+      </div>
+    </div>
+  </div>
+  <div class="backdrop">
+    <div class="mobile-menu js-menu-container">
+      <div class="menu-logo">
+        <a href="./index.html" class="logo__site">
+          <svg class="logo__svg" width="30" height="24">
+            <use
+              class="logo__icon"
+              href="/src/images/icons.svg#icon-mobile-menu"
+            ></use>
+          </svg>
+          <span class="logo__name">Odyssey</span>
+        </a>
+      </div>
 
+      <nav class="mob-header-navigation">
+        <ul class="mob-navigation-list">
+          <li class="mob-navigation-list__item">
+            <a class="mob-navigation-list__link" href="index.html">HOME</a>
+          </li>
+          <li class="mob-navigation-list__item">
+            <a class="mob-navigation-list__link" href="catalog.html">CATALOG</a>
+          </li>
+          <li class="mob-navigation-list__item">
+            <a
+              class="mob-navigation-list__link mob-navigation-list__link-current"
+              href="my-library.html"
+              >MY LIBRARY</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
 </header>

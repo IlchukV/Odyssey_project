@@ -1,109 +1,202 @@
 .header {
-    max-width: 1600px;
-    height: 60px;
-    margin: 0 auto;
-    // position: relative;
-    // top: 0;
-    // left: 0;
-    padding-top: 18px;
-    background-color: $buttonBgColor;
-    
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+  max-width: 1600px;
+  height: 48px;
 
-   }
+  padding-top: 12px;
+  padding-bottom: 12px;
+  margin: 0 auto;
+  background-color: var(--mainDarkColor);
 
-.header__container {
-    position: relative;
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-.header__wraper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 34px;
-    position: relative;
+// .header__container {
+//   position: relative;
+// }
 
+.header__wraper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
 }
 
 .logo__site {
-    display: flex;
-    align-items: center;
-    color: $mainLightColor;
-    fill: $mainLightColor;
-    transition: color $duration $timingFunction,
-        transform $duration $timingFunction;
+  display: flex;
+  align-items: center;
 
-    &:hover,
-    &:focus {
-        transform: scale(1.25);
-    }
+  color: $mainLightColor;
+  fill: $mainLightColor;
+  transition: color $duration $timingFunction,
+    transform $duration $timingFunction;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.25);
+  }
 }
 
 .logo__site:hover .logo__name {
-    color: $accentColor;
+  color: $accentColor;
 }
 
 .logo__name {
-    display: none;
+  display: none;
+}
+
+.header-navigation {
+  display: none;
 }
 
 .navigation-list {
-    display: flex;
-    flex-wrap: wrap;
-    flex-grow: 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 0;
 }
 
 .navigation-list__link {
-    text-transform: uppercase;
-    color: $mainLightColor;
-    line-height: 1.667;
-    transition: color $duration $timingFunction;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.17px;
+  color: var(--footerTxtColor);
 
-    &:hover {
-        color: $accentColor;
-        cursor: pointer;
-        outline: none;
-    }
+  line-height: 1.667;
+  transition: color $duration $timingFunction;
+
+  &:hover {
+    color: $accentColor;
+    cursor: pointer;
+    outline: none;
+  }
 }
 
-.navigation-list__link-current::after {
-    bottom: -3px;
-
-    display: block;
-    content: '';
-    width: 100%;
-    height: 3px;
-    background-color: $accentColor;
+.navigation-list__link-current {
+  color: $accentColor;
 }
 
+.menu-button {
+  margin-left: 93px;
+}
 
 .navigation-list__item {
-    font-weight: 500;
-    line-height: 1.17px;
+  &:not(:last-child) {
+    margin-right: 32px;
+  }
+}
 
-    &:not(:last-child) {
-        margin-right: 32px;
-    }
+.theme-switch__button {
+  background-color: transparent;
+  border: none;
+}
+
+.mobile-menu {
+  position: fixed;
+  width: 204px;
+  height: 100vh;
+
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+
+  padding-top: 12px;
+  padding-left: 20px;
+  padding-bottom: 12px;
+
+  background-color: black;
+  border-radius: 0px 8px 8px 0px;
+
+  transform: translateX(-100%);
+  transition: transform 250ms ease-in-out;
+}
+
+.mobile-menu.is-open {
+  opacity: 1;
+  transform: translateX(0%);
+}
+
+.menu-logo {
+  margin-bottom: 44px;
+}
+
+.mob-navigation-list__item:not(:last-child) {
+  margin-bottom: 24px;
+}
+
+.mob-navigation-list__link {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.17;
+
+  color: $mainLightColor;
+}
+
+.mob-navigation-list__link-current {
+  color: $accentColor;
+}
+
+.backdrop {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  right: 0;
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.2);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.backdrop.is-open {
+  opacity: 1;
+  pointer-events: all;
 }
 
 @include tablet {
-    .logo__name {
-        display: block;
-        color: $mainLightColor;
-        font-weight: 500;
-        font-size: 30px;
-        line-height: 1.17;
-    }
+  .header {
+    height: 60px;
+  }
+  .logo__name {
+    display: block;
+    color: $mainLightColor;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 1.17;
+  }
 
-    .logo {
-        display: flex;
-        justify-content: center;
-        align-items: baseline;
-    }
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+  }
 
-    .logo__svg {
-        margin-right: 10px;
+  .logo__svg {
+    margin-right: 10px;
+  }
+
+  .header-navigation {
+    display: block;
+    margin-left: 59px;
+    margin-right: 175px;
+  }
+
+  .menu-button {
+    display: none;
+  }
+  .backdrop {
+    display: none;
+  }
+  .mobile-menu {
+    display: none;
+  }
+
+  @include desktop {
+    .header-navigation {
+      margin-left: 307px;
+      margin-right: 417px;
     }
+  }
 }
