@@ -1,6 +1,15 @@
 .menu-button {
+  margin-left: 93px;
+  margin-right: 84px;
+
+  color: var(--header-nav-color);
   background-color: transparent;
   border: none;
-  color: var(--footerTxtColor);
   padding: 0;
+}
+
+@include tablet {
+  .menu-button {
+    display: none;
+  }
 }

@@ -43,6 +43,10 @@
   color: $accentColor;
 }
 
+.logo__icon {
+  fill: var(--icon-color);
+}
+
 .logo__name {
   display: none;
 }
@@ -62,7 +66,7 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 1.17px;
-  color: var(--footerTxtColor);
+  color: var(--header-nav-color);
 
   line-height: 1.667;
   transition: color $duration $timingFunction;
@@ -76,11 +80,6 @@
 
 .navigation-list__link-current {
   color: $accentColor;
-}
-
-.menu-button {
-  margin-left: 93px;
-  margin-right: 84px;
 }
 
 .navigation-list__item {
@@ -103,7 +102,7 @@
   padding-left: 20px;
   padding-bottom: 12px;
 
-  background-color: black;
+  background-color: var(--menu-background-color);
   border-radius: 0px 8px 8px 0px;
 
   transform: translateX(-100%);
@@ -128,7 +127,7 @@
   font-size: 14px;
   line-height: 1.17;
 
-  color: $mainLightColor;
+  color: var(--menu-text-color);
 }
 
 .mob-navigation-list__link-current {
@@ -157,7 +156,7 @@
   }
   .logo__name {
     display: block;
-    color: $mainLightColor;
+    color: var(--logo-name-color);
     font-weight: 400;
     font-size: 30px;
     line-height: 1.17;
@@ -179,9 +178,6 @@
     margin-right: 175px;
   }
 
-  .menu-button {
-    display: none;
-  }
   .backdrop {
     display: none;
   }
