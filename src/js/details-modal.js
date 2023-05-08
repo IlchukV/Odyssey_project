@@ -12,25 +12,36 @@ const refs = {
   movieList: document.querySelector('.movies-list'),
 };
 
+let addBtnRef;
+let addBtnTextRef;
+let chosenMovie;
+
 refs.movieList.addEventListener('click', handleMovieClick);
 refs.modalCloseBtn.addEventListener('click', handleModalClose);
 refs.backdrop.addEventListener('click', closeModalBackdropClick);
-
-function handleBtnClick(e) {
-  e.target.innerHTML = 'Remove from my library';
-}
 
 function handleMovieClick(e) {
   fetchMovieInfo(e.target.id).then(data => {
     refs.modalWindow.innerHTML = markupMovieCard(data);
     refs.backdrop.classList.remove('is-hidden');
-    const addBtnRef = document.querySelector('.addBtn');
+    addBtnRef = document.querySelector('.addBtn');
+    addBtnTextRef = document.querySelector('.textBtn');
     addBtnRef.addEventListener('click', handleBtnClick);
+    window.addEventListener('keydown', handleCloseModalEsc);
+    checkLocalStorage(data);
+    chosenMovie = data;
   });
 }
 
+function handleCloseModalEsc(evt) {
+  if (evt.code === 'Escape') {
+    handleModalClose();
+  }
+  return;
+}
 function handleModalClose() {
   refs.backdrop.classList.add('is-hidden');
+  window.removeEventListener('keydown', handleCloseModalEsc);
 }
 
 function closeModalBackdropClick(evt) {
@@ -39,6 +50,71 @@ function closeModalBackdropClick(evt) {
   }
   return;
 }
+
+function getFilmsFromLocalStorage() {
+  const addedMovies = localStorage.getItem('my library');
+  return addedMovies ? JSON.parse(addedMovies) : [];
+}
+
+function putToMyLibrary(array) {
+  localStorage.setItem('my library', JSON.stringify(array));
+}
+
+const addItem = (currentMovie, array) => {
+  const filtered = array.filter(item => item !== currentMovie.id);
+  return [...filtered, currentMovie];
+};
+
+function addToMyLibrary(item) {
+  const parsedMovies = getFilmsFromLocalStorage();
+  const newArray = addItem(item, parsedMovies);
+  putToMyLibrary(newArray);
+}
+
+const removeMovie = (currentMovie, array) => {
+  return array.filter(item => item.id !== currentMovie.id);
+};
+
+function removeFromMyLibrary(item) {
+  const parsedMovies = getFilmsFromLocalStorage();
+  const newArray = removeMovie(item, parsedMovies);
+  putToMyLibrary(newArray);
+}
+function makeRemoveFromMyLibrary() {
+  addBtnTextRef.innerHTML = 'Remove from my library';
+  addBtnRef.setAttribute('data-action', 'remove');
+}
+
+function makeAddToMyLibrary() {
+  console.log(addBtnRef);
+  addBtnTextRef.innerHTML = 'Add to my library';
+  addBtnRef.setAttribute('data-action', 'add');
+}
+
+function handleBtnClick(e) {
+  const dataActionStatus = checkBtnStatus();
+  if (dataActionStatus === 'add') {
+    addToMyLibrary(chosenMovie);
+    makeRemoveFromMyLibrary();
+  }
+  if (dataActionStatus === 'remove') {
+    removeFromMyLibrary(chosenMovie);
+    makeAddToMyLibrary();
+  }
+}
+function checkBtnStatus() {
+  return addBtnRef.getAttribute('data-action');
+}
+
+const checkLocalStorage = currentMovie => {
+  const myLibrary = getFilmsFromLocalStorage();
+  const isInMyLibrary = myLibrary.some(item => item.id === currentMovie.id);
+  if (isInMyLibrary) {
+    makeRemoveFromMyLibrary();
+  } else {
+    makeAddToMyLibrary();
+  }
+};
 
 async function fetchMovieInfo(id) {
   const url = `${BASE_URL}/movie/${id}?api_key=${API_KEY}&language=en-US`;
