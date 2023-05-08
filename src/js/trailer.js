@@ -6,14 +6,17 @@ const refs = {
   closeBtn: document.querySelector('.js-close-btn'),
   playerBox: document.querySelector('.js-player'),
 };
+
 let watchTrailerBtns;
 
-const delay = function() {setTimeout(() => {watchTrailerBtns = document.querySelectorAll('.js-hero-trailer');
+export {refs, onWatchTrailerBtnClick};
+
+const delayOfBootButtons = function() {setTimeout(() => {watchTrailerBtns = document.querySelectorAll('.js-hero-trailer');
 for (let i = 0; i < watchTrailerBtns.length; i++) {    
     watchTrailerBtns[i].addEventListener('click', onWatchTrailerBtnClick);
 }}, 3000 )};
 
-delay();
+delayOfBootButtons();
 refs.closeBtn.addEventListener('click', onCloseTraier);
 
 function onWatchTrailerBtnClick(evt) {  
