@@ -141,10 +141,12 @@
 
 .movie__item--group {
   display: flex;
+
+  margin-left: 62px;
+
   font-size: 14px;
   line-height: 114.285714%;
   /* 16/14 */
-  margin-left: 62px;
 }
 
 .movie__item--bulb {
@@ -173,8 +175,9 @@
 }
 
 .movie__item--default {
-  color: var(--upcomind-film-df-color);
   margin-left: 78px;
+
+  color: var(--upcomind-film-df-color);
 }
 
 .movie__item--margin {
@@ -182,17 +185,21 @@
 }
 
 .movie__about {
-  color: var(--upcoming-film-categories-check-color);
   margin-bottom: 16px;
+
   font-size: 16px;
   line-height: 118.75%;
+
+  color: var(--upcoming-film-categories-check-color);
   /* 19/16 */
 }
 
 .movie__descr {
   margin-bottom: 20px;
+
   font-size: 14px;
   line-height: 142.857143%;
+
   color: var(--upcoming-film-descr-text-color);
 
   /* 20/14 */
