@@ -36,6 +36,7 @@ function handleMovieClick(e) {
     trailerBtnRef.addEventListener('click', onWatchTrailerBtnClick);
   });
 }
+export { handleMovieClick };
 
 function handleCloseModalEsc(evt) {
   if (evt.code === 'Escape') {
