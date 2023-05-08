@@ -4,4 +4,20 @@
     right: 25px;
     z-index: 99;
     display: none;
+    padding: 15px;
+    background-color: transparent;
+    border: 3px solid rgba(0, 0, 0, 0.5);
+    background-color: $buttonBgColor;
+    border-radius: 30%;
+    border-color: $mainLightColor;
+    transition: background-color $duration $timingFunction;
+    &:hover {
+        fill: $accentColor;
+        background-color: $buttonBgAccent;
 }
+}
+
+.scroll-up-icon{
+    fill: $mainLightColor;
+}
+
