@@ -76,8 +76,8 @@
   }
 
   &__btn {
-    // color: $button-text;
-    // background: $button-gradient;
+    color: $button-text;
+    background: $button-gradient;
     border-radius: 74px;
     font-weight: 500;
     font-size: 12px;
@@ -356,7 +356,7 @@
     }
 
     &-active {
-      // background: $button-gradient;
+      background: $button-gradient;
       color: var(--swipe-bullet-color-active);
       border: none;
     }
