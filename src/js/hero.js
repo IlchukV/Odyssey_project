@@ -3,6 +3,7 @@ import defaultSlideTmpl from './defaultSlideTmpl';
 import defaultLibarySlideTmpl from './defaultLibarySlideTmpl';
 import swiper from './swiper';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import {onWatchTrailerBtnClick} from './trailer'; 
 
 /*-- Потрібно винести в API--*/
 
@@ -38,6 +39,12 @@ const page = window.location.pathname;
     sliderWrapRefs.innerHTML = await slides;
     swipeControlRefs.classList.add('swiper-control--show');
     swiper.update();
+
+    watchTrailerBtns = document.querySelectorAll('.js-hero-trailer');
+    for (let i = 0; i < watchTrailerBtns.length; i++) {    
+        watchTrailerBtns[i].addEventListener('click', onWatchTrailerBtnClick);
+    }
+    
   } catch (error) {
     Notify.failure(`Error ${error.message}`);
     sliderWrapRefs.innerHTML = page.includes('library')
