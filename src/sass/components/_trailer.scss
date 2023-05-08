@@ -1,0 +1,132 @@
+.trailer{
+    
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+
+    width: 280px;
+    height: 289px;
+    border-radius: 16px;
+    padding: 39px 33px 185px;
+
+    box-shadow: 1px 1px 14px 4px rgba(255, 107, 8, 0.42); 
+    background-color: #111111;
+
+    @include tablet {
+        width: 609px;
+        height: 400px;
+        padding: 132px 244px 176px 44px;
+    }
+
+    @include desktop {
+        width: 700px;
+        height: 400px;
+        padding: 150px 329px 150px 50px;
+    }
+}
+
+.trailer.visibily {
+    display: block;
+}
+
+.notification {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 118.75%; /* 19/16 */
+    color: $mainLightColor;
+    @include tablet {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 116.666667%; /* 28/24 */
+    }
+    @include desktop {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 116.666667%; /* 28/24 */
+    }
+}
+
+.wrapper {
+    position: absolute;
+    left: 61px;
+    bottom: 8px;
+    width: 159px;
+    height: 153px;
+    @include tablet {
+        bottom: 16px;
+        left: 303px;
+        width: 296px;
+        height: 260px;
+    }
+
+    @include desktop {
+        bottom: 5px;
+        left: 337px;
+        width: 363px;
+        height: 318px;
+    }
+}
+
+.close-icon {
+    width: 16px;
+    height: 16px;
+    @include tablet {
+        width: 24px;
+        height: 24px;
+    }
+    fill: $mainLightColor
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    @include tablet {
+        top: 24px;
+        right: 24px;
+    }
+    @include desktop {
+        top: 28px;
+        right: 28px;
+    }
+    display: flex;
+    padding: 0;
+    border: none;
+    outline: transparent;
+    background-color: inherit;
+}
+
+.player-container {
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-height:560px;
+    width: 80%;
+    margin: 0 auto;
+}
+  
+.player-container iframe {
+    position: absolute;    
+    border: 0;
+    height: 100%;
+    left: 0; 
+    top: 0;
+    width: 100%;
+}
+ 
+@media screen and (max-width: 65.9375em) {
+    .player-container {   
+      min-height:460px;
+      width: 90%;    
+    }
+}
+ 
+@media screen and (max-width:39.9375em) {
+    .player-container {   
+      min-height:240px;
+      width: 100%;   
+    }
+}
