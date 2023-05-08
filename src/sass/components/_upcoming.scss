@@ -16,6 +16,7 @@
   font-size: 16px;
   font-weight: 500;
   line-height: 118.75%;
+
   /* 19/16 */
 
   @include tablet {
@@ -119,7 +120,7 @@
     margin-bottom: 12px;
   }
 
-  // color: $film-info-text-color;
+  color: var(--upcoming-film-categories-check-color);
 }
 
 .movie-categories-separate {
@@ -135,7 +136,7 @@
 .movie__item--accent {
   margin-left: 58px;
 
-  color: $buttonBgAccent;
+  color: $film-release-date-color;
 }
 
 .movie__item--group {
@@ -153,7 +154,7 @@
 
   border-radius: 5px;
 
-  // background-color: $bulb-bgc;
+  background-color: var(--upcoming-film-bulb-color);
   color: $button-black-text;
 }
 
@@ -172,7 +173,7 @@
 }
 
 .movie__item--default {
-  color: $button-black-text;
+  color: var(--upcomind-film-df-color);
   margin-left: 78px;
 }
 
@@ -181,7 +182,7 @@
 }
 
 .movie__about {
-  // color: $film-info-text-color;
+  color: var(--upcoming-film-categories-check-color);
   margin-bottom: 16px;
   font-size: 16px;
   line-height: 118.75%;
@@ -192,6 +193,7 @@
   margin-bottom: 20px;
   font-size: 14px;
   line-height: 142.857143%;
+  color: var(--upcoming-film-descr-text-color);
 
   /* 20/14 */
   @include tablet {
@@ -208,7 +210,7 @@
   height: 40px;
   padding: 1px;
 
-  background-image: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
+  background-image: $submit-btn-catalog;
 
   border-radius: 74px;
 }
@@ -220,12 +222,13 @@
   border: none;
 
   font-size: 14px;
+  font-weight: 500;
   line-height: 114.285714%;
   /* 16/14 */
 
   color: $button-black-text;
   background-color: transparent;
-  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all $duration cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
     background-color: $mainLightColor;

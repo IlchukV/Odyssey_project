@@ -1,12 +1,11 @@
 $mainLightColor: #ffffff;
 $accentColor: #ff6b08;
 $informationColor: #ff001b;
-$mainBgColor: #F5F5F5;
-;
+$mainBgColor: #f5f5f5;
 $buttonBgColor: rgba(0, 0, 0, 0.56);
 $header-focus: rgba(255, 143, 68, 0.863);
 $accentModalColor: #ff6b01;
-$secondModalColor: #8C8C8C;
+$secondModalColor: #8c8c8c;
 $buttonBgAccent: #ff6b01;
 $duration: 250ms;
 $timingFunction: cubic-bezier(0.4, 0, 0.2, 1);
@@ -14,35 +13,53 @@ $bg-header-gradient: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56));
 $button-black-text: #000000;
 $scrollbar-and-circle-on-switcher-color: #932727;
 $reg-form-title-color: #212121;
-$pagination-background: #F7F7F7;
+$pagination-background: #f7f7f7;
 $background-catalog: #282828;
-$flooded-stars-catalog: linear-gradient(141.22deg, #f84119 9.4%, rgba(248, 157, 25, 0.8876) 89.96%, rgba(248, 159, 25, 0.68) 91.91%);
-$not-flooded-stars-catalog: linear-gradient(138.87deg, #f84119 10.08%, rgba(248, 159, 25, 0.68) 94.03%);
-$pagination-number-color: #B7B7B7;
-$pagination-color: linear-gradient(141.22deg, #FFC226 9.4%, #F84119 91.91%);
-$submit-btn-catalog: linear-gradient(141.22deg, #FFC226 9.4%, #F84119 91.91%);
+$flooded-stars-catalog: linear-gradient(
+  141.22deg,
+  #f84119 9.4%,
+  rgba(248, 157, 25, 0.8876) 89.96%,
+  rgba(248, 159, 25, 0.68) 91.91%
+);
+$not-flooded-stars-catalog: linear-gradient(
+  138.87deg,
+  #f84119 10.08%,
+  rgba(248, 159, 25, 0.68) 94.03%
+);
+$pagination-number-color: #b7b7b7;
+$pagination-color: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
+$submit-btn-catalog: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
+$film-release-date-color: #f87719;
+:root[data-theme='light'] {
+  --body-and-modals-bgc: #ffffff;
+  --before-postionX: 2px;
+  --before-postionY: 2px;
+  --mainDarkColor: #000000;
+  --footerBgColor: #f5f5f5;
+  --footerTxtColor: #b7b7b7;
+  --backgroundPage: transparent;
 
-:root[data-theme="light"] {
-    --body-and-modals-bgc: #ffffff;
-    --before-postionX: 2px;
-    --before-postionY: 2px;
-    --mainDarkColor: #000000;
-    --footerBgColor: #F5F5F5;
-    ;
-    --footerTxtColor: #B7B7B7;
-    --backgroundPage: transparent;
+  --team-sm-bnt-accent: #ff6b01;
 
-    --team-sm-bnt-accent: #ff6b01;
+  --upcoming-film-categories-check-color: #111111;
+  --upcomind-film-df-color: #282828;
+  --upcoming-film-bulb-color: #f8f8f8;
+  --upcoming-film-descr-text-color: #282828;
 }
 
-:root[data-theme="dark"] {
-    --body-and-modals-bgc: #212121;
-    --before-postionX: 30px;
-    --before-postionY: 2px;
-    --mainDarkColor: #ffffff;
-    --footerBgColor: #212121;
-    --footerTxtColor: #ffffff;
-    --backgroundPage: #ffffff;
+:root[data-theme='dark'] {
+  --body-and-modals-bgc: #212121;
+  --before-postionX: 30px;
+  --before-postionY: 2px;
+  --mainDarkColor: #ffffff;
+  --footerBgColor: #212121;
+  --footerTxtColor: #ffffff;
+  --backgroundPage: #ffffff;
 
-    --team-sm-bnt-accent: #932727;
+  --team-sm-bnt-accent: #932727;
+
+  --upcoming-film-categories-check-color: #b7b7b7;
+  --upcomind-film-df-color: #ffffff;
+  --upcoming-film-bulb-color: #ffffff;
+  --upcoming-film-descr-text-color: #f8f8f8;
 }
