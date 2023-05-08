@@ -16,10 +16,16 @@ refs.movieList.addEventListener('click', handleMovieClick);
 refs.modalCloseBtn.addEventListener('click', handleModalClose);
 refs.backdrop.addEventListener('click', closeModalBackdropClick);
 
+function handleBtnClick(e) {
+  e.target.innerHTML = 'Remove from my library';
+}
+
 function handleMovieClick(e) {
   fetchMovieInfo(e.target.id).then(data => {
     refs.modalWindow.innerHTML = markupMovieCard(data);
     refs.backdrop.classList.remove('is-hidden');
+    const addBtnRef = document.querySelector('.addBtn');
+    addBtnRef.addEventListener('click', handleBtnClick);
   });
 }
 
