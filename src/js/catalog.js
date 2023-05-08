@@ -5,6 +5,12 @@ let totalPages = 0;
 let currentQuery = '';
 let isCatalogHomePage = true;
 
+// !! Пробная заглушка для поиска фильма 
+import { showModal } from './Пробные заглушки для catalog/catalog-modal-close';
+
+// !! Пробная заглушка выбора фильма при нажатии на карточку
+import { showFoundModal } from './Пробные заглушки для catalog/movie-found';
+
 const searchForm = document.getElementById("search-form");
 const searchInput = document.getElementById("search-input");
 const moviesList = document.querySelector(".movies-list");
@@ -46,7 +52,7 @@ async function displayMovies(movies) {
 
         const ratingStars = createRatingStars(details.vote_average);
         const movieItem = `
-                <div class="movie-item">
+                <div class="movie-item movie-card">
                     <img
                     src="https://image.tmdb.org/t/p/w200${movie.poster_path}" 
                     srcset="
@@ -76,20 +82,14 @@ async function displayMovies(movies) {
     }
 
     moviesList.innerHTML = movieItems.join('');
+
+    // !! Заглушка при нажатии на карточку фильма он открывается
+    document.querySelectorAll('.movie-card').forEach(card => {
+        card.addEventListener('click', () => {
+            showFoundModal('Наслаждайтесь просмотром');
+        });
+    });
 }
-
-
-// ! Функция для открытия фильма на странице
-// const movieItems = document.querySelectorAll('.movie-item');
-
-// movieItems.forEach((movieItem) => {
-//     const movieDetails = movieItem.querySelector('.movie-details');
-
-//     movieItem.addEventListener('click', () => {
-//         movieDetails.classList.toggle('show');
-//     });
-// });
-
 
 //* Рейтинг со звездами
 function createRatingStars(rating) {
@@ -123,24 +123,33 @@ async function getTrendingMovies() {
     }
 }
 
-
 // *Функция отправляет запрос к API для получения списка фильмов по запросу
+// ! Работающая функция без ошибки, что фильм не найден
+// async function searchMovies(query) {
+//     const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}&page=${currentPage}`;
+//     const data = await fetchMovies(url);
+//     totalPages = data.total_pages;
+//     displayMovies(data.results);
+//     updatePaginationInfo();
+//     searchInput.value = '';
+// }
+
+// !! Заглушка для поиска фильма 
 async function searchMovies(query) {
     const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}&page=${currentPage}`;
     const data = await fetchMovies(url);
     totalPages = data.total_pages;
-    displayMovies(data.results);
-    updatePaginationInfo();
+
+    // проверка количества найденных фильмов
+    if (data.results.length === 0) {
+        showModal('Фильм не найден по названию.');
+    } else {
+        displayMovies(data.results);
+        updatePaginationInfo();
+    }
+
     searchInput.value = '';
 }
-
-// !! Функция для подключения модального окна, которая показывает, что после поиска данного фильма нет (пробная)
-// function showNotFoundMessage() {
-//     moviesList.innerHTML = '';
-//     const message = 'Фильм не найден';
-//     showModal(message);
-//     pagination.style.display = 'none';
-// }
 
 // *Слушатель событий для формы поиска
 searchForm.addEventListener('submit', async (event) => {
