@@ -7,25 +7,45 @@ const IMG_URL = 'https://image.tmdb.org/t/p/original';
 
 const refs = {
   modalWindow: document.querySelector('.modal-body'),
+  modalCloseBtn: document.querySelector('[data-modal-movie-close]'),
+  backdrop: document.querySelector('.backdrop'),
+  movieList: document.querySelector('.movies-list'),
 };
 
-export default async function fetchMovieInfo(id) {
+refs.movieList.addEventListener('click', handleMovieClick);
+refs.modalCloseBtn.addEventListener('click', handleModalClose);
+refs.backdrop.addEventListener('click', closeModalBackdropClick);
+
+function handleMovieClick(e) {
+  fetchMovieInfo(e.target.id).then(data => {
+    refs.modalWindow.innerHTML = markupMovieCard(data);
+    refs.backdrop.classList.remove('is-hidden');
+  });
+}
+
+function handleModalClose() {
+  refs.backdrop.classList.add('is-hidden');
+}
+
+function closeModalBackdropClick(evt) {
+  if (evt.target.classList.contains('modal-overlay-movie')) {
+    refs.backdrop.classList.add('is-hidden');
+  }
+  return;
+}
+
+ async function fetchMovieInfo(id) {
   const url = `${BASE_URL}/movie/${id}?api_key=${API_KEY}&language=en-US`;
   Notiflix.Loading.circle();
   try {
     const { data } = await axios.get(url);
-    console.log('data: ', data);
     return data;
   } catch (error) {
-    console.log('error:', error);
+    throw new Error(error);
   } finally {
     Notiflix.Loading.remove();
   }
 }
-fetchMovieInfo(45213).then(data => {
-  console.log('data: ', data);
-  refs.modalWindow.innerHTML = markupMovieCard(data);
-});
 
 const markupMovieCard = ({
   poster_path,
@@ -45,7 +65,7 @@ const markupMovieCard = ({
         <div>
             <img  class='movie-poster' src=${IMG_URL}${poster_path} alt='movie poster'/>
         </div>
-        <div class='movie-info'>
+        <div class='modal-movie-info'>
             <h2 class='movie-title'>${title}</h2>
             <div class='movie-characteristics-wrapper'>
                  <div class='movie-characteristics-names'> 
@@ -61,7 +81,7 @@ const markupMovieCard = ({
                             <div class='movie-vote-wrapper'>${normalizedVote}</div> / 
                             <div class='movie-vote-wrapper'>${vote_count}</div>
                         </li>
-                        <li class='movie-popularity'>${normalizedPopularity}</li>
+                        <li class='movie-popularity-results'>${normalizedPopularity}</li>
                         <li class='movie-genre'>${normalizedGenres}</li>
                     </ul>
                  </div>
