@@ -14,7 +14,7 @@ export default async function fetchMovieInfo(id) {
   Notiflix.Loading.circle();
   try {
     const { data } = await axios.get(url);
-    // console.log('data: ', data);
+    console.log('data: ', data);
     return data;
   } catch (error) {
     console.log('error:', error);
@@ -22,7 +22,7 @@ export default async function fetchMovieInfo(id) {
     Notiflix.Loading.remove();
   }
 }
-fetchMovieInfo(455476).then(data => {
+fetchMovieInfo(45213).then(data => {
   console.log('data: ', data);
   refs.modalWindow.innerHTML = markupMovieCard(data);
 });
@@ -36,8 +36,9 @@ const markupMovieCard = ({
   genres,
   overview,
 }) => {
+  const normalizedVote = vote_average.toFixed(1);
   const normalizedPopularity = popularity.toFixed(1);
-  const normalizedGenres = genres.map(genre => genre.name).join(', ');
+  const normalizedGenres = genres.map(genre => genre.name).join(' ');
 
   return `
     <div class='movie-wraper'>
@@ -57,7 +58,7 @@ const markupMovieCard = ({
                  <div class='movie-characteristics-results'>
                      <ul>
                         <li class='movie-vote movie-vote-result'>
-                            <div class='movie-vote-wrapper'>${vote_average}</div> / 
+                            <div class='movie-vote-wrapper'>${normalizedVote}</div> / 
                             <div class='movie-vote-wrapper'>${vote_count}</div>
                         </li>
                         <li class='movie-popularity'>${normalizedPopularity}</li>
