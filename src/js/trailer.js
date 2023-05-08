@@ -7,16 +7,6 @@ const refs = {
   playerBox: document.querySelector('.js-player'),
 };
 
-let watchTrailerBtns;
-
-export {refs, onWatchTrailerBtnClick};
-
-const delayOfBootButtons = function() {setTimeout(() => {watchTrailerBtns = document.querySelectorAll('.js-hero-trailer');
-for (let i = 0; i < watchTrailerBtns.length; i++) {    
-    watchTrailerBtns[i].addEventListener('click', onWatchTrailerBtnClick);
-}}, 3000 )};
-
-delayOfBootButtons();
 refs.closeBtn.addEventListener('click', onCloseTraier);
 
 function onWatchTrailerBtnClick(evt) {  
@@ -70,3 +60,5 @@ function onBackdropClick(evt) {
   document.removeEventListener('keydown', onEscCloseTraier);
   refs.playerBox.classList.remove('visually-hidden');
 }
+
+export {onWatchTrailerBtnClick};
