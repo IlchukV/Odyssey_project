@@ -3,12 +3,10 @@ img {
 }
 
 .section-catalog {
-    // max-width: 1600px;
     background-color: $background-catalog;
 }
 
 .search-block {
-
     @include mobile {
         display: flex;
         justify-content: center;
@@ -20,20 +18,12 @@ img {
     }
 
     @include tablet {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
         padding-top: 60px;
         padding-bottom: 36px;
         gap: 16px;
     }
 
     @include desktop {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
         padding-top: 80px;
         padding-bottom: 48px;
     }
@@ -47,20 +37,6 @@ img {
             gap: 16px;
             display: contents;
         }
-
-        @include tablet {
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            gap: 16px;
-        }
-
-        //     @include desktop {
-        //         display: inline-flex;
-        //         justify-content: center;
-        //         align-items: center;
-        //         gap: 16px;
-        //     }
     }
 
     &_search-input {
@@ -75,11 +51,6 @@ img {
 
         @include tablet {
             width: 210px;
-            height: 44px;
-            padding-left: 20;
-            font-size: 14px;
-            border-radius: 8px;
-            line-height: 1.14;
         }
 
         @include desktop {
@@ -87,7 +58,6 @@ img {
             height: 48px;
             padding-left: 24px;
             font-size: 18px;
-            border-radius: 8px;
         }
     }
 
@@ -105,21 +75,11 @@ img {
         @include tablet {
             width: 44px;
             height: 44px;
-            background-color: $mainLightColor;
-            border-radius: 100%;
-            cursor: pointer;
-            background: $submit-btn-catalog;
-            border: none;
         }
 
         @include desktop {
             width: 48px;
             height: 48px;
-            background-color: $mainLightColor;
-            border-radius: 100%;
-            cursor: pointer;
-            background: $submit-btn-catalog;
-            border: none;
         }
 
     }
@@ -132,13 +92,11 @@ img {
         }
 
         @include tablet {
-            pointer-events: none;
             width: 18px;
             height: 18px;
         }
 
         @include desktop {
-            pointer-events: none;
             width: 20px;
             height: 20px;
         }
@@ -155,28 +113,11 @@ img {
     @include tablet {
         display: flex;
         flex-wrap: wrap;
-        margin-left: -8px;
-        margin-right: -8px;
         justify-content: space-between;
     }
 
-    // @include desktop {
-    //     display: flex;
-    //     flex-wrap: wrap;
-    //     margin-left: -8px;
-    //     margin-right: -8px;
-    //     justify-content: space-between;
-    // }
 }
 
-// @include mobile {
-// }
-
-// @include tablet {
-// }
-
-// @include desktop {
-// }
 .movie-item {
     @include mobile {
         position: relative;
@@ -189,25 +130,14 @@ img {
     }
 
     @include tablet {
-        position: relative;
         flex-basis: calc(33.3333% - 16px);
-        margin-left: 8px;
-        margin-right: 8px;
         margin-bottom: 28px;
-        transition: transform 0.3s ease;
         border-radius: 5px;
-        overflow: hidden;
     }
 
     @include desktop {
-        position: relative;
-        flex-basis: calc(33.3333% - 16px);
-        margin-left: 8px;
-        margin-right: 8px;
         margin-bottom: 32px;
-        transition: transform 0.3s ease;
         border-radius: 5px;
-        overflow: hidden;
     }
 
     &:nth-child(10) {
@@ -233,13 +163,6 @@ img {
     }
 }
 
-// .movie-item h3 {
-//     font-size: 20px;
-//     line-height: 1.15;
-//     text-transform: uppercase;
-//     color: $mainLightColor;
-// }
-
 .movie-details {
     @include mobile {
         position: absolute;
@@ -255,29 +178,12 @@ img {
     }
 
     @include tablet {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
         padding: 0 0 12px 12px;
-        box-sizing: border-box;
-        color: $mainLightColor;
         display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
     }
 
     @include desktop {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        // padding: 0 12px 12px 0;
-        box-sizing: border-box;
-        color: $mainLightColor;
         display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
     }
 
     & h3 {
@@ -293,47 +199,33 @@ img {
         @include tablet {
             font-size: 14px;
             line-height: 1.28;
-            text-transform: uppercase;
-            color: $mainLightColor;
-            // margin: 0;
         }
 
         @include desktop {
             font-size: 20px;
             line-height: 1.15;
-            text-transform: uppercase;
-            color: $mainLightColor;
-            // margin: 0;
         }
     }
 }
 
-.movie-details h3,
-.movie-info {
-    transform: translateY(110%);
+@media screen and (max-width: 767.97px) {
+
+    .movie-details h3,
+    .movie-info {
+        transform: translateY(110%);
+    }
 }
 
-.movie-genres-and-rating {
 
+.movie-genres-and-rating {
     @include mobile {
         display: contents;
-        margin-top: 6px;
     }
 
     @include tablet {
         display: flex;
         align-items: end;
         justify-content: center;
-        margin-top: 6px;
-        flex-wrap: nowrap;
-        overflow: hidden;
-    }
-
-    @include desktop {
-        display: flex;
-        align-items: end;
-        justify-content: center;
-        margin-top: 6px;
         flex-wrap: nowrap;
         overflow: hidden;
     }
@@ -344,18 +236,15 @@ img {
         font-size: 12px;
         color: $pagination-background;
         margin-top: 6px;
-        // width: 112px;
     }
 
     @include tablet {
         font-size: 14px;
-        color: $pagination-background;
         width: 112px;
     }
 
     @include desktop {
         font-size: 20px;
-        color: $pagination-background;
         width: 250px;
     }
 }
@@ -368,20 +257,6 @@ img {
         background-clip: text;
         color: transparent;
     }
-
-    @include tablet {
-        // width: 18px;
-        // background: $flooded-stars-catalog;
-        background-clip: text;
-        color: transparent;
-    }
-
-    @include desktop {
-        // width: 18px;
-        // background: $flooded-stars-catalog;
-        background-clip: text;
-        color: transparent;
-    }
 }
 
 .star-half {
@@ -390,10 +265,11 @@ img {
     color: transparent;
 }
 
-.movie-rating {
-    transform: translateX(79%);
+@media screen and (max-width: 767.97px) {
+    .movie-rating {
+        transform: translateX(79%);
+    }
 }
-
 
 // !Пагинация
 .page-indicator {
@@ -406,17 +282,11 @@ img {
     }
 
     @include tablet {
-        display: flex;
-        justify-content: center;
-        align-items: center;
         margin-top: 44px;
         padding-bottom: 30px;
     }
 
     @include desktop {
-        display: flex;
-        justify-content: center;
-        align-items: center;
         margin-top: 60px;
         padding-bottom: 70px;
     }
@@ -429,7 +299,7 @@ img {
         height: 24px;
         line-height: 32px;
         text-align: center;
-        margin: 0 16px;
+        margin: 0 4px;
         cursor: pointer;
         border-radius: 50%;
         border: 1px solid $pagination-number-color;
@@ -438,31 +308,9 @@ img {
     }
 
     @include tablet {
-        display: inline-block;
         width: 40px;
         height: 40px;
-        line-height: 32px;
-        text-align: center;
-        margin: 0 16px;
-        cursor: pointer;
-        border-radius: 50%;
-        border: 1px solid $pagination-number-color;
-        background: transparent;
-        color: $pagination-number-color;
-    }
-
-    @include desktop {
-        display: inline-block;
-        width: 40px;
-        height: 40px;
-        line-height: 32px;
-        text-align: center;
-        margin: 0 16px;
-        cursor: pointer;
-        border-radius: 50%;
-        border: 1px solid $pagination-number-color;
-        background: transparent;
-        color: $pagination-number-color;
+        margin: 0 8px;
     }
 
     &.active {

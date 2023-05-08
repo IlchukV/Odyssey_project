@@ -54,7 +54,7 @@ async function displayMovies(movies) {
                         https://image.tmdb.org/t/p/w300${movie.poster_path} 300w,
                         https://image.tmdb.org/t/p/w500${movie.poster_path} 500w
                     "
-                    sizes="(max-width: 768px) 200px, (max-width: 1024px) 300px, 500px"
+                    sizes="(max-width: 768px) 200px, (max-width: 1280px) 300px, 500px"
                     alt="${movie.title}"
                     >
                     <div class="movie-details">
