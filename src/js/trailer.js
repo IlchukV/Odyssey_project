@@ -23,7 +23,7 @@ const delayOfBootButtons = function () {
 delayOfBootButtons();
 // refs.closeBtn.addEventListener('click', onCloseTraier);
 
-function onWatchTrailerBtnClick(evt) {
+ function onWatchTrailerBtnClick(evt) {
   const filmId = evt.currentTarget.dataset.id;
   refs.backdropTrailer.classList.remove('visually-hidden');
   refs.backdropTrailer.addEventListener('click', onBackdropClick);

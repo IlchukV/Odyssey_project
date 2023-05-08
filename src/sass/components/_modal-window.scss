@@ -74,6 +74,9 @@
     gap: 20px;
   }
 }
+.movie-picture-wrapper {
+  position: relative;
+}
 
 .movie-poster {
   width: 248px;
@@ -95,6 +98,15 @@
     border-radius: 5px;
     margin-bottom: 0;
   }
+}
+
+.modal-movie-trailer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: inherit;
+  border: none;
 }
 
 .movie-title {
