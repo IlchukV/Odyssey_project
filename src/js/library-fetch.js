@@ -1,85 +1,72 @@
 import { load } from './local-storage';
-import axios from 'axios';
-import renderCard from './film-card';
+import { createRatingStars } from './catalog';
 
-// const card = renderCard();
-
-const BASE_URL = 'https://api.themoviedb.org/3';
-const API_KEY = 'e1aeaa11db3ac22382c707ccfcac931e';
+const apiKey = 'e1aeaa11db3ac22382c707ccfcac931e';
+const BASE_URL = 'https://api.themoviedb.org/3/';
 
 const refs = {
   emptyLibrary: document.querySelector('.empty-library'),
   catalogLibrary: document.querySelector('.catalog-library'),
-  catalogLibraryList: document.querySelector('.catalog-library__list'),
+  movieList: document.querySelector('.movies-list'),
 };
-const addedMovies = load('upcoming-film');
-console.log(addedMovies);
 
+const addedMovies = load('upcoming-film');
 checkLibrary();
 
 function checkLibrary() {
   try {
     if (addedMovies.length === 0) {
-      refs.catalogLibrary.classList.add('hidden');
-      refs.emptyLibrary.classList.remove('hidden');
+      refs.catalogLibrary.classList.add('visually-hidden');
+      refs.emptyLibrary.classList.remove('visually-hidden');
     } else {
-      createLibrary();
-      refs.emptyLibrary.classList.add('hidden');
-      refs.catalogLibrary.classList.remove('hidden');
+      displayMovies(addedMovies);
+      refs.emptyLibrary.classList.add('visually-hidden');
+      refs.catalogLibrary.classList.remove('visually-hidden');
     }
   } catch (error) {
     return error;
   }
 }
 
-async function fetchGenre() {
-  const genres = await axios.get(
-    `${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=UA`
-  );
-  return { genres };
+async function fetchMovies(url) {
+  const response = await fetch(url);
+  return response.json();
 }
 
-function libraryMarkup(movies, genres) {
-  return movies
-    .map(({ poster_path, title, release_date }) => {
-      return `
-    <li class="catalog-library__item">
-          <img class="catalog-library__img" src="https://image.tmdb.org/t/p/w500/${poster_path}"/>
-          <div class="catalog-library__content">
-               <h2 class="catalog-library__title">${title}</h2>
-               <p class="catalog-library__description"> ${genres.join(
-                 ', '
-               )} ${release_date}</p>
-         </div>
-    </li>
-    `;
-    })
-    .join('');
-}
+async function displayMovies(movies) {
+  try {
+    const movieItems = [];
 
-function createLibrary() {
-  fetchGenre()
-    .then(({ genres }) => {
-      const genreList = getGenres(addedMovies, genres);
+    for (const movie of movies) {
+      const detailsUrl = `${BASE_URL}/movie/${movie.id}?api_key=${apiKey}&language=en-US`;
+      const details = await fetchMovies(detailsUrl);
+      const genres = details.genres.map(genre => genre.name).join(', ');
+      const releaseDate = new Date(details.release_date).getFullYear();
+      const ratingStars = createRatingStars(details.vote_average);
 
-      refs.catalogLibraryList.innerHTML = libraryMarkup(addedMovies, genreList);
-    })
-    .catch(console.log);
-}
-
-fetchGenre()
-  .then(({ genres }) => {
-    const genreList = getGenres(addedMovies, genres);
-
-    refs.catalogLibraryList.innerHTML = libraryMarkup(addedMovies, genreList);
-  })
-  .catch(console.log);
-
-function getGenres(addedMovies, genres) {
-  for (const movie of addedMovies) {
-    return genres.data.genres
-      .filter(genre => movie.genre_ids.includes(genre.id))
-      .filter((genre, index) => index <= 1)
-      .map(genre => genre.name);
+      const movieItem = `
+                <div class="movie-item movie-card">
+                    <img
+                    src="https://image.tmdb.org/t/p/w500${movie.poster_path}" 
+                   alt="${movie.title}"/>
+                    <div class="movie-details">
+                        <h3>${movie.title}</h3>
+                        <div class="movie-genres-and-rating">
+                          <div class="movie-info">
+                            <span class="movie-genre">${genres}</span>
+                            <span class="movie-separator">|</span>
+                            <span class="movie-year">${releaseDate}</span>
+                         </div>
+                         <div class="movie-rating">${ratingStars}
+                         </div>
+                       </div>
+                    </div>
+                </div>
+                `;
+      movieItems.push(movieItem);
+    }
+    refs.movieList.innerHTML = movieItems.join('');
+  } catch (error) {
+    return error;
   }
 }
