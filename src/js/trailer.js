@@ -21,7 +21,7 @@ const delayOfBootButtons = function () {
 };
 
 delayOfBootButtons();
-// refs.closeBtn.addEventListener('click', onCloseTraier);
+refs.closeBtn.addEventListener('click', onCloseTraier);
 
 function onWatchTrailerBtnClick(evt) {
   const filmId = evt.currentTarget.dataset.id;
