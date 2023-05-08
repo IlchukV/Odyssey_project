@@ -34,7 +34,7 @@ function closeModalBackdropClick(evt) {
   return;
 }
 
- async function fetchMovieInfo(id) {
+async function fetchMovieInfo(id) {
   const url = `${BASE_URL}/movie/${id}?api_key=${API_KEY}&language=en-US`;
   Notiflix.Loading.circle();
   try {
@@ -88,7 +88,37 @@ const markupMovieCard = ({
             </div>   
             <p class='movie-about'>About</p>
             <p class='movie-description'>${overview}</p>
-            <button class="addBtn">Add to my library</button>
+           <button class="addBtn">
+        <svg
+          width="140"
+          height="40"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            x=".5"
+            y=".5"
+            width="139"
+            height="39"
+            rx="19.5"
+            stroke="url(#a)"
+          />
+          <defs>
+            <linearGradient
+              id="a"
+              x1="17.1"
+              y1="2.858"
+              x2="30.078"
+              y2="59.395"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop stop-color="#FFC226" />
+              <stop offset="1" stop-color="#F84119" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <span class='textBtn'>Add to my library</span>
+      </button>
         </div>
     </div>
     `;

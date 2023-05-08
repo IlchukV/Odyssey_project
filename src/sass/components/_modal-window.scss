@@ -278,25 +278,13 @@
 }
 
 .addBtn {
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 14px;
-  text-align: center;
+  position: relative;
   width: 140px;
   height: 38px;
-  //   border: none;
-  border: 1px solid;
+  border: none;
   border-radius: 74px;
-  //   border-image: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
-  //   border-image-slice: 1;
-  color: $mainLightColor;
+
   background-color: inherit;
-  border-style: linear-gradient(
-    141.22deg,
-    #ffc226 9.4%,
-    #f84119 91.91%
-  ) !important;
-  //   box-shadow: none;
 
   @include tablet {
     font-size: 12px;
@@ -309,4 +297,17 @@
     line-height: 16px;
     height: 40px;
   }
+}
+.textBtn {
+  position: absolute;
+  padding-left: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  width: inherit;
+  margin: 0 auto;
+  color: $mainLightColor;
 }
