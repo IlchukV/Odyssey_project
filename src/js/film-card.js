@@ -48,4 +48,4 @@ function renderCard(title, imageSrc, description) {
   content.appendChild(cardDescription);
 
   return card;
-} 
+}
