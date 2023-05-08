@@ -8,4 +8,12 @@ import './js/them-switcher';
 import './js/button-up';
 import './js/swiper';
 import './js/refs';
+
+import './js/details-modal';
+import './js/local-storage';
+import './js/hero';
+import './js/film-card';
+import './js/trailer';
+
 import './js/catalog';
+
