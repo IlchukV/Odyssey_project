@@ -1,8 +1,8 @@
 // !! Пробная заглушка для поиска фильма 
-import { showModal } from './Пробные заглушки для catalog/catalog-modal-close';
+import { showModal } from './catalog-modal-close';
 
 // !! Пробная заглушка выбора фильма при нажатии на карточку
-import { showFoundModal } from './Пробные заглушки для catalog/movie-found';
+import { showFoundModal } from './movie-found';
 
 const apiKey = "e1aeaa11db3ac22382c707ccfcac931e";
 const BASE_URL = 'https://api.themoviedb.org/3/';

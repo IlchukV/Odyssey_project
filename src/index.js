@@ -14,6 +14,8 @@ import './js/local-storage';
 import './js/hero';
 import './js/film-card';
 import './js/trailer';
+import './js/catalog-modal-close';
+import './js/movie-found';
 
 import './js/catalog';
 
