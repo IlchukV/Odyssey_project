@@ -5,7 +5,7 @@
   padding-top: 12px;
   padding-bottom: 12px;
   margin: 0 auto;
-  background-color: var(--mainDarkColor);
+  background-color: var(--body-and-modals-bgc);
 
   position: relative;
   background-size: cover;
@@ -80,17 +80,13 @@
 
 .menu-button {
   margin-left: 93px;
+  margin-right: 84px;
 }
 
 .navigation-list__item {
   &:not(:last-child) {
     margin-right: 32px;
   }
-}
-
-.theme-switch__button {
-  background-color: transparent;
-  border: none;
 }
 
 .mobile-menu {
