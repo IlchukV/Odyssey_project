@@ -1,0 +1,32 @@
+.up {
+    display: block;
+    font-size: 30px;
+    fill: #fff;
+    position: fixed;
+    bottom: 1.25rem;
+    right: 1.875rem;
+    z-index: 99;
+    width: 70px;
+    height: 70px;
+    border: none;
+    border-radius: 50%;
+    background-color: $buttonBgAccent;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+}
+
+.up:hover {
+    scale: 1.1;
+    background-color: $informationColor;
+    box-shadow: -2px -2px 5px #fff, 5px 5px 5px #babecc;
+}
+
+.up::after {
+    content: '\2191';
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--body-and-modals-bgc);
+}
