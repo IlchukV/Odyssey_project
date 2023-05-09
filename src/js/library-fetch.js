@@ -43,7 +43,9 @@ async function displayMovies(movies) {
         .map(genre => genre.name)
         .join(', ');
       const releaseDate = new Date(details.release_date).getFullYear();
+
       const ratingStars = createRatingStars(details.vote_average);
+      console.log(ratingStars);
 
       const movieItem = `
                 <div class="movie-item movie-card">
