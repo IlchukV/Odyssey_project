@@ -3,7 +3,7 @@ img {
 }
 
 .section-catalog {
-    background-color: $background-catalog;
+    background-color: var(--background-catalog);
 }
 
 .search-block {
@@ -320,7 +320,7 @@ img {
 }
 
 .arrow-button {
-    background: $background-catalog;
+    background: var(--background-catalog);
 
     &.disabled {
         opacity: 0.5;
