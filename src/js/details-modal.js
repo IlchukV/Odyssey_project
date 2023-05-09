@@ -9,7 +9,7 @@ const IMG_URL = 'https://image.tmdb.org/t/p/original';
 const refs = {
   modalWindow: document.querySelector('.modal-body'),
   modalCloseBtn: document.querySelector('[data-modal-movie-close]'),
-  backdrop: document.querySelector('.backdrop'),
+  backdrop: document.querySelector('.modal-movie-backdrop'),
   movieList: document.querySelector('.movies-list'),
 };
 
@@ -50,7 +50,7 @@ function handleModalClose() {
 }
 
 function closeModalBackdropClick(evt) {
-  if (evt.target.classList.contains('modal-overlay-movie')) {
+  if (evt.target.classList.contains('modal-movie-backdrop')) {
     refs.backdrop.classList.add('is-hidden');
   }
   return;
