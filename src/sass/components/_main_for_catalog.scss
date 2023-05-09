@@ -3,7 +3,7 @@ img {
 }
 
 .section-catalog {
-    background-color: $background-catalog;
+    background-color: var(--background-catalog);
 }
 
 .search-block {
@@ -317,7 +317,7 @@ img {
 
 .arrow-button {
     cursor: pointer;
-    background: $background-catalog;
+    background: var(--background-catalog);
 
     &.disabled {
         opacity: 0.5;
@@ -458,7 +458,7 @@ img {
     @include mobile {
         width: 480px;
         height: 300px;
-        background-color: $background-catalog;
+        background-color: var(--background-catalog);
         margin: 15% auto;
         padding: 20px;
         border-radius: 10px;
