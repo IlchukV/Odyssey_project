@@ -10,6 +10,10 @@ const refs = {
   upcomingMoviesSection: document.querySelector('.container--upcoming'),
 };
 
+if (refs.upcomingMoviesSection === null) {
+  return;
+}
+
 async function fetchUpcomingMovieAndGenre() {
   const searchParams = new URLSearchParams({
     api_key: `${API_KEY}`,

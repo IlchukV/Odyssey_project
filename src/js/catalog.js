@@ -54,7 +54,7 @@ async function displayMovies(movies) {
 
     const ratingStars = createRatingStars(details.vote_average);
     const movieItem = `
-                <div class="movie-item movie-card">
+                <div class="movie-item movie-card" id=${movie.id}>
                     <img
                     src="https://image.tmdb.org/t/p/w200${movie.poster_path}" 
                     srcset="
@@ -86,11 +86,11 @@ async function displayMovies(movies) {
   moviesList.innerHTML = movieItems.join('');
 
   // !! Заглушка при нажатии на карточку фильма он открывается
-  document.querySelectorAll('.movie-card').forEach(card => {
-    card.addEventListener('click', () => {
-      showFoundModal('Наслаждайтесь просмотром');
-    });
-  });
+  // document.querySelectorAll('.movie-card').forEach(card => {
+  //     card.addEventListener('click', () => {
+  //         showFoundModal('Наслаждайтесь просмотром');
+  //     });
+  // });
 }
 
 //* Рейтинг со звездами

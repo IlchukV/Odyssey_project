@@ -11,6 +11,10 @@ $duration: 250ms;
 $timingFunction: cubic-bezier(0.4, 0, 0.2, 1);
 $bg-header-gradient: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56));
 $button-black-text: #000000;
+$button-text: #111111;
+$button-gradient: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
+$library-title: #ffffff;
+$library-description: #f8f8f8;
 $scrollbar-and-circle-on-switcher-color: #932727;
 $reg-form-title-color: #212121;
 $pagination-background: #f7f7f7;
@@ -25,8 +29,9 @@ $flooded-stars-catalog: linear-gradient(
   141.22deg,
   #f84119 9.4%,
   rgba(248, 157, 25, 0.8876) 89.96%,
-  rgba(248, 159, 25, 0.68) 91.91%);
-  
+  rgba(248, 159, 25, 0.68) 91.91%
+);
+
 $not-flooded-stars-catalog: linear-gradient(
   138.87deg,
   #f84119 10.08%,
@@ -47,6 +52,13 @@ $film-release-date-color: #f87719;
   --footerTxtColor: #b7b7b7;
   --backgroundPage: transparent;
 
+  --swipe-bullet-color: #595959;
+  --swipe-bullet-color-active: #282828;
+  --swipe-nav: #595959;
+  --swipe-nav-disabled: #b7b7b7;
+  --title-color: #111111;
+  --description-color: #282828;
+
   --team-sm-bnt-accent: #ff6b01;
 
   --upcoming-film-categories-check-color: #111111;
@@ -63,6 +75,13 @@ $film-release-date-color: #f87719;
   --footerBgColor: #212121;
   --footerTxtColor: #ffffff;
   --backgroundPage: #ffffff;
+
+  --swipe-bullet-color: #b7b7b7;
+  --swipe-bullet-color-active: #ffffff;
+  --swipe-nav-disabled: #b7b7b7;
+  --swipe-nav: #f8f8f8;
+  --title-color: #ffffff;
+  --description-color: #f8f8f8;
 
   --team-sm-bnt-accent: #932727;
 
