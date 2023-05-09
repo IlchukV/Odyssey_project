@@ -25,6 +25,7 @@ function createWeeklyGalery({ results }) {
 }
 
 function createListHtml(resultArray) { 
+    console.log(resultArray)
     return list = resultArray.reduce((markup, item) => markup + createWeeklyCard(item), "");
 }
 
@@ -35,5 +36,6 @@ function createWeeklyCard(card) {
         </a>
         </li>`
 };
+
 
 getMovies();
