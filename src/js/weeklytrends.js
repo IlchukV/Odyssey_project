@@ -25,16 +25,15 @@ function createWeeklyGalery({ results }) {
 }
 
 function createListHtml(resultArray) {
+    console.log(resultArray);
     return list = resultArray.reduce((markup, item) => markup + createWeeklyCard(item), "");
 }
 
 function createWeeklyCard(card) {
     return `<li class = "weeklytrends_gallery_item">
          <a href = "#">
-        <img class = "weeklytrends_gallery_image" src = "https://image.tmdb.org/t/p/w500/${card.poster_path}" alt = ""></img>
+        <img class = "weeklytrends_gallery_image" src = "https://image.tmdb.org/t/p/w500/${card.poster_path}" alt = "${card.title}"></img>
         </a>
         </li>`
 };
-
-
 getMovies();

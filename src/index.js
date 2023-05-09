@@ -1,4 +1,5 @@
 import './js/api';
+import './js/weeklytrends';
 import './js/library-fetch';
 // import './js/popular-films-fetch';
 import './js/team-modal';
@@ -17,6 +18,6 @@ import './js/film-card';
 import './js/trailer';
 import './js/catalog-modal-close';
 import './js/movie-found';
-import './js/weeklytrends';
+
 import './js/catalog';
 import './js/mobile-menu';
