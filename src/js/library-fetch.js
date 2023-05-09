@@ -63,8 +63,7 @@ async function displayMovies(movies) {
 
                 <div class="movie-item movie-card" id=${movie.id}>
 
-                <div class="movie-item movie-card library-item">
-                    <img
+                                  <img
                     src="https://image.tmdb.org/t/p/w500${movie.poster_path}"
                    alt="${movie.title}"/>
                     <div class="movie-details">
