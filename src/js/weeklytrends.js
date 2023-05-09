@@ -2,7 +2,7 @@ import axios from 'axios';
 const KEY = 'e1aeaa11db3ac22382c707ccfcac931e';
 
 const weeklyGallery = document.querySelector('.weeklytrends_gallery_list');
-
+let genre = '';
 if (weeklyGallery === null) {
   return;
 }
@@ -36,11 +36,37 @@ function createListHtml(resultArray) {
 
 }
 
+async function getDetails(id) {
+  try {
+    await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${KEY}`)
+  } catch (error) { 
+    console.log(error);
+  }
+}
+
 function createWeeklyCard(card) {
-  return `<li class = "weeklytrends_gallery_item">
-         <a href = "#">
-        <img class = "weeklytrends_gallery_image" src = "https://image.tmdb.org/t/p/w500/${card.poster_path}" alt = "${card.title}"></img>
-        </a>
-        </li>`
+  const genre = getDetails(card.id)
+ console.log(genre)
+  return `<div class="movie-item movie-card" id=${card.id}>
+                    <img
+                    src="https://image.tmdb.org/t/p/w200${card.poster_path}" 
+                    srcset="
+                        https://image.tmdb.org/t/p/w200${card.poster_path} 200w,
+                        https://image.tmdb.org/t/p/w300${card.poster_path} 300w,
+                        https://image.tmdb.org/t/p/w500${card.poster_path} 500w
+                    "
+                    sizes="(max-width: 768px) 200px, (max-width: 1280px) 300px, 500px"
+                    alt="${card.title}">
+                    <div class="movie-details">
+                    <h3>${card.title}</h3>
+                        <div class="movie-genres-and-rating">
+                        <div class="movie-info">
+                        <span class="movie-separator">|</span>
+                        <span class="movie-year">${card.release_date}</span>
+                    </div>
+                    </div>
+                    </div>
+                </div>
+                `;
 };
 getMovies();
