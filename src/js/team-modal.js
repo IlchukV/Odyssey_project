@@ -1,11 +1,13 @@
 import { refs } from './refs';
 
+const backdropTeam = document.querySelectorAll('.backdrop')[1];
+
 refs.open.addEventListener('click', onTeamModalClick);
 refs.close.addEventListener('click', onCloseModalClick);
-refs.backdrop.addEventListener('click', onBackdropClick);
+backdropTeam.addEventListener('click', onBackdropClick);
 
 function onTeamModalClick() {
-  refs.backdrop.classList.remove('visually-hidden');
+  backdropTeam.classList.add('is-open');
   document.body.classList.add('stop-scroll');
   window.addEventListener('keydown', onEscKeyDownModal);
 
@@ -13,9 +15,9 @@ function onTeamModalClick() {
 
 function onCloseModalClick() {
   window.removeEventListener('keydown', onEscKeyDownModal);
-  refs.backdrop.classList.add('visually-hidden');
+  backdropTeam.classList.remove('is-open');
   document.body.classList.remove('stop-scroll');
- 
+
 }
 
 function onEscKeyDownModal(event) {
@@ -25,7 +27,7 @@ function onEscKeyDownModal(event) {
 }
 
 function onBackdropClick(event) {
-  if (event.target === refs.backdrop) {
+  if (event.target === backdropTeam) {
     onCloseModalClick();
   }
 }
