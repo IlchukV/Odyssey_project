@@ -12,3 +12,5 @@ const themSwitcherFunction = () => {
 document
   .querySelector('.theme-switcher')
   .addEventListener('click', themSwitcherFunction);
+
+  
