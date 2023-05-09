@@ -17,6 +17,6 @@ import './js/film-card';
 import './js/trailer';
 import './js/catalog-modal-close';
 import './js/movie-found';
-
+import './js/weeklytrends';
 import './js/catalog';
 import './js/mobile-menu';

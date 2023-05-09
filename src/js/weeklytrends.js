@@ -24,8 +24,7 @@ function createWeeklyGalery({ results }) {
     weeklyGallery.innerHTML = createListHtml(randomResults);
 }
 
-function createListHtml(resultArray) { 
-    console.log(resultArray)
+function createListHtml(resultArray) {
     return list = resultArray.reduce((markup, item) => markup + createWeeklyCard(item), "");
 }
 
