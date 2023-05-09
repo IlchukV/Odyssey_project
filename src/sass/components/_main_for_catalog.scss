@@ -259,7 +259,9 @@ img {
 }
 
 .star-half {
-    background: $not-flooded-stars-catalog;
+    background: linear-gradient(138.87deg,
+            #f84119 10.08%,
+            rgba(248, 159, 25, 0.68) 94.03%);
     background-clip: text;
     color: transparent;
 }
