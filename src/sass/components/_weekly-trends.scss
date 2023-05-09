@@ -1,7 +1,7 @@
-
 // weeklyTreds
 .weeklytrends{
     display: block;
+    background-color: var(--mainDarkColor);
 }
   
 .weeklytrends_nav{
@@ -82,7 +82,3 @@
         height: 574px;
     }
 }
-
-@import './weekly-trends';
-@import './upcoming';
-
