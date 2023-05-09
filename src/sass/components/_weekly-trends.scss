@@ -1,24 +1,19 @@
 // weeklyTreds
 .weeklytrends{
     display: block;
-    background-color: var(--mainDarkColor);
 }
   
 .weeklytrends_nav{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 100%;
     margin-bottom: 24px;
     @include desktop {
         margin-bottom: 28px;
     }
 }
-
-
 .weeklytrends_title {
-    color: var(--weeklytrendsTxtColor);
-}
-.weeklytrends_title {
+    color: var(--title-color);
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
