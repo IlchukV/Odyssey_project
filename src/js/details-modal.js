@@ -13,6 +13,10 @@ const refs = {
   movieList: document.querySelector('.movies-list'),
 };
 
+if (refs.movieList === null) {
+  return;
+}
+
 let addBtnRef;
 let addBtnTextRef;
 let chosenMovie;
