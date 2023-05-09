@@ -49,7 +49,7 @@ fetchUpcomingMovieAndGenre()
     );
 
     getPositionOfRemindMeBtn().addEventListener('click', () => {
-      save('upcoming-film', JSON.stringify(movie));
+      save('my library', JSON.stringify(movie));
     });
 
     if (window.screen.width > 767) {

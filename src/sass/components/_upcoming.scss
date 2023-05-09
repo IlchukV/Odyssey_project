@@ -10,14 +10,21 @@
   }
 }
 
+.container--upcoming {
+  @media screen and (max-width: 767px) {
+    width: 320px;
+  }
+}
+
 .section-title {
   margin-bottom: 24px;
 
   font-size: 16px;
   font-weight: 500;
   line-height: 118.75%;
-
   /* 19/16 */
+
+  color: var(--title-color);
 
   @include tablet {
     font-size: 24px;
@@ -70,7 +77,7 @@
 
 .movie__title {
   margin-bottom: 20px;
-
+  color: var(--upcomind-film-df-color);
   font-size: 20px;
   font-weight: 500;
   line-height: 115%;

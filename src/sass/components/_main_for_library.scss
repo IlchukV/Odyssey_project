@@ -49,7 +49,6 @@
 }
 
 .hero-library__title {
-  color: $mainLightColor;
   font-size: 32px;
   line-height: 1.2;
   font-weight: 700;
@@ -66,7 +65,6 @@
   }
 }
 .hero-library__text {
-  color: #f8f8f8;
   font-size: 14px;
   line-height: 1.14;
   font-weight: 400;
@@ -78,27 +76,20 @@
 }
 
 .empty-library {
-  width: 100%;
-  max-width: 480px;
-  margin: 0 auto;
-  background-color: #111;
   padding-top: 44px;
   padding-bottom: 42px;
 
   @include tablet {
-    max-width: 768px;
     padding-top: 80px;
     padding-bottom: 60px;
   }
 
   @include desktop {
-    max-width: 1280px;
     padding-top: 160px;
     padding-bottom: 108px;
   }
 }
 .empty-library__text {
-  color: #f8f8f8;
   font-size: 20px;
   line-height: 1.4;
   font-weight: 400;
@@ -114,6 +105,11 @@
     line-height: 1.13;
   }
 }
+
+.library-container > .movies-list {
+  justify-content: flex-start;
+}
+
 .catalog-library__btn {
   display: block;
   width: 121px;
@@ -144,93 +140,105 @@
     line-height: 1.6;
   }
 }
-.catalog-library {
-  max-width: 480px;
-  margin: 0 auto;
-  padding: 40px 0px;
-  background-color: $button-black-text;
 
-  @include tablet {
-    max-width: 768px;
-  }
-
-  @include desktop {
-    max-width: 1280px;
-  }
+.library-item:nth-child(9) {
+  display: none;
 }
 
-// .catalog-library__list {
-//   margin: -8px;
-//   display: flex;
-//   flex-wrap: wrap;
-// }
+.load-more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  width: 130px;
+  height: 52px;
+  background: $submit-btn-catalog;
+  color: $button-black-text;
+  border-radius: 74px;
+  margin: 0 auto;
+}
+.loading {
+  display: none;
+  height: 32px;
+  width: 32px;
+  margin: 0 auto;
+  animation: loader1 3s linear infinite;
+}
+@keyframes loader1 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.loading span {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 32px;
+  width: 32px;
+  clip: rect(16px, 32px, 32px, 0);
+  animation: loader2 1.5s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+}
+@keyframes loader2 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.loading span::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 32px;
+  width: 32px;
+  border: 3px solid transparent;
+  border-top: 3px solid $mainLightColor;
+  border-radius: 50%;
+  animation: loader3 1.5s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+}
+@keyframes loader3 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.loading span::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 32px;
+  width: 32px;
+  border: 3px solid transparent;
+  border: 3px solid $mainLightColor;
+  border-radius: 50%;
+}
 
-// .catalog-library__item {
-//   position: relative;
-//   margin: 8px;
-//   width: 100%;
-//   height: auto;
+.catalog-library {
+  padding: 40px 0px;
+}
 
-//   &::after {
-//     content: '';
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     width: 100%;
-//     height: 100%;
-//     background-image: linear-gradient(
-//       180deg,
-//       rgba(0, 0, 0, 0) 63.48%,
-//       rgba(0, 0, 0, 0.9) 92.16%
-//     );
-//   }
-
-//   @include tablet {
-//     width: calc((100% - 6 * 8px) / 3);
-//   }
-// }
-
-// .catalog-library__img {
-//   width: 100%;
-//   height: auto;
-//   border-radius: 5px;
-
-//   @include desktop {
-//     height: 574px;
-//   }
-// }
-
-// .catalog-library__content {
-//   position: absolute;
-//   z-index: 1;
-//   left: 12px;
-//   bottom: 12px;
-//   display: flex;
-//   flex-direction: column;
-
-//   @include desktop {
-//     left: 20px;
-//     bottom: 20px;
-//   }
-// }
-
-// .catalog-library__title {
-//   font-size: 12px;
-//   line-height: 1.2;
-//   text-transform: uppercase;
-//   color: $mainLightColor;
-
-//   @include desktop {
-//     font-size: 20px;
-//   }
-// }
-
-// .catalog-library__description {
-//   font-size: 12px;
-//   line-height: 1.2;
-//   color: $pagination-number-color;
-
-//   @include desktop {
-//     font-size: 20px;
-//   }
-// }
+.load-more.show-loader {
+  width: 52px;
+  background-color: $mainLightColor;
+  text-indent: -9999px;
+}
+.load-more.show-loader .loading {
+  display: block;
+}

@@ -20,7 +20,7 @@
 
     @include desktop {
         width: 1000px;
-        height: 600px;
+        height: 700px;
     }
 }
 
@@ -79,7 +79,7 @@
     border-radius: 4px;
     margin-bottom: 5px;
     transition: transform 250ms;
-    
+
     @include tablet {
         margin: 7px 5px;
     }

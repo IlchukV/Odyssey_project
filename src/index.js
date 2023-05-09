@@ -1,4 +1,5 @@
 import './js/api';
+import './js/weeklytrends';
 import './js/library-fetch';
 // import './js/popular-films-fetch';
 import './js/team-modal';
