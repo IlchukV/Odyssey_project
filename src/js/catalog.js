@@ -3,7 +3,6 @@ if (!window.location.pathname.includes('catalog')) {
 }
 
 import { showModal } from './catalog-modal-close';
-// import { showFoundModal } from './movie-found';
 
 const apiKey = 'e1aeaa11db3ac22382c707ccfcac931e';
 const BASE_URL = 'https://api.themoviedb.org/3/';
@@ -12,6 +11,8 @@ let currentPage = 1;
 let totalPages = 0;
 let currentQuery = '';
 let isCatalogHomePage = true;
+
+let isSearchActive = false;
 
 const searchForm = document.getElementById('search-form');
 const searchInput = document.getElementById('search-input');
@@ -87,13 +88,8 @@ async function displayMovies(movies) {
   }
 
   moviesList.innerHTML = movieItems.join('');
-
-  // !! Заглушка при нажатии на карточку фильма он открывается
-  // document.querySelectorAll('.movie-card').forEach(card => {
-  //     card.addEventListener('click', () => {
-  //         showFoundModal('Наслаждайтесь просмотром');
-  //     });
-  // });
+  updatePaginationInfo();
+  assignPageButtonClickHandlers();
 }
 
 //* Рейтинг со звездами
@@ -115,6 +111,17 @@ export function createRatingStars(rating) {
 }
 
 // *Функция запрашивает популярные фильмы и отображает их, обновляя пагинацию.
+
+function assignPageButtonClickHandlers() {
+  const pageButtons = document.querySelectorAll('.page-number');
+  pageButtons.forEach((button) => {
+    button.addEventListener('click', (event) => {
+      const pageNumber = parseInt(event.target.textContent, 10);
+      goToPage(pageNumber);
+    });
+  });
+}
+
 async function getTrendingMovies() {
   try {
     const response = await fetch(
@@ -124,12 +131,14 @@ async function getTrendingMovies() {
     totalPages = data.total_pages;
     displayMovies(data.results);
     updatePaginationInfo();
+    isSearchActive = false;
   } catch (error) {
     console.error(error);
   }
 }
 
 // *Функция отправляет запрос к API для получения списка фильмов по запросу
+
 export async function searchMovies(query, closeModal) {
   const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}&page=${currentPage}`;
   const data = await fetchMovies(url);
@@ -143,6 +152,7 @@ export async function searchMovies(query, closeModal) {
     displayMovies(data.results);
     updatePaginationInfo();
     searchSuccess = true;
+    isSearchActive = true;
   }
 
   if (!searchSuccess && closeModal) {
@@ -235,6 +245,7 @@ function updatePaginationInfo() {
       ellipsis.textContent = '...';
       localPageIndicator.appendChild(ellipsis);
     }
+    assignPageButtonClickHandlers();
   }
 
   // *создает кнопки для каждой видимой страницы и добавляет их в пагинацию
@@ -298,6 +309,10 @@ if (nextPageBtn) {
 
 // * Функция, которая обновляет текущую страницу на переданную pageNumber, сохраняет значение в локальном
 // * хранилище и вызывает соответствующую функцию для отображения соответствующих фильмов.
+
+function modalIsOpen() {
+  return document.querySelector('.modal').style.display === 'block';
+}
 async function goToPage(pageNumber) {
   if (pageNumber < 1 || pageNumber > totalPages) {
     return;
@@ -305,29 +320,30 @@ async function goToPage(pageNumber) {
   currentPage = pageNumber;
   localStorage.setItem('currentPage', currentPage);
   localStorage.setItem('currentQuery', currentQuery);
-  if (currentQuery) {
-    if (searchFromModal) {
-      await searchMovies(currentQuery, true);
+
+  // проверяем, является ли поиск активным и если да, то проверяем, был ли запрос выполнен из модального окна
+  if (currentQuery && isSearchActive) {
+    if (modalIsOpen()) {
+      await searchMovies(currentQuery, closeModal);
     } else {
       await searchMovies(currentQuery);
     }
   } else {
     await getTrendingMovies();
   }
+
   updatePaginationInfo();
 }
 
-
 // * Функция, которая сбрасывает значения текущего запроса и страницы,
 // * а также очищает локальное хранилище и элемент ввода поискового запроса.
-function resetToFirstPage() {
-  currentPage = 1;
-  currentQuery = '';
-  localStorage.removeItem('currentQuery');
-  searchInput.value = '';
-  getTrendingMovies();
-}
-
+// function resetToFirstPage() {
+//   currentPage = 1;
+//   currentQuery = '';
+//   localStorage.removeItem('currentQuery');
+//   searchInput.value = '';
+//   getTrendingMovies();
+// }
 
 function showLoadingIndicator() {
   const loadingIndicator = document.getElementById('search-loading');
@@ -339,7 +355,7 @@ function hideLoadingIndicator() {
   loadingIndicator.style.display = 'none';
 }
 
-
 getTrendingMovies();
 
 
+// !!!!!!!!!!!!Привет

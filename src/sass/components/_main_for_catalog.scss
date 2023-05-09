@@ -12,19 +12,16 @@ img {
         justify-content: center;
         align-items: center;
 
-        // padding-top: 40px;
         padding-bottom: 16px;
         gap: 16px;
     }
 
     @include tablet {
-        // padding-top: 60px;
         padding-bottom: 36px;
         gap: 16px;
     }
 
     @include desktop {
-        // padding-top: 80px;
         padding-bottom: 48px;
     }
 
@@ -62,12 +59,13 @@ img {
     }
 
     &_submit-btn {
+
         @include mobile {
             width: 40px;
             height: 40px;
             background-color: $mainLightColor;
             border-radius: 100%;
-            cursor: pointer;
+            cursor: auto;
             background: $submit-btn-catalog;
             border: none;
         }
@@ -154,10 +152,12 @@ img {
         width: 100%;
         height: 100%;
         background: linear-gradient(180deg, rgba(0, 0, 0, 0) 63.48%, rgba(0, 0, 0, 0.9) 92.16%);
+        transition: transform 0.01s ease-in-out;
     }
 
     &:hover {
-        transform: translateY(-10px);
+        transform: rotateY(30deg);
+        transition: transform 0.5s ease-in-out;
     }
 }
 
@@ -191,7 +191,6 @@ img {
             line-height: 1.67;
             text-transform: uppercase;
             color: $mainLightColor;
-            // margin: 0;
         }
 
         @include tablet {
@@ -213,7 +212,6 @@ img {
         transform: translateY(110%);
     }
 }
-
 
 .movie-genres-and-rating {
     @include mobile {
@@ -342,9 +340,6 @@ img {
     align-items: center;
 }
 
-
-
-
 // ! Стили под заглушку при нажатии на карточку фильма "Наслаждайтесь просмотром"
 .found-modal {
     position: fixed;
@@ -383,11 +378,6 @@ img {
 
 // !! Стили модалки
 .input-search-input {
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-    // gap: 24px;
-    // margin-bottom: 120px;
 
     @include mobile {
         display: flex;
@@ -398,17 +388,10 @@ img {
     }
 
     @include tablet {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 16px;
         margin-bottom: 80px;
     }
 
     @include desktop {
-        display: flex;
-        justify-content: center;
-        align-items: center;
         gap: 24px;
         margin-bottom: 120px;
     }
@@ -427,6 +410,20 @@ img {
     background-color: white;
     padding: 20px;
     border-radius: 4px;
+    opacity: 0;
+    animation: fade-in 0.25s ease-in-out forwards;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
 }
 
 .modal-overlay {
@@ -440,6 +437,10 @@ img {
 
 .visible {
     display: block;
+}
+
+.modal.visible {
+    opacity: 1;
 }
 
 .search-modal {
