@@ -1,0 +1,37 @@
+<div class="backdrop js-backdrop-trailer visually-hidden">
+    <div class="player-container js-player"></div>
+    <div class="trailer  visually-hidden">
+        <button type="button" class="js-close-btn close-btn">
+            <svg class="close-icon">
+                <use href="./images/icons.svg#icon-close"></use>
+            </svg>
+        </button>
+        <div class="notification">
+            <p>OOPS...</p>
+            <p>We are very sorry!</p>
+            <p>But we couldn’t find the trailer.</p>
+        </div>
+        <div class="wrapper">
+            <picture>
+                <source
+                  srcset="./images/not-found-desk.png 1x, ./images/not-found-desk-2x.png 2x"
+                  media="(min-width: 1280px)"
+                  type="image/png"
+                />
+                <source
+                  srcset="./images/not-found-tab.png 1x, ./images/not-found-tab-2x.png 2x"
+                  media="(min-width: 768px)"
+                  type="image/png"
+                />
+                <source
+                  srcset="./images/not-found-mob.png 1x, ./images/not-found-mob-2x.png 2x"
+                  media="(max-width: 767px)"
+                  type="image/png"
+                />
+        
+                <img src="./images/not-found-mob.png" alt="film-watching-tools" />
+            </picture>
+        </div>
+       
+    </div>
+</div>

@@ -1,13 +1,18 @@
 import axios from 'axios';
+import { save } from './local-storage';
 import noPoster from '../images/noposter.jpg';
 
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = 'e1aeaa11db3ac22382c707ccfcac931e';
-const IMG_URL = 'https://image.tmdb.org/t/p/w500/';
+const IMG_URL = 'https://image.tmdb.org/t/p/original';
 
 const refs = {
   upcomingMoviesSection: document.querySelector('.container--upcoming'),
 };
+
+if (refs.upcomingMoviesSection === null) {
+  return;
+}
 
 async function fetchUpcomingMovieAndGenre() {
   const searchParams = new URLSearchParams({
@@ -43,21 +48,31 @@ fetchUpcomingMovieAndGenre()
       date
     );
 
+    getPositionOfRemindMeBtn().addEventListener('click', () => {
+      save('upcoming-film', JSON.stringify(movie));
+    });
+
     if (window.screen.width > 767) {
       const isBackdropPath = movie.backdrop_path
         ? movie.backdrop_path
         : noPoster;
 
       if (isBackdropPath === noPoster) {
-        getPositionOfPosterInDom().style.backgroundImage = `url('${isBackdropPath}')`;
+        getPositionOfPosterInDom().setAttribute('src', `${isBackdropPath}`);
 
         return;
       }
-      getPositionOfPosterInDom().style.backgroundImage = `url('${IMG_URL}${isBackdropPath}')`;
+      getPositionOfPosterInDom().setAttribute(
+        'src',
+        `${IMG_URL}${isBackdropPath}`
+      );
 
       return;
     }
-    getPositionOfPosterInDom().style.backgroundImage = `url('${IMG_URL}${movie.poster_path}')`;
+    getPositionOfPosterInDom().setAttribute(
+      'src',
+      `${IMG_URL}${movie.poster_path}`
+    );
   })
   .catch(console.log);
 
@@ -65,7 +80,7 @@ function UpcomingMovieMarkup(el, genres, date) {
   return `
                 <h2 class="section-title">UPCOMING THIS MONTH</h2>
                 <div class="movie">
-                    <div class="movie__picture"></div>
+                    <img class="movie__poster" src="" alt="">
                     <div class="movie__info">
                         <h3 class="movie__title">${el.original_title}</h3>
                         <ul class="movie__categories">
@@ -76,10 +91,10 @@ function UpcomingMovieMarkup(el, genres, date) {
                                 <li class="movie__item">
                                     Vote / Votes
                                     <span class="movie__item--group"
-                                        ><span class="movie__item--left">${
+                                        ><span class="movie__item--bulb movie__item--left">${
                                           el.vote_average
                                         }</span>/<span
-                                            class="movie__item--right"
+                                            class="movie__item--bulb movie__item--right"
                                             >${el.vote_count}</span
                                         ></span
                                     >
@@ -104,7 +119,7 @@ function UpcomingMovieMarkup(el, genres, date) {
                         ${el.overview}
                         </p>
                         <div class="movie__btn">
-                            <button class="movie__btn-fill">Remind me</button>
+                            <button class="movie__btn-fill" data-action="remind" type="button">Remind me</button>
                         </div>
                     </div>
                 </div>
@@ -112,7 +127,7 @@ function UpcomingMovieMarkup(el, genres, date) {
 }
 
 function getPositionOfPosterInDom() {
-  return document.querySelector('.movie__picture');
+  return document.querySelector('.movie__poster');
 }
 
 function getGenres(movie, genres) {
@@ -127,4 +142,8 @@ function dateFormate(movie) {
   date.reverse();
   date = date.join('.');
   return date;
+}
+
+function getPositionOfRemindMeBtn() {
+  return document.querySelector('button[data-action="remind"]');
 }
