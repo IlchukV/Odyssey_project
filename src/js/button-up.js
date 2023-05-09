@@ -16,5 +16,6 @@ function scrollFunction() {
 
 // функція повернення на початок сторінки
 function topFunction() {
+  document.body.scrollTop = 0; // For Safari
   document.documentElement.scrollTo({ top: 0, behavior: 'smooth' }); // Для Chrome, Firefox, IE и Opera
 }

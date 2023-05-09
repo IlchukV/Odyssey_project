@@ -10,7 +10,15 @@ const catalogLibrary = document.querySelector('.catalog-library');
 const movieList = document.querySelector('.movies-list');
 let movieCardRef;
 
+const loadMoreBtn = document.querySelector('.load-more');
+
+
 const addedMovies = load('my library');
+
+if (emptyLibrary === null) {
+  return;
+}
+
 checkLibrary();
 
 function checkLibrary() {
@@ -52,7 +60,10 @@ async function displayMovies(movies) {
       const ratingStars = createRatingStars(details.vote_average);
 
       const movieItem = `
+
                 <div class="movie-item movie-card" id=${movie.id}>
+
+                <div class="movie-item movie-card library-item">
                     <img
                     src="https://image.tmdb.org/t/p/w500${movie.poster_path}"
                    alt="${movie.title}"/>
@@ -77,3 +88,20 @@ async function displayMovies(movies) {
     return error;
   }
 }
+
+loadMoreBtn.classList.remove('visually-hidden');
+let currentItems = 9;
+loadMoreBtn.addEventListener('click', e => {
+  const elementList = [...document.querySelectorAll('.movie-item')];
+  e.target.classList.add('show-loader');
+
+  for (let i = currentItems; i < currentItems + 9; i++) {
+    setTimeout(function () {
+      e.target.classList.remove('show-loader');
+      if (elementList[i]) {
+        elementList[i].style.display = 'flex';
+      }
+    }, 3000);
+  }
+  currentItems += 9;
+});

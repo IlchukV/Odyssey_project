@@ -1,25 +1,28 @@
 .up {
-    display: block;
-    font-size: 30px;
-    fill: #fff;
+    display: none;
+    font-size: 35px;
+    // color: #0a0a0a;
     position: fixed;
-    bottom: 1.25rem;
-    right: 1.875rem;
+    bottom: 25px;
+    right: 25px;
     z-index: 99;
-    width: 70px;
-    height: 70px;
-    border: none;
-    border-radius: 50%;
-    background-color: $buttonBgAccent;
-    cursor: pointer;
+    border: 3px solid rgba(0, 0, 0, 0.5);
+    border-radius: 45%;
+    background-color: $accentColor;
+    // background-color: transparent;
+    // cursor: pointer;
     transition: all 0.2s ease-in-out;
-
 }
+
+// .scroll-up-icon{
+//     fill: $mainLightColor;
+// }
 
 .up:hover {
     scale: 1.1;
-    background-color: $informationColor;
+    color: $button-text;
     box-shadow: -2px -2px 5px #fff, 5px 5px 5px #babecc;
+    background-color: $scrollbar-and-circle-on-switcher-color;
 }
 
 .up::after {
@@ -28,5 +31,5 @@
     top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: var(--body-and-modals-bgc);
+    color: $mainLightColor;
 }
