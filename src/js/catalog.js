@@ -1,11 +1,13 @@
-// !! Пробная заглушка для поиска фильма
-import { showModal } from './catalog-modal-close';
+if (!window.location.pathname.includes('catalog')) {
+  return
+}
 
-// !! Пробная заглушка выбора фильма при нажатии на карточку
+import { showModal } from './catalog-modal-close';
 import { showFoundModal } from './movie-found';
 
 const apiKey = 'e1aeaa11db3ac22382c707ccfcac931e';
 const BASE_URL = 'https://api.themoviedb.org/3/';
+
 let currentPage = 1;
 let totalPages = 0;
 let currentQuery = '';
@@ -125,15 +127,6 @@ async function getTrendingMovies() {
 }
 
 // *Функция отправляет запрос к API для получения списка фильмов по запросу
-// ! Работающая функция без ошибки, что фильм не найден
-// async function searchMovies(query) {
-//     const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}&page=${currentPage}`;
-//     const data = await fetchMovies(url);
-//     totalPages = data.total_pages;
-//     displayMovies(data.results);
-//     updatePaginationInfo();
-//     searchInput.value = '';
-// }
 
 // !! Заглушка для поиска фильма
 async function searchMovies(query) {
@@ -143,13 +136,13 @@ async function searchMovies(query) {
 
   // проверка количества найденных фильмов
   if (data.results.length === 0) {
-    showModal('Фильм не найден по названию.');
+    showModal(' ');
   } else {
     displayMovies(data.results);
     updatePaginationInfo();
   }
 
-  searchInput.value = '';
+  searchInput.value = query;
 }
 
 // *Слушатель событий для формы поиска
