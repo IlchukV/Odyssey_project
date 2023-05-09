@@ -3,7 +3,9 @@ if (!window.location.pathname.includes('catalog')) {
 }
 
 import { showModal } from './catalog-modal-close';
-import { showFoundModal } from './movie-found';
+// import { showFoundModal } from './movie-found';
+
+
 
 const apiKey = 'e1aeaa11db3ac22382c707ccfcac931e';
 const BASE_URL = 'https://api.themoviedb.org/3/';
@@ -128,33 +130,41 @@ async function getTrendingMovies() {
 
 // *Функция отправляет запрос к API для получения списка фильмов по запросу
 
-// !! Заглушка для поиска фильма
-async function searchMovies(query) {
+export async function searchMovies(query, closeModal) {
   const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}&page=${currentPage}`;
   const data = await fetchMovies(url);
   totalPages = data.total_pages;
 
-  // проверка количества найденных фильмов
+  let searchSuccess = false;
+
   if (data.results.length === 0) {
     showModal(' ');
   } else {
     displayMovies(data.results);
     updatePaginationInfo();
+    searchSuccess = true;
   }
 
-  searchInput.value = query;
+  if (!searchSuccess && closeModal) {
+    searchInput.value = "";
+  }
+
+  return searchSuccess;
 }
 
 // *Слушатель событий для формы поиска
+
 searchForm.addEventListener('submit', async event => {
   event.preventDefault();
   const query = searchInput.value.trim();
   if (!query) {
     return;
   }
+  showLoadingIndicator(); // Показать индикатор загрузки
   currentPage = 1;
   currentQuery = query;
   await searchMovies(query);
+  hideLoadingIndicator(); // Скрыть индикатор загрузки
 });
 
 // * Функция формирует и отображает элементы пагинации на странице. Включает кнопки "назад",
@@ -314,5 +324,17 @@ function resetToFirstPage() {
   searchInput.value = '';
   getTrendingMovies();
 }
+
+
+function showLoadingIndicator() {
+  const loadingIndicator = document.getElementById('search-loading');
+  loadingIndicator.style.display = 'block';
+}
+
+function hideLoadingIndicator() {
+  const loadingIndicator = document.getElementById('search-loading');
+  loadingIndicator.style.display = 'none';
+}
+
 
 getTrendingMovies();

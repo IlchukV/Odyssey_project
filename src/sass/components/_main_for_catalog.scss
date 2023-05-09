@@ -342,6 +342,13 @@ img {
 }
 
 // !! Стили под заглушку поиска фильма
+.input-search-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
 .modal,
 .modal-overlay {
     display: none;

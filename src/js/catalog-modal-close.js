@@ -1,60 +1,39 @@
-// ! Пробная заглушка для поиска фильма
+
+import { searchMovies } from './catalog';
 
 export function showModal() {
-  const modal = document.createElement("div");
-  modal.classList.add("search-modal");
-
-  const modalContent = `
-    <div class="search-modal-content">
-      <span class="search-modal-close">&times;</span>
-      <p class="search-modal-content__text-modal">OOPS...<br>We are very sorry!<br>We don’t have any results due to your search.</p>
-    </div>
-  `;
-
-  modal.innerHTML = modalContent;
+  const modal = document.querySelector(".search-modal");
 
   const modalCloseButton = modal.querySelector(".search-modal-close");
   modalCloseButton.addEventListener("click", () => {
-    modal.remove(); // закрываем модальное окно
-    document.body.style.overflow = ""; // возвращаем прокрутку страницы
+    modal.style.display = "none";
+    document.body.style.overflow = "";
+    // Очистка поля ввода на главной странице
+    const mainSearchInput = document.querySelector("#main-search-input");
+    if (mainSearchInput) {
+      mainSearchInput.value = "";
+    }
   });
 
-  document.body.appendChild(modal);
-  document.body.style.overflow = "hidden"; // отключаем прокрутку страницы
+  const searchForm = modal.querySelector("#search-form");
+  searchForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const searchInput = modal.querySelector("#search-input");
+    const searchTerm = searchInput.value.trim();
+
+    if (searchTerm) {
+      const searchSuccess = await searchMovies(searchTerm, true);
+      if (searchSuccess) {
+        modal.style.display = "none";
+        document.body.style.overflow = "";
+      } else {
+        searchInput.value = "";
+      }
+    }
+  });
+
+  modal.style.display = "block";
+  document.body.style.overflow = "hidden";
 
   return modal;
 }
-
-
-
-// async function searchMoviesForModal(query, modal) {
-//   if (!query) {
-//     console.log("Пустой поисковый запрос");
-//     return;
-//   }
-
-//   try {
-//     const response = await fetch(
-//       `${BASE_URL}search/movie?api_key=${apiKey}&language=ru-RU&query=${encodeURIComponent(
-//         query
-//       )}&page=1&include_adult=false`
-//     );
-//     const data = await response.json();
-//     const movies = data.results;
-
-//     console.log(`Поисковый запрос: ${query}`);
-
-//     if (movies.length > 0) {
-//       modal.remove();
-//       // Здесь вы можете обновить список фильмов на странице
-//       // Например: updateMovieList(movies);
-//     } else {
-//       const inputField = modal.querySelector("#search-modal-input");
-//       inputField.value = "";
-//       inputField.placeholder = "Поиск не дал результатов. Попробуйте снова.";
-//     }
-//   } catch (error) {
-//     console.error("Ошибка при выполнении поиска фильмов:", error);
-//   }
-// }
-
