@@ -1,0 +1,32 @@
+.theme-switcher {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+    background-color: $header-focus;
+    border-radius: 50px;
+    width: 56px;
+    height: 28px;
+}
+
+.theme-switcher::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(var(--before-postionX), var(--before-postionY));
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: $switcher-color;
+    z-index: 0;
+    transition: transform $duration $timingFunction;
+}
+
+.switch-icon {
+    padding: 5px;
+    cursor: pointer;
+    z-index: 1;
+    fill: $buttonBgColor;
+
+}
