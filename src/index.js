@@ -12,6 +12,7 @@ import './js/refs';
 import './js/details-modal';
 import './js/local-storage';
 import './js/hero';
+import './js/weeklytrends'
 import './js/upcoming';
 import './js/film-card';
 import './js/trailer';
