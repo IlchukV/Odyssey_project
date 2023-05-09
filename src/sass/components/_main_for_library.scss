@@ -49,7 +49,6 @@
 }
 
 .hero-library__title {
-  color: $mainLightColor;
   font-size: 32px;
   line-height: 1.2;
   font-weight: 700;
@@ -66,7 +65,6 @@
   }
 }
 .hero-library__text {
-  color: #f8f8f8;
   font-size: 14px;
   line-height: 1.14;
   font-weight: 400;
@@ -78,27 +76,20 @@
 }
 
 .empty-library {
-  width: 100%;
-  max-width: 480px;
-  margin: 0 auto;
-  background-color: #111;
   padding-top: 44px;
   padding-bottom: 42px;
 
   @include tablet {
-    max-width: 768px;
     padding-top: 80px;
     padding-bottom: 60px;
   }
 
   @include desktop {
-    max-width: 1280px;
     padding-top: 160px;
     padding-bottom: 108px;
   }
 }
 .empty-library__text {
-  color: #f8f8f8;
   font-size: 20px;
   line-height: 1.4;
   font-weight: 400;
@@ -145,16 +136,5 @@
   }
 }
 .catalog-library {
-  max-width: 480px;
-  margin: 0 auto;
   padding: 40px 0px;
-  background-color: $button-black-text;
-
-  @include tablet {
-    max-width: 768px;
-  }
-
-  @include desktop {
-    max-width: 1280px;
-  }
 }

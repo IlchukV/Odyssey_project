@@ -8,7 +8,7 @@ const emptyLibrary = document.querySelector('.empty-library');
 const catalogLibrary = document.querySelector('.catalog-library');
 const movieList = document.querySelector('.movies-list');
 
-const addedMovies = load('upcoming-film');
+const addedMovies = load('my library');
 checkLibrary();
 
 function checkLibrary() {
@@ -45,7 +45,6 @@ async function displayMovies(movies) {
       const releaseDate = new Date(details.release_date).getFullYear();
 
       const ratingStars = createRatingStars(details.vote_average);
-      console.log(ratingStars);
 
       const movieItem = `
                 <div class="movie-item movie-card">
