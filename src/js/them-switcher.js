@@ -1,5 +1,9 @@
+const rootElement = document.documentElement;
+if (localStorage.getItem('theme')) {
+  rootElement.setAttribute('data-theme', localStorage.getItem('theme'));
+}
+
 const themSwitcherFunction = () => {
-  const rootElement = document.documentElement;
   let dataAtribute = rootElement.getAttribute('data-theme');
   let newTheme = dataAtribute === 'light' ? 'dark' : 'light';
   rootElement.setAttribute('data-theme', newTheme);
