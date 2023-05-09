@@ -20,6 +20,9 @@ const prevPageBtn = document.getElementById('prev-page');
 const nextPageBtn = document.getElementById('next-page');
 const localPageIndicator = document.querySelector('.page-indicator');
 
+if (searchForm === null) {
+  return;
+}
 // * Отправляет асинхронный запрос по переданному URL и возвращает полученный ответ в виде JSON-объекта.
 
 async function fetchMovies(url) {
