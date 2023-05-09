@@ -10,6 +10,11 @@ const movieList = document.querySelector('.movies-list');
 const loadMoreBtn = document.querySelector('.load-more');
 
 const addedMovies = load('my library');
+
+if (emptyLibrary === null) {
+  return;
+}
+
 checkLibrary();
 
 function checkLibrary() {
