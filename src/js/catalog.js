@@ -18,6 +18,9 @@ const prevPageBtn = document.getElementById('prev-page');
 const nextPageBtn = document.getElementById('next-page');
 const localPageIndicator = document.querySelector('.page-indicator');
 
+if (searchForm === null) {
+  return;
+}
 // * Отправляет асинхронный запрос по переданному URL и возвращает полученный ответ в виде JSON-объекта.
 
 async function fetchMovies(url) {
@@ -50,8 +53,8 @@ async function displayMovies(movies) {
     const genres = details.genres.map(genre => genre.name).join(', ');
     const releaseDate = new Date(details.release_date).getFullYear();
 
-        const ratingStars = createRatingStars(details.vote_average);
-        const movieItem = `
+    const ratingStars = createRatingStars(details.vote_average);
+    const movieItem = `
                 <div class="movie-item movie-card" id=${movie.id}>
                     <img
                     src="https://image.tmdb.org/t/p/w200${movie.poster_path}" 
@@ -83,12 +86,12 @@ async function displayMovies(movies) {
 
   moviesList.innerHTML = movieItems.join('');
 
-    // !! Заглушка при нажатии на карточку фильма он открывается
-    // document.querySelectorAll('.movie-card').forEach(card => {
-    //     card.addEventListener('click', () => {
-    //         showFoundModal('Наслаждайтесь просмотром');
-    //     });
-    // });
+  // !! Заглушка при нажатии на карточку фильма он открывается
+  // document.querySelectorAll('.movie-card').forEach(card => {
+  //     card.addEventListener('click', () => {
+  //         showFoundModal('Наслаждайтесь просмотром');
+  //     });
+  // });
 }
 
 //* Рейтинг со звездами

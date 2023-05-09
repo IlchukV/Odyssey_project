@@ -1,5 +1,6 @@
 import Notiflix from 'notiflix';
 import axios from 'axios';
+import { onWatchTrailerBtnClick } from '../js/trailer';
 
 const API_KEY = 'e1aeaa11db3ac22382c707ccfcac931e';
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -8,13 +9,18 @@ const IMG_URL = 'https://image.tmdb.org/t/p/original';
 const refs = {
   modalWindow: document.querySelector('.modal-body'),
   modalCloseBtn: document.querySelector('[data-modal-movie-close]'),
-  backdrop: document.querySelector('.backdrop'),
+  backdrop: document.querySelector('.modal-movie-backdrop'),
   movieList: document.querySelector('.movies-list'),
 };
+
+if (refs.movieList === null) {
+  return;
+}
 
 let addBtnRef;
 let addBtnTextRef;
 let chosenMovie;
+let trailerBtnRef;
 
 refs.movieList.addEventListener('click', handleMovieClick);
 refs.modalCloseBtn.addEventListener('click', handleModalClose);
@@ -30,8 +36,11 @@ function handleMovieClick(e) {
     window.addEventListener('keydown', handleCloseModalEsc);
     checkLocalStorage(data);
     chosenMovie = data;
+    trailerBtnRef = document.querySelector('.modal-movie-trailer');
+    trailerBtnRef.addEventListener('click', onWatchTrailerBtnClick);
   });
 }
+export { handleMovieClick };
 
 function handleCloseModalEsc(evt) {
   if (evt.code === 'Escape') {
@@ -45,7 +54,7 @@ function handleModalClose() {
 }
 
 function closeModalBackdropClick(evt) {
-  if (evt.target.classList.contains('modal-overlay-movie')) {
+  if (evt.target.classList.contains('modal-movie-backdrop')) {
     refs.backdrop.classList.add('is-hidden');
   }
   return;
@@ -86,7 +95,6 @@ function makeRemoveFromMyLibrary() {
 }
 
 function makeAddToMyLibrary() {
-  console.log(addBtnRef);
   addBtnTextRef.innerHTML = 'Add to my library';
   addBtnRef.setAttribute('data-action', 'add');
 }
@@ -137,6 +145,7 @@ const markupMovieCard = ({
   popularity,
   genres,
   overview,
+  id,
 }) => {
   const normalizedVote = vote_average.toFixed(1);
   const normalizedPopularity = popularity.toFixed(1);
@@ -144,8 +153,20 @@ const markupMovieCard = ({
 
   return `
     <div class='movie-wraper'>
-        <div>
+        <div class='movie-picture-wrapper'>
             <img  class='movie-poster' src=${IMG_URL}${poster_path} alt='movie poster'/>
+            <button class="modal-movie-trailer" type="button" data-id=${id}>
+              <svg
+                height="110"
+                width="150"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 461.001 461.001"
+                xml:space="preserve">
+              <path
+              style="fill: #f61c0d"
+              d="M365.257 67.393H95.744C42.866 67.393 0 110.259 0 163.137v134.728c0 52.878 42.866 95.744 95.744 95.744h269.513c52.878 0 95.744-42.866 95.744-95.744V163.137c0-52.878-42.866-95.744-95.744-95.744zm-64.751 169.663-126.06 60.123c-3.359 1.602-7.239-.847-7.239-4.568V168.607c0-3.774 3.982-6.22 7.348-4.514l126.06 63.881c3.748 1.899 3.683 7.274-.109 9.082z"/>
+              </svg>
+            </button>
         </div>
         <div class='modal-movie-info'>
             <h2 class='movie-title'>${title}</h2>
