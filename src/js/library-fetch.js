@@ -1,5 +1,6 @@
 import { load } from './local-storage';
 import { createRatingStars } from './catalog';
+import { handleMovieClick } from '../js/details-modal';
 
 const apiKey = 'e1aeaa11db3ac22382c707ccfcac931e';
 const BASE_URL = 'https://api.themoviedb.org/3/';
@@ -7,7 +8,10 @@ const BASE_URL = 'https://api.themoviedb.org/3/';
 const emptyLibrary = document.querySelector('.empty-library');
 const catalogLibrary = document.querySelector('.catalog-library');
 const movieList = document.querySelector('.movies-list');
+let movieCardRef;
+
 const loadMoreBtn = document.querySelector('.load-more');
+
 
 const addedMovies = load('my library');
 
@@ -23,9 +27,12 @@ function checkLibrary() {
       catalogLibrary.classList.add('visually-hidden');
       emptyLibrary.classList.remove('visually-hidden');
     } else {
+      movieCardRef = document.querySelector('.movie-card');
       displayMovies(addedMovies);
       emptyLibrary.classList.add('visually-hidden');
       catalogLibrary.classList.remove('visually-hidden');
+       movieCardRef.addEventListener('click', handleMovieClick);
+
     }
   } catch (error) {
     return error;
@@ -53,6 +60,9 @@ async function displayMovies(movies) {
       const ratingStars = createRatingStars(details.vote_average);
 
       const movieItem = `
+
+                <div class="movie-item movie-card" id=${movie.id}>
+
                 <div class="movie-item movie-card library-item">
                     <img
                     src="https://image.tmdb.org/t/p/w500${movie.poster_path}"
