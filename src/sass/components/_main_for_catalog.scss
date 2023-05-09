@@ -249,14 +249,19 @@ img {
 .star-full {
     @include mobile {
         width: 18px;
-        background: $flooded-stars-catalog;
+        background: linear-gradient(141.22deg,
+                #f84119 9.4%,
+                rgba(248, 157, 25, 0.8876) 89.96%,
+                rgba(248, 159, 25, 0.68) 91.91%);
         background-clip: text;
         color: transparent;
     }
 }
 
 .star-half {
-    background: $not-flooded-stars-catalog;
+    background: linear-gradient(138.87deg,
+            #f84119 10.08%,
+            rgba(248, 159, 25, 0.68) 94.03%);
     background-clip: text;
     color: transparent;
 }
