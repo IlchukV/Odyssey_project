@@ -318,6 +318,7 @@ img {
 }
 
 .arrow-button {
+    cursor: pointer;
     background: $background-catalog;
 
     &.disabled {

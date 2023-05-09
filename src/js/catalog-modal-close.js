@@ -32,8 +32,15 @@ export function showModal() {
     }
   });
 
+  const searchInput = modal.querySelector("#search-input");
+  searchInput.value = ''; // Очистить поле ввода при открытии модального окна
+
   modal.style.display = "block";
   document.body.style.overflow = "hidden";
 
   return modal;
 }
+
+
+
+
