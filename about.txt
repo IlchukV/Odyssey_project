@@ -1,0 +1,6 @@
+This favicon was generated using the following font:
+
+- Font Title: Ropa Sans
+- Font Author: Copyright 2013 The Ropa Sans Project Authors (nikoltchev@lettersoup.de), with Reserved Font Name "Ropa Sans".
+- Font Source: http://fonts.gstatic.com/s/ropasans/v15/EYqxmaNOzLlWtsZSScyKWjloU5KP2g.ttf
+- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))
