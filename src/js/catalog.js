@@ -113,7 +113,7 @@ function assignPageButtonClickHandlers() {
   const pageButtons = document.querySelectorAll('.page-number');
   pageButtons.forEach((button) => {
     button.addEventListener('click', (event) => {
-      const pageNumber = parseInt(event.target.textContent, 10);
+      const pageNumber = parseInt(event.target.textContent, 20);
       goToPage(pageNumber);
     });
   });
@@ -355,6 +355,10 @@ async function goToPage(pageNumber) {
   if (pageNumber < 1 || pageNumber > totalPages) {
     return;
   }
+  // window.scrollTo({
+  //   top: 0,
+  //   behavior: "smooth"
+  // });
   currentPage = pageNumber;
   localStorage.setItem('currentPage', currentPage);
   localStorage.setItem('currentQuery', currentQuery);

@@ -2,6 +2,10 @@ img {
     width: 100%;
 }
 
+.search-on-homepage {
+    cursor: pointer;
+}
+
 .section-catalog {
     background-color: var(--background-catalog);
 }
@@ -81,19 +85,9 @@ img {
         height: 40px;
         background-color: $mainLightColor;
         border-radius: 100%;
-        cursor: auto;
+        cursor: pointer;
         background: $submit-btn-catalog;
         border: none;
-
-        // @include mobile {
-        //     width: 40px;
-        //     height: 40px;
-        //     background-color: $mainLightColor;
-        //     border-radius: 100%;
-        //     cursor: auto;
-        //     background: $submit-btn-catalog;
-        //     border: none;
-        // }
 
         @include tablet {
             width: 44px;
@@ -124,6 +118,10 @@ img {
             height: 20px;
         }
     }
+}
+
+.search-block_submit-btn:hover {
+    background: linear-gradient(141.22deg, rgba(246, 178, 7, 0.612) 9.4%, rgba(248, 65, 25, 0.5) 91.91%);
 }
 
 .movies-list {
@@ -171,9 +169,6 @@ img {
 
     &:nth-of-type(n+22) {
         display: none;
-        // display: flex;
-        // flex-wrap: wrap;
-        // justify-content: flex-start;
     }
 
     &::before {
@@ -206,19 +201,6 @@ img {
     display: block;
     flex-wrap: wrap;
     justify-content: space-between;
-
-    // @include mobile {
-    //     position: absolute;
-    //     bottom: 0;
-    //     left: 0;
-    //     width: 100%;
-    //     padding: 0 12px 12px 12px;
-    //     box-sizing: border-box;
-    //     color: $mainLightColor;
-    //     display: block;
-    //     flex-wrap: wrap;
-    //     justify-content: space-between;
-    // }
 
     @include tablet {
         padding: 0 0 12px 12px;
@@ -317,13 +299,6 @@ img {
     margin-top: 20px;
     padding-bottom: 12px;
 
-    // @include mobile {
-    //     display: flex;
-    //     justify-content: center;
-    //     align-items: center;
-    //     margin-top: 20px;
-    //     padding-bottom: 12px;
-    // }
 
     @include tablet {
         margin-top: 44px;
@@ -347,14 +322,6 @@ img {
     border-radius: 50%;
 
     @include mobile {
-        // display: inline-block;
-        // width: 24px;
-        // height: 24px;
-        // line-height: 32px;
-        // text-align: center;
-        // margin: 0 4px;
-        // cursor: pointer;
-        // border-radius: 50%;
         border: 1px solid $button-black-text;
         background: transparent;
         color: $pagination-number-color;
@@ -371,6 +338,10 @@ img {
         background: $pagination-color;
         color: $mainLightColor;
     }
+}
+
+.page-number:hover {
+    border-color: var(--footerBgColor);
 }
 
 .arrow-button {
@@ -398,41 +369,41 @@ img {
     align-items: center;
 }
 
-// ! Стили под заглушку при нажатии на карточку фильма "Наслаждайтесь просмотром"
-.found-modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 80%;
-    max-width: 400px;
-    display: none;
-}
+// // ! Стили под заглушку при нажатии на карточку фильма "Наслаждайтесь просмотром"
+// .found-modal {
+//     position: fixed;
+//     top: 50%;
+//     left: 50%;
+//     transform: translate(-50%, -50%);
+//     background-color: white;
+//     border-radius: 5px;
+//     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+//     padding: 20px;
+//     width: 80%;
+//     max-width: 400px;
+//     display: none;
+// }
 
-.found-modal-content {
-    text-align: center;
-    font-size: 1.2rem;
-    font-weight: 500;
-    color: #333;
-}
+// .found-modal-content {
+//     text-align: center;
+//     font-size: 1.2rem;
+//     font-weight: 500;
+//     color: #333;
+// }
 
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: none;
-}
+// .modal-overlay {
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     background-color: rgba(0, 0, 0, 0.5);
+//     display: none;
+// }
 
-.visible {
-    display: block;
-}
+// .visible {
+//     display: block;
+// }
 
 // !! Стили модалки
 .input-search-input {
@@ -526,6 +497,7 @@ img {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        box-shadow: 1px 1px 14px 4px #ff6b086b;
     }
 
     @include tablet {
