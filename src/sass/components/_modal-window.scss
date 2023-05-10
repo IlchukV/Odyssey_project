@@ -38,6 +38,13 @@
   box-shadow: 1px 1px 14px 4px rgba(4, 3, 3, 0.42);
   border-radius: 20px;
 
+  // :root[data-theme='light'] {
+  //   background: var(--body-and-modals-bgc);
+  // }
+  // :root[data-theme='dark'] {
+  //   background: var(--body-and-modals-bgc);
+  // }
+
   @include tablet {
     width: 704px;
     height: 488px;
@@ -48,6 +55,14 @@
     width: 846px;
     height: 598px;
     padding: 60px;
+
+    // :root[data-theme='light'] {
+    //   background: var(--body-and-modals-bgc);
+    // }
+    // :root[data-theme='dark'] {
+    //   background-color: black;
+    //   color: white;
+    // }
   }
 }
 
@@ -349,4 +364,38 @@
 }
 .no-scroll {
   overflow: hidden;
+}
+
+:root[data-theme='light'] .modal-window {
+  background: var(--body-and-modals-bgc);
+}
+
+:root[data-theme='light'] .movie-title,
+:root[data-theme='light'] .movie-characteristics-names,
+:root[data-theme='light'] .movie-characteristics-results,
+:root[data-theme='light'] .movie-about,
+:root[data-theme='light'] .textBtn {
+  color: var(--upcoming-film-categories-check-color);
+}
+
+:root[data-theme='light'] .movie-description {
+  color: var(--logo-name-color);
+}
+
+:root[data-theme='light'] .modal-close-btn {
+  background-color: transparent;
+}
+:root[data-theme='light'] .modal-close-btn > svg path {
+  stroke: var(--logo-name-color);
+}
+:root[data-theme='light'] .modal-close-btn:hover > svg path {
+  stroke: var(--team-sm-bnt-accent);
+}
+
+:root[data-theme='light'] .addBtn {
+  fill: var(--body-and-modals-bgc);
+}
+
+:root[data-theme='light'] .textBtn:hover {
+  color: var(--team-sm-bnt-accent);
 }
