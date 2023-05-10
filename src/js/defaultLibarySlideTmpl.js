@@ -1,9 +1,9 @@
-import desktopUrl from '../images/Hero-Lib_desktop.png';
-import desktop2xUrl from '../images/Hero-Lib_desktop@2x.png';
-import tabletUrl from '../images/Hero-Lib_tablet.png';
-import tablet2xUrl from '../images/Hero-Lib_tablet@2x.png';
-import mobileUrl from '../images/Hero-Lib_mobile.png';
-import mobile2xUrl from '../images/Hero-Lib_mobile@2x.png';
+import desktopUrl from '../images/hero/Hero-Lib_desktop.png';
+import desktop2xUrl from '../images/hero/Hero-Lib_desktop@2x.png';
+import tabletUrl from '../images/hero/Hero-Lib_tablet.png';
+import tablet2xUrl from '../images/hero/Hero-Lib_tablet@2x.png';
+import mobileUrl from '../images/hero/Hero-Lib_mobile.png';
+import mobile2xUrl from '../images/hero/Hero-Lib_mobile@2x.png';
 
 export default `<div class="hero__card swiper-slide">
           <div class="hero__info hero__info--library">
