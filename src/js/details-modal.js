@@ -22,6 +22,8 @@ let addBtnTextRef;
 let chosenMovie;
 let trailerBtnRef;
 
+const bodyRef = document.querySelector('body');
+
 refs.movieList.addEventListener('click', handleMovieClick);
 refs.modalCloseBtn.addEventListener('click', handleModalClose);
 refs.backdrop.addEventListener('click', closeModalBackdropClick);
@@ -29,6 +31,7 @@ refs.backdrop.addEventListener('click', closeModalBackdropClick);
 function handleMovieClick(e) {
   fetchMovieInfo(e.target.id).then(data => {
     refs.modalWindow.innerHTML = markupMovieCard(data);
+    bodyRef.classList.add('no-scroll');
     refs.backdrop.classList.remove('is-hidden');
     addBtnRef = document.querySelector('.addBtn');
     addBtnTextRef = document.querySelector('.textBtn');
@@ -50,6 +53,7 @@ function handleCloseModalEsc(evt) {
 }
 function handleModalClose() {
   refs.backdrop.classList.add('is-hidden');
+  bodyRef.classList.remove('no-scroll');
   window.removeEventListener('keydown', handleCloseModalEsc);
 }
 
