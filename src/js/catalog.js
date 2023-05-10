@@ -166,6 +166,7 @@ export async function searchMovies(query, closeModal) {
 }
 
 // *Слушатель событий для формы поиска
+
 searchForm.addEventListener('submit', async event => {
   event.preventDefault();
   const query = searchInput.value.trim();
@@ -176,8 +177,17 @@ searchForm.addEventListener('submit', async event => {
   currentPage = 1;
   currentQuery = query;
   await searchMovies(query);
-  searchInput.value = ''; // Очистить поле ввода
   hideLoadingIndicator(); // Скрыть индикатор загрузки
+});
+
+searchInput.addEventListener('input', async () => {
+  if (!searchInput.value.trim()) {
+    showLoadingIndicator(); // Показать индикатор загрузки
+    currentPage = 1;
+    currentQuery = '';
+    await getTrendingMovies();
+    hideLoadingIndicator(); // Скрыть индикатор загрузки
+  }
 });
 
 // * Функция формирует и отображает элементы пагинации на странице. Включает кнопки "назад",
