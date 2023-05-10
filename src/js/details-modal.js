@@ -109,7 +109,6 @@ function handleBtnClick(e) {
   if (dataActionStatus === 'remove') {
     removeFromMyLibrary(chosenMovie);
     makeAddToMyLibrary();
-    
     Notiflix.Notify.success('Movie is removed from your library');
   }
 }
