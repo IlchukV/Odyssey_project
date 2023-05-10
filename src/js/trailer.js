@@ -23,6 +23,7 @@ function onWatchTrailerBtnClick(evt) {
         makeMarkupIframe(filmKey);        
     })  
 }
+export {onWatchTrailerBtnClick, refs};
 
 function makeMarkupIframe(key) {
     refs.playerBox.innerHTML = `<iframe id="ytplayer" type="text/html" width="720" height="405"
@@ -60,5 +61,3 @@ function onBackdropClick(evt) {
   document.removeEventListener('keydown', onEscCloseTraier);
   refs.playerBox.classList.remove('visually-hidden');
 }
-
-export {onWatchTrailerBtnClick};

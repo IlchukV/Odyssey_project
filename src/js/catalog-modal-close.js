@@ -1,25 +1,91 @@
-// ! Пробная заглушка для поиска фильма
 
-export function showModal(message) {
-    const modalContent = document.querySelector('.modal-content');
-    modalContent.textContent = message;
-    modal.classList.add('visible');
-    modalOverlay.classList.add('visible');
+import { searchMovies } from './catalog';
+
+export function showModal() {
+  const modal = document.querySelector(".search-modal");
+
+  const modalSearchInput = modal.querySelector(".search-block_search-input");
+  const modalSearchButton = modal.querySelector(".search-block_submit-btn");
+
+  modalSearchInput.disabled = true;
+  modalSearchButton.style.pointerEvents = "none";
+
+  const modalCloseButton = modal.querySelector(".search-modal-close");
+  modalCloseButton.addEventListener("click", () => {
+    modal.style.display = "none";
+    document.body.style.overflow = "";
+    const mainSearchInput = document.querySelector("#main-search-input");
+    if (mainSearchInput) {
+      mainSearchInput.value = "";
+    }
+
+    modalSearchInput.disabled = false;
+    modalSearchButton.style.pointerEvents = "";
+  });
+
+  const searchForm = modal.querySelector("#search-form");
+  searchForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const searchTerm = modalSearchInput.value.trim();
+
+    if (searchTerm) {
+      searchFromModal = true; // Установите переменную в true перед выполнением поиска
+      const searchSuccess = await searchMovies(searchTerm, true);
+      if (searchSuccess) {
+        modal.style.display = "none";
+        document.body.style.overflow = "";
+      } else {
+        modalSearchInput.value = "";
+      }
+    }
+  });
+
+  modalSearchInput.value = '';
+
+  modal.style.display = "block";
+  document.body.style.overflow = "hidden";
+
+  return modal;
 }
 
-const modal = document.createElement('div');
-modal.className = 'modal';
 
-const modalContent = document.createElement('div');
-modalContent.className = 'modal-content';
-modal.appendChild(modalContent);
+// export function showModal() {
+//   const modal = document.querySelector(".search-modal");
 
-const modalOverlay = document.createElement('div');
-modalOverlay.className = 'modal-overlay';
-modalOverlay.addEventListener('click', () => {
-    modal.classList.remove('visible');
-    modalOverlay.classList.remove('visible');
-});
+//   const modalCloseButton = modal.querySelector(".search-modal-close");
+//   modalCloseButton.addEventListener("click", () => {
+//     modal.style.display = "none";
+//     document.body.style.overflow = "";
+//     // Очистка поля ввода на главной странице
+//     const mainSearchInput = document.querySelector("#main-search-input");
+//     if (mainSearchInput) {
+//       mainSearchInput.value = "";
+//     }
+//   });
 
-document.body.appendChild(modal);
-document.body.appendChild(modalOverlay);
+//   const searchForm = modal.querySelector("#search-form");
+//   searchForm.addEventListener("submit", async (event) => {
+//     event.preventDefault();
+//     const searchInput = modal.querySelector("#search-input");
+//     const searchTerm = searchInput.value.trim();
+
+//     if (searchTerm) {
+//       searchFromModal = true; // Установите переменную в true перед выполнением поиска
+//       const searchSuccess = await searchMovies(searchTerm, true);
+//       if (searchSuccess) {
+//         modal.style.display = "none";
+//         document.body.style.overflow = "";
+//       } else {
+//         searchInput.value = "";
+//       }
+//     }
+//   });
+
+//   const searchInput = modal.querySelector("#search-input");
+//   searchInput.value = ''; // Очистить поле ввода при открытии модального окна
+
+//   modal.style.display = "block";
+//   document.body.style.overflow = "hidden";
+
+//   return modal;
+// }

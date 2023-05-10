@@ -1,15 +1,37 @@
-<section class="section-catalog">
+<section class="section-catalog section">
     <div class="container">
         <div class="search-block">
             <form id="search-form" class="search-block_search-form">
-                <input type="text" id="search-input" placeholder="Search" class="search-block_search-input">
+                <input type="text" id="search-input" placeholder="Search" class="search-block_search-input"
+                    autocomplete="off">
                 <button type="submit" class="search-block_submit-btn">
                     <object type="image/svg+xml" data="/src/images/icon-catalog.svg" id="icon-search-3" width="20"
                         height="20" class="search-block_submit-button-svg"></object>
                 </button>
             </form>
         </div>
+        <div id="search-loading" class="search-loading"></div>
         <div class="movies-list"></div>
         <div class="page-indicator"></div>
+
+        <div class="search-modal" style="display: none;">
+            <div class="search-modal-content">
+                <span class="search-modal-close">&times;</span>
+                <div class="input-search-input">
+                    <form id="search-form" class="search-block_search-form">
+                        <input type="text" id="search-input" placeholder="Search" class="search-block_search-input"
+                            autocomplete="off">
+                        <button type="submit" class="search-block_submit-btn">
+                            <object type="image/svg+xml" data="/src/images/icon-catalog.svg" id="icon-search-3"
+                                width="20" height="20" class="search-block_submit-button-svg"></object>
+                        </button>
+                    </form>
+                </div>
+                <p class="search-modal-content_text-modal">OOPS...<br>We are very sorry!<br>We don’t have any results
+                    due
+                    to
+                    your search.</p>
+            </div>
+        </div>
     </div>
 </section>

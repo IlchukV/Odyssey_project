@@ -3,7 +3,7 @@ img {
 }
 
 .section-catalog {
-    background-color: $background-catalog;
+    background-color: var(--background-catalog);
 }
 
 .search-block {
@@ -12,19 +12,16 @@ img {
         justify-content: center;
         align-items: center;
 
-        padding-top: 40px;
         padding-bottom: 16px;
         gap: 16px;
     }
 
     @include tablet {
-        padding-top: 60px;
         padding-bottom: 36px;
         gap: 16px;
     }
 
     @include desktop {
-        padding-top: 80px;
         padding-bottom: 48px;
     }
 
@@ -62,12 +59,13 @@ img {
     }
 
     &_submit-btn {
+
         @include mobile {
             width: 40px;
             height: 40px;
             background-color: $mainLightColor;
             border-radius: 100%;
-            cursor: pointer;
+            cursor: auto;
             background: $submit-btn-catalog;
             border: none;
         }
@@ -121,8 +119,6 @@ img {
 .movie-item {
     @include mobile {
         position: relative;
-        margin-left: 8px;
-        margin-right: 8px;
         margin-bottom: 16px;
         transition: transform 0.3s ease;
         border-radius: 5px;
@@ -156,10 +152,12 @@ img {
         width: 100%;
         height: 100%;
         background: linear-gradient(180deg, rgba(0, 0, 0, 0) 63.48%, rgba(0, 0, 0, 0.9) 92.16%);
+        transition: transform 0.01s ease-in-out;
     }
 
     &:hover {
-        transform: translateY(-10px);
+        transform: rotateY(30deg);
+        transition: transform 0.5s ease-in-out;
     }
 }
 
@@ -193,7 +191,6 @@ img {
             line-height: 1.67;
             text-transform: uppercase;
             color: $mainLightColor;
-            // margin: 0;
         }
 
         @include tablet {
@@ -215,7 +212,6 @@ img {
         transform: translateY(110%);
     }
 }
-
 
 .movie-genres-and-rating {
     @include mobile {
@@ -253,17 +249,22 @@ img {
 .star-full {
     @include mobile {
         width: 18px;
-        background: $flooded-stars-catalog;
-        background-clip: text;
-        color: transparent;
+        // background: linear-gradient(141.22deg,
+        //         #f84119 9.4%,
+        //         rgba(248, 157, 25, 0.8876) 89.96%,
+        //         rgba(248, 159, 25, 0.68) 91.91%);
+        // background-clip: text;
+        color: darkorange;
     }
 }
 
-.star-half {
-    background: $not-flooded-stars-catalog;
-    background-clip: text;
-    color: transparent;
-}
+// .star-half {
+//     background: linear-gradient(138.87deg,
+//             #f84119 10.08%,
+//             rgba(248, 159, 25, 0.68) 94.03%);
+//     background-clip: text;
+//     color: transparent;
+// }
 
 @media screen and (max-width: 767.97px) {
     .movie-rating {
@@ -302,9 +303,10 @@ img {
         margin: 0 4px;
         cursor: pointer;
         border-radius: 50%;
-        border: 1px solid $pagination-number-color;
+        border: 1px solid $button-black-text;
         background: transparent;
         color: $pagination-number-color;
+        color: var(--mainDarkColor);
     }
 
     @include tablet {
@@ -320,7 +322,8 @@ img {
 }
 
 .arrow-button {
-    background: $background-catalog;
+    cursor: pointer;
+    background: var(--background-catalog);
 
     &.disabled {
         opacity: 0.5;
@@ -341,35 +344,6 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-// !! Стили под заглушку поиска фильма
-.modal,
-.modal-overlay {
-    display: none;
-}
-
-.modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-    border-radius: 4px;
-}
-
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.visible {
-    display: block;
 }
 
 // ! Стили под заглушку при нажатии на карточку фильма "Наслаждайтесь просмотром"
@@ -406,4 +380,189 @@ img {
 
 .visible {
     display: block;
+}
+
+// !! Стили модалки
+.input-search-input {
+
+    @include mobile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 48px;
+    }
+
+    @include tablet {
+        margin-bottom: 80px;
+    }
+
+    @include desktop {
+        gap: 24px;
+        margin-bottom: 120px;
+    }
+}
+
+.modal,
+.modal-overlay {
+    display: none;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 4px;
+    opacity: 0;
+    animation: fade-in 0.25s ease-in-out forwards;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.visible {
+    display: block;
+}
+
+.modal.visible {
+    opacity: 1;
+}
+
+.search-modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.search-modal-content {
+
+    @include mobile {
+        width: 480px;
+        height: 300px;
+        background-color: var(--background-catalog);
+        margin: 15% auto;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    @include tablet {
+        width: 550px;
+        height: 500px;
+        font-size: 24px;
+        line-height: 1.33;
+    }
+
+    @include desktop {
+        height: 500px;
+        width: 650px;
+        font-size: 32px;
+        line-height: 1.12;
+    }
+
+    &_text-modal {
+
+        @include mobile {
+            font-size: 20px;
+            line-height: 1.4;
+            font-family: Roboto;
+            font-weight: 400;
+            text-align: center;
+            color: var(--backgroundPage);
+            color: var(--title-color);
+
+        }
+
+        @include tablet {
+            font-size: 24px;
+            line-height: 1.33;
+        }
+
+        @include desktop {
+            font-size: 32px;
+            line-height: 1.12;
+        }
+    }
+}
+
+
+.search-modal-close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+
+.search-modal-close:hover,
+.search-modal-close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#search-loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+    display: none;
+}
+
+#search-loading::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    margin-top: -30px;
+    margin-left: -30px;
+    border-radius: 50%;
+    border: 6px solid #f3f3f3;
+    border-top-color: #3498db;
+    animation: spin 5s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
 }

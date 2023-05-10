@@ -15,28 +15,33 @@ $button-text: #111111;
 $button-gradient: linear-gradient(141.22deg, #FFC226 9.4%, #F84119 91.91%);
 $button-text-hover:#F87719;
 $library-title: #ffffff;
-$library-description: #F8F8F8;
+$library-description: #f8f8f8;
 $scrollbar-and-circle-on-switcher-color: #932727;
+$switcher-color: #ffffff;
 $reg-form-title-color: #212121;
+$seeAllBtnColor: #F87719;
 $pagination-background: #f7f7f7;
-$background-catalog: #282828;
+
 $bg-library-gradient: linear-gradient(
   83.48deg,
   #0e0e0e 25.78%,
   rgba(14, 14, 14, 0) 60.07%
 );
 
+
 $flooded-stars-catalog: linear-gradient(
   141.22deg,
   #f84119 9.4%,
   rgba(248, 157, 25, 0.8876) 89.96%,
-  rgba(248, 159, 25, 0.68) 91.91%);
-  
+  rgba(248, 159, 25, 0.68) 91.91%
+);
+
 $not-flooded-stars-catalog: linear-gradient(
   138.87deg,
   #f84119 10.08%,
   rgba(248, 159, 25, 0.68) 94.03%
 );
+
 
 $pagination-number-color: #b7b7b7;
 $pagination-color: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
@@ -49,18 +54,18 @@ $film-release-date-color: #f87719;
   --before-postionY: 2px;
   --mainDarkColor: #000000;
   --footerBgColor: #f5f5f5;
-  --footerTxtColor: #b7b7b7;
+  --footerTxtColor: #595959;
   --backgroundPage: transparent;
-
+  --logo-name-color: #282828;
   --swipe-bullet-color: #595959;
   --swipe-bullet-color-active: #282828;
   --swipe-nav: #595959;
-  --swipe-nav-disabled: #B7B7B7;
-  --title-color:#111111;
-  --description-color:#282828;
-
+  --swipe-nav-disabled: #595959;
+  --title-color: #111111;
+  --description-color: #282828;
+  --header-nav-color: #595959;
   --team-sm-bnt-accent: #ff6b01;
-
+  --background-catalog: #ffffff;
   --upcoming-film-categories-check-color: #111111;
   --upcomind-film-df-color: #282828;
   --upcoming-film-bulb-color: #f8f8f8;
@@ -68,25 +73,26 @@ $film-release-date-color: #f87719;
 }
 
 :root[data-theme='dark'] {
-  --body-and-modals-bgc: #212121;
+  --body-and-modals-bgc: #000000;
   --before-postionX: 30px;
   --before-postionY: 2px;
-  --mainDarkColor: #ffffff;
-  --footerBgColor: #212121;
-  --footerTxtColor: #ffffff;
+  --footerBgColor: #000000;
+  --footerTxtColor: #B7B7B7;
   --backgroundPage: #ffffff;
-
-  --swipe-bullet-color: #B7B7B7;
+  --logo-name-color: #ffffff;
+  --swipe-bullet-color: #b7b7b7;
   --swipe-bullet-color-active: #ffffff;
-  --swipe-nav-disabled: #B7B7B7;
-  --swipe-nav: #F8F8F8;
-  --title-color: #FFFFFF;
-  --description-color: #F8F8F8;
-
+  --swipe-nav-disabled: #b7b7b7;
+  --swipe-nav: #B7B7B7;
+  --title-color: #ffffff;
+  --description-color: #f8f8f8;
+  --header-nav-color: #B7B7B7;
   --team-sm-bnt-accent: #932727;
-
+  --background-catalog: #000000;
   --upcoming-film-categories-check-color: #b7b7b7;
   --upcomind-film-df-color: #ffffff;
   --upcoming-film-bulb-color: #ffffff;
   --upcoming-film-descr-text-color: #f8f8f8;
+  --mainDarkColor: #ffffff;
 }
+

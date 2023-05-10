@@ -1,0 +1,86 @@
+// weeklyTreds
+.weeklytrends {
+  display: block;
+}
+
+.weeklytrends_nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 24px;
+  @include desktop {
+    margin-bottom: 28px;
+  }
+}
+.weeklytrends_title {
+  color: var(--title-color);
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18.75px;
+  text-transform: uppercase;
+  @include tablet {
+    font-size: 24px;
+    line-height: 28.13px;
+  }
+
+  @include desktop {
+    font-size: 28px;
+    line-height: 32.81px;
+  }
+}
+
+.weeklytrends_seeAll_link {
+  color: $seeAllBtnColor;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18.75px;
+  @include tablet {
+    font-size: 24px;
+    line-height: 28.13px;
+  }
+
+  @include desktop {
+    font-size: 28px;
+    line-height: 32.81px;
+  }
+}
+
+.weeklytrends_gallery_list {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.weeklytrends_gallery_item:nth-last-child(-n + 2) {
+  display: none;
+  @include tablet {
+    display: block;
+  }
+}
+
+.weeklytrends_gallery_image {
+  width: 280px;
+  height: 406px;
+
+  @include tablet {
+    width: 224px;
+    height: 325px;
+  }
+
+  @include desktop {
+    width: 395px;
+    height: 574px;
+  }
+}
+
+.weekly-trends--flex {
+  flex-direction: column;
+}
+
+div.weekly-trends--start {
+  justify-content: flex-start;
+}

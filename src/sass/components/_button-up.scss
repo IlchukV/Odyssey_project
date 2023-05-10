@@ -1,0 +1,35 @@
+.up {
+    display: none;
+    font-size: 35px;
+    // color: #0a0a0a;
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 99;
+    border: 3px solid rgba(0, 0, 0, 0.5);
+    border-radius: 45%;
+    background-color: $accentColor;
+    // background-color: transparent;
+    // cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+// .scroll-up-icon{
+//     fill: $mainLightColor;
+// }
+
+.up:hover {
+    scale: 1.1;
+    color: $button-text;
+    box-shadow: -2px -2px 5px #fff, 5px 5px 5px #babecc;
+    background-color: $scrollbar-and-circle-on-switcher-color;
+}
+
+.up::after {
+    content: '\2191';
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: $mainLightColor;
+}
