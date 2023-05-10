@@ -306,6 +306,7 @@ img {
         border: 1px solid $pagination-number-color;
         background: transparent;
         color: $pagination-number-color;
+        color: var(--footerTxtColor);
     }
 
     @include tablet {
@@ -317,6 +318,7 @@ img {
     &.active {
         background: $pagination-color;
         color: $mainLightColor;
+        // color: var(--footerTxtColor);
     }
 }
 
@@ -497,7 +499,9 @@ img {
             font-family: Roboto;
             font-weight: 400;
             text-align: center;
-            color: $mainLightColor;
+            color: var(--backgroundPage);
+            color: var(--title-color);
+
         }
 
         @include tablet {
