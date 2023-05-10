@@ -112,6 +112,7 @@
 .mobile-menu.is-open {
   opacity: 1;
   transform: translateX(0%);
+  
 }
 
 .menu-logo {
@@ -140,6 +141,7 @@
   top: 0;
   right: 0;
   position: fixed;
+  z-index: 10;
   background-color: rgba(255, 255, 255, 0.2);
   opacity: 0;
   pointer-events: none;
