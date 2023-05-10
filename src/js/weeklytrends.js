@@ -40,15 +40,20 @@ function createListHtml(resultArray) {
 
 async function getDetails(id) {
   try {
-    await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${KEY}`);
-  } catch (error) {
+
+    const details = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${KEY}`)
+    console.log(details)
+  } catch (error) { 
+
     console.log(error);
   }
 }
 
 function createWeeklyCard(card) {
-  const genre = getDetails(card.id);
-  console.log(genre);
+
+  const genre = getDetails(card.id)
+ console.log(card)
+
   return `<div class="movie-item movie-card" id=${card.id}>
                     <img
                     src="https://image.tmdb.org/t/p/w200${card.poster_path}" 
