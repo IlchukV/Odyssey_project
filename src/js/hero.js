@@ -42,7 +42,7 @@ const page = window.location.pathname;
 
     const watchTrailerBtns = await document.querySelectorAll('.js-hero-trailer');
     if(watchTrailerBtns) {
-      for(btn of watchTrailerBtns){
+      for(let btn of watchTrailerBtns){
         btn.addEventListener('click', onWatchTrailerBtnClick);
       }
     }
