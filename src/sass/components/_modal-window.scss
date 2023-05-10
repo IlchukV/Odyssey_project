@@ -21,6 +21,7 @@
   left: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.42);
+  overflow: scroll;
 }
 
 .modal-window {
@@ -32,7 +33,6 @@
   transform: translate(-50%, -50%);
   width: 280px;
   height: 847px;
-  overflow-y: scroll;
   padding: 52px 16px;
   background: $button-black-text;
   box-shadow: 1px 1px 14px 4px rgba(4, 3, 3, 0.42);
@@ -346,4 +346,7 @@
 }
 .textBtn:hover {
   color: orange;
+}
+.no-scroll {
+  overflow: hidden;
 }
