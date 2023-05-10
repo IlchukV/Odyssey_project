@@ -13,6 +13,7 @@ let currentQuery = '';
 let isCatalogHomePage = true;
 
 let isSearchActive = false;
+let observer = null; // Будем инициализировать позже
 
 const searchForm = document.getElementById('search-form');
 const searchInput = document.getElementById('search-input');
@@ -130,6 +131,7 @@ async function getTrendingMovies() {
     const data = await response.json();
     totalPages = data.total_pages;
     displayMovies(data.results);
+    observeLastMovieElement();
     updatePaginationInfo();
     isSearchActive = false;
   } catch (error) {
@@ -150,6 +152,7 @@ export async function searchMovies(query, closeModal) {
     showModal(' ');
   } else {
     displayMovies(data.results);
+    observeLastMovieElement();
     updatePaginationInfo();
     searchSuccess = true;
     isSearchActive = true;
@@ -354,8 +357,36 @@ function hideLoadingIndicator() {
   const loadingIndicator = document.getElementById('search-loading');
   loadingIndicator.style.display = 'none';
 }
+function initLazyLoading() {
+  observer = new IntersectionObserver(async (entries) => {
+    entries.forEach(async (entry) => {
+      if (entry.isIntersecting) {
+        currentPage++;
+        if (currentQuery) {
+          await searchMovies(currentQuery);
+        } else {
+          await getTrendingMovies();
+        }
+        updatePaginationInfo();
+        observer.unobserve(entry.target);
+        observeLastMovieElement();
+      }
+    });
+  }, { threshold: 1 });
+
+  observeLastMovieElement();
+}
+function observeLastMovieElement() {
+  let lastMovieElement = document.querySelector('.movie:last-child');
+  if (lastMovieElement) {
+    observer.observe(lastMovieElement);
+  }
+}
 
 getTrendingMovies();
-
+initLazyLoading();
 
 // !!!!!!!!!!!!Привет
+
+
+////!/!!!!!!!!!!!!!**/*/
