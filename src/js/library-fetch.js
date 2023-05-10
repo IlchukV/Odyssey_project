@@ -7,11 +7,10 @@ const BASE_URL = 'https://api.themoviedb.org/3/';
 
 const emptyLibrary = document.querySelector('.empty-library');
 const catalogLibrary = document.querySelector('.catalog-library');
-const movieList = document.querySelector('.movies-list');
+const catalogLibraryList = document.querySelector('.catalog-library__list');
 let movieCardRef;
 
 const loadMoreBtn = document.querySelector('.load-more');
-
 
 const addedMovies = load('my library');
 
@@ -31,8 +30,7 @@ function checkLibrary() {
       displayMovies(addedMovies);
       emptyLibrary.classList.add('visually-hidden');
       catalogLibrary.classList.remove('visually-hidden');
-       movieCardRef.addEventListener('click', handleMovieClick);
-
+      movieCardRef.addEventListener('click', handleMovieClick);
     }
   } catch (error) {
     return error;
@@ -61,18 +59,17 @@ async function displayMovies(movies) {
 
       const movieItem = `
 
-                <div class="movie-item movie-card" id=${movie.id}>
+                <div class="catalog-library__item movie-item movie-card" id=${movie.id}>
 
                                   <img
                     src="https://image.tmdb.org/t/p/w500${movie.poster_path}"
                    alt="${movie.title}"/>
-                    <div class="movie-details">
+                    <div class="catalog-library__details">
                         <h3>${movie.title}</h3>
-                        <div class="movie-genres-and-rating">
-                          <div class="movie-info">
-                            <span class="movie-genre">${genres}</span>
-                            <span class="movie-separator">|</span>
-                            <span class="movie-year">${releaseDate}</span>
+                        <div class="catalog-library__info-wrap">
+                          <div class="catalog-library__info">
+                            <span class="catalog-library__text">${genres}</span>
+                            <span class="catalog-library__text">${releaseDate}</span>
                          </div>
                          <div class="movie-rating">${ratingStars}
                          </div>
@@ -82,7 +79,7 @@ async function displayMovies(movies) {
                 `;
       movieItems.push(movieItem);
     }
-    movieList.innerHTML = movieItems.join('');
+    catalogLibraryList.innerHTML = movieItems.join('');
   } catch (error) {
     return error;
   }
