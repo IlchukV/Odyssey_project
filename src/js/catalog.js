@@ -148,6 +148,7 @@ export async function searchMovies(query, closeModal) {
 
   if (data.results.length === 0) {
     showModal(' ');
+    searchInput.value = "";
   } else {
     displayMovies(data.results);
     observeLastMovieElement();
@@ -187,6 +188,31 @@ searchInput.addEventListener('input', async () => {
     hideLoadingIndicator();
   }
 });
+
+// * Автоматически (через 5 секунд) выполняет поиск фильмов, когда пользователь вводит текст в поле поиска
+function debounce(func, timeout = 500) {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => { func.apply(this, args); }, timeout);
+  };
+}
+
+const searchInputEl = document.querySelector('#search-input');
+
+const executeSearch = debounce(function () {
+  const query = searchInputEl.value.trim();
+  if (query.length >= 3) {
+    // Обновлять текущий запрос поиска
+    currentQuery = query;
+    // Сбросить текущую страницу
+    currentPage = 1;
+    // Вызов функции, которая выполняет поиск
+    searchMovies(query, false);
+  }
+});
+
+searchInputEl.addEventListener('input', executeSearch);
 
 // * Функция формирует и отображает элементы пагинации на странице. Включает кнопки "назад",
 // *"вперед" и номера страниц для перемещения между страницами.
@@ -346,16 +372,6 @@ async function goToPage(pageNumber) {
 
   updatePaginationInfo();
 }
-
-// * Функция, которая сбрасывает значения текущего запроса и страницы,
-// * а также очищает локальное хранилище и элемент ввода поискового запроса.
-// function resetToFirstPage() {
-//   currentPage = 1;
-//   currentQuery = '';
-//   localStorage.removeItem('currentQuery');
-//   searchInput.value = '';
-//   getTrendingMovies();
-// }
 
 // ** Функция, отображающая индикатор загрузки
 function showLoadingIndicator() {

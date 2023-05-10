@@ -136,7 +136,7 @@ img {
     @include tablet {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: space-around;
     }
 
 }
@@ -165,12 +165,15 @@ img {
         border-radius: 5px;
     }
 
-    &:nth-child(10) {
+    &:nth-child(21) {
         margin-bottom: 0;
     }
 
-    &:nth-of-type(n+11) {
+    &:nth-of-type(n+22) {
         display: none;
+        // display: flex;
+        // flex-wrap: wrap;
+        // justify-content: flex-start;
     }
 
     &::before {
