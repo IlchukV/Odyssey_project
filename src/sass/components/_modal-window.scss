@@ -70,6 +70,14 @@
     top: 40px;
     right: 40px;
   }
+  > svg path {
+    stroke: white;
+    fill: white;
+  }
+}
+.modal-close-btn:hover > svg path {
+  fill: orange;
+  stroke: orange;
 }
 
 .movie-wraper {
@@ -251,7 +259,6 @@
     width: 160px;
   }
 }
-
 .movie-about {
   font-style: normal;
   font-weight: 500;
@@ -319,6 +326,7 @@
     height: 40px;
   }
 }
+
 .textBtn {
   position: absolute;
   padding-left: 10px;
@@ -331,4 +339,7 @@
   width: inherit;
   margin: 0 auto;
   color: $mainLightColor;
+}
+.textBtn:hover {
+  color: orange;
 }
