@@ -31,23 +31,29 @@ function createWeeklyGalery({ results }) {
 }
 
 function createListHtml(resultArray) {
-    console.log(resultArray);
-    return list = resultArray.reduce((markup, item) => markup + createWeeklyCard(item), "");
-
+  console.log(resultArray);
+  return (list = resultArray.reduce(
+    (markup, item) => markup + createWeeklyCard(item),
+    ''
+  ));
 }
 
 async function getDetails(id) {
   try {
+
     const details = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${KEY}`)
     console.log(details)
   } catch (error) { 
+
     console.log(error);
   }
 }
 
 function createWeeklyCard(card) {
+
   const genre = getDetails(card.id)
  console.log(card)
+
   return `<div class="movie-item movie-card" id=${card.id}>
                     <img
                     src="https://image.tmdb.org/t/p/w200${card.poster_path}" 
@@ -58,9 +64,9 @@ function createWeeklyCard(card) {
                     "
                     sizes="(max-width: 768px) 200px, (max-width: 1280px) 300px, 500px"
                     alt="${card.title}">
-                    <div class="movie-details">
+                    <div class="movie-details weekly-trends--flex">
                     <h3>${card.title}</h3>
-                        <div class="movie-genres-and-rating">
+                        <div class="movie-genres-and-rating weekly-trends--start">
                         <div class="movie-info">
                         <span class="movie-separator">|</span>
                         <span class="movie-year">${card.release_date}</span>
@@ -69,5 +75,5 @@ function createWeeklyCard(card) {
                     </div>
                 </div>
                 `;
-};
+}
 getMovies();

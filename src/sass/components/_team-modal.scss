@@ -1,140 +1,143 @@
 .team-modal {
-    background-color: var(--footerBgColor);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 280px;
-    height: 540px;
-    padding: 48px 20px;
-    overflow: auto;
-    text-align: center;
-    border-radius: 5px;
+  background-color: var(--footerBgColor);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 280px;
+  height: 540px;
+  padding: 48px 20px;
+  overflow: auto;
+  text-align: center;
+  border-radius: 5px;
 
-    @include tablet {
-        padding: 30px 66px;
-        width: 704px;
-        height: 522px;
-        text-align: start;
-    }
+  @include tablet {
+    padding: 30px 66px;
+    width: 704px;
+    height: 522px;
+    text-align: start;
+  }
 
-    @include desktop {
-        width: 1000px;
-        height: 600px;
-    }
+  @include desktop {
+    width: 1000px;
+    height: 700px;
+  }
 }
 
 .team-modal__btn--close {
-    z-index: 2;
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
+  z-index: 2;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 
-    &:hover,
-    &:focus {
-        fill: $buttonBgAccent;
-    }
+  &:hover,
+  &:focus {
+    fill: $buttonBgAccent;
+  }
 }
 
 .team-modal__header {
-    text-align: center;
-    margin-bottom: 10px;
-    text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 10px;
+  text-transform: uppercase;
 
-    @include tablet {
-        padding-bottom: 15px;
-    }
+  @include tablet {
+    padding-bottom: 15px;
+  }
 
-    color:$accentColor ;
+  color: $accentColor;
 }
 
 .team-modal-list {
-    @include tablet {
-        display: flex;
-        flex-wrap: wrap;
-    }
+  @include tablet {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
 }
 
 .team-modal__item {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 
-    @include tablet {
-        display: flex;
-        flex-direction: column;
-        width: calc(100% / 4);
-        align-items: center;
-    }
+  @include tablet {
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    width: calc(100% / 4);
+    align-items: center;
+  }
 
-    @include desktop {
-        width: calc(100% / 6)
-    }
+  @include desktop {
+    width: calc(100% / 6);
+  }
 }
 
 .team-modal__img {
-    display: block;
-    margin: 0 auto;
-    border-radius: 4px;
-    margin-bottom: 5px;
-    transition: transform 250ms;
-    
-    @include tablet {
-        margin: 7px 5px;
-    }
+  display: block;
+  margin: 0 auto;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  transition: transform 250ms;
 
-    @include desktop {}
+  @include tablet {
+    margin: 7px 5px;
+  }
 
-    &:hover {
-        transform: scale(1.05);
-        filter: drop-shadow(0px 4px 4px rgba(255, 143, 68, 0.863));
-    }
+  @include desktop {
+  }
+
+  &:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0px 4px 4px rgba(255, 143, 68, 0.863));
+  }
 }
 
 .team-modal-sm {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 7px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 7px;
 
-    & li:first-child {
-        margin-right: 7px;
-    }
+  & li:first-child {
+    margin-right: 7px;
+  }
 
-    @include tablet {
-        margin-bottom: 0;
-        margin-top: 15px;
-    }
+  @include tablet {
+    margin-bottom: 0;
+    margin-top: 15px;
+  }
 }
 
 .team-modal__text-wrap {
-    @include tablet {
-        align-content: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-        margin-left: 15px;
+  @include tablet {
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 15px;
 
-        @include tablet {
-            margin: 0 auto;
-            text-align: center;
-            align-items: center;
-        }
+    @include tablet {
+      margin: 0 auto;
+      text-align: center;
+      align-items: center;
     }
+  }
 }
 
 .team-modal__span--orange {
-    display: block;
-    color: $accentModalColor;
-    text-transform: uppercase;
+  display: block;
+  color: $accentModalColor;
+  text-transform: uppercase;
 }
 
 .team-modal__svg {
-    fill: var(--mainDarkColor);
+  fill: var(--mainDarkColor);
 }
 
 .team-modal__svg:hover,
 .team-modal__svg:focus {
-    fill: var(--team-sm-bnt-accent);
+  fill: var(--team-sm-bnt-accent);
 }

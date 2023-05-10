@@ -1,26 +1,16 @@
-const refs = {
-  themeSwitcher: document.querySelector('#slider'),
-  html: document.querySelector('html'),
+const rootElement = document.documentElement;
+if (localStorage.getItem('theme')) {
+  rootElement.setAttribute('data-theme', localStorage.getItem('theme'));
+}
+
+const themSwitcherFunction = () => {
+  let dataAtribute = rootElement.getAttribute('data-theme');
+  let newTheme = dataAtribute === 'light' ? 'dark' : 'light';
+  rootElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
 };
+document
+  .querySelector('.theme-switcher')
+  .addEventListener('click', themSwitcherFunction);
 
-let themeValue = refs.html.dataset.theme;
-
-refs.themeSwitcher.addEventListener('click', onThemeSwitcher);
-
-function onThemeSwitcher() {
-  if (refs.html.dataset.theme === 'dark') {
-    refs.html.setAttribute('data-theme', 'light');
-    themeValue = refs.html.dataset.theme;
-    setLocalStorageTheme(themeValue);
-  } else {
-    refs.html.setAttribute('data-theme', 'dark');
-    themeValue = refs.html.dataset.theme;
-    setLocalStorageTheme(themeValue);
-  }
-}
-
-function setLocalStorageTheme(themeValue) {
-  localStorage.setItem('theme', themeValue);
-}
-
-function getLocalStorageTheme() {}
+  
