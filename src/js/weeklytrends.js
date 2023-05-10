@@ -65,9 +65,9 @@ function cardsMarkup(cards, genreList) {
                     sizes="(max-width: 768px) 200px, (max-width: 1280px) 300px, 500px"
                     alt="${card.title}"
                     >
-                    <div class="movie-details">
+                    <div class="movie-details weekly-trends--flex">
                     <h3>${card.title}</h3>
-                        <div class="movie-genres-and-rating">
+                        <div class="movie-genres-and-rating weekly-trends--start">
                     <div class="movie-info">
                         <span class="movie-genre">${genres.join(', ')}</span>
                         <span class="movie-separator">|</span>
