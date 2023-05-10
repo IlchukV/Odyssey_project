@@ -34,15 +34,19 @@ const page = window.location.pathname;
 (async function renderHeroSlides() {
   try {
     const { data } = await getMoviesForDay();
+    console.log(data);
     const slides = await slideTmpl(data);
 
     sliderWrapRefs.innerHTML = await slides;
     swipeControlRefs.classList.add('swiper-control--show');
     swiper.update();
+    console.log(slides);
 
     watchTrailerBtns = document.querySelectorAll('.js-hero-trailer');
-    for (let i = 0; i < watchTrailerBtns.length; i++) {    
-        watchTrailerBtns[i].addEventListener('click', onWatchTrailerBtnClick);
+    if(watchTrailerBtns) {
+      for(btn of watchTrailerBtns){
+        btn.addEventListener('click', onWatchTrailerBtnClick);
+      }
     }
     
   } catch (error) {
@@ -50,5 +54,6 @@ const page = window.location.pathname;
     sliderWrapRefs.innerHTML = page.includes('library')
       ? defaultLibarySlideTmpl
       : defaultSlideTmpl;
+    swipeControlRefs.classList.remove('swiper-control--show');
   }
 })();
