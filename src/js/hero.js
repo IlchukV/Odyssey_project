@@ -34,15 +34,13 @@ const page = window.location.pathname;
 (async function renderHeroSlides() {
   try {
     const { data } = await getMoviesForDay();
-    console.log(data);
     const slides = await slideTmpl(data);
 
     sliderWrapRefs.innerHTML = await slides;
     swipeControlRefs.classList.add('swiper-control--show');
     swiper.update();
-    console.log(slides);
 
-    watchTrailerBtns = document.querySelectorAll('.js-hero-trailer');
+    const watchTrailerBtns = await document.querySelectorAll('.js-hero-trailer');
     if(watchTrailerBtns) {
       for(btn of watchTrailerBtns){
         btn.addEventListener('click', onWatchTrailerBtnClick);
