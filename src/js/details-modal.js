@@ -104,13 +104,16 @@ function handleBtnClick(e) {
   if (dataActionStatus === 'add') {
     addToMyLibrary(chosenMovie);
     makeRemoveFromMyLibrary();
-    Notiflix.Notify.success('Movie is added to your library');
+    Notiflix.Notify.success('Movie is added to your library', {
+      timeout: 1500,
+    });
   }
   if (dataActionStatus === 'remove') {
     removeFromMyLibrary(chosenMovie);
     makeAddToMyLibrary();
-    
-    Notiflix.Notify.success('Movie is removed from your library');
+    Notiflix.Notify.success('Movie is removed from your library', {
+      timeout: 1500,
+    });
   }
 }
 function checkBtnStatus() {
@@ -228,3 +231,12 @@ function markupMovieCard({
     </div>
     `;
 }
+
+Notiflix.Notify.init({
+  width: '320px',
+  fontSize: '16px',
+  success: {
+    background: 'orange',
+    textColor: '#fff',
+  },
+});
