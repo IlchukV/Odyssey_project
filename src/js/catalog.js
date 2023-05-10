@@ -1,6 +1,9 @@
-if (!window.location.pathname.includes('catalog')) {
+if (!window.location.pathname.includes('catalog')){
   return
 }
+
+// !! Пробная заглушка для поиска фильма
+import { showModal } from './catalog-modal-close';
 
 import { showModal } from './catalog-modal-close';
 

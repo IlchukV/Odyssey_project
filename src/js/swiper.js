@@ -10,8 +10,6 @@ const swiper = new Swiper('.swiper', {
   pagination: {
     el: '.swiper-pagination',
     clickable: true,
-    //dynamicBullets: true,
-    // dynamicMainBullets: 2,
     renderBullet: function (index, className) {
       return '<span class="' + className + '">' + (index + 1) + '</span>';
     },

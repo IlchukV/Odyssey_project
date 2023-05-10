@@ -84,7 +84,13 @@
     line-height: 1.17;
     padding: 12px 24px;
     display: inline-block;
-    border: none;
+    border: 1px solid $button-text-hover;
+    transition: all 300ms;
+    
+    &:hover{
+      color: $button-text-hover;
+      background: inherit;
+    }
   }
 
   :root[data-theme="light"] &__image-wrap:before {
@@ -328,6 +334,8 @@
     color: var(--swipe-bullet-color);
     font-size: 10px;
     line-height: 1;
+    cursor:pointer;
+    transition: all 300ms;
 
     &:not(:first-child) {
       margin-left: 8px;
@@ -355,7 +363,7 @@
       }
     }
 
-    &-active {
+    &-active, &:hover {
       background: $button-gradient;
       color: var(--swipe-bullet-color-active);
       border: none;
