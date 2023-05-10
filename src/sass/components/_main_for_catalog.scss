@@ -249,22 +249,22 @@ img {
 .star-full {
     @include mobile {
         width: 18px;
-        background: linear-gradient(141.22deg,
-                #f84119 9.4%,
-                rgba(248, 157, 25, 0.8876) 89.96%,
-                rgba(248, 159, 25, 0.68) 91.91%);
-        background-clip: text;
-        color: transparent;
+        // background: linear-gradient(141.22deg,
+        //         #f84119 9.4%,
+        //         rgba(248, 157, 25, 0.8876) 89.96%,
+        //         rgba(248, 159, 25, 0.68) 91.91%);
+        // background-clip: text;
+        color: darkorange;
     }
 }
 
-.star-half {
-    background: linear-gradient(138.87deg,
-            #f84119 10.08%,
-            rgba(248, 159, 25, 0.68) 94.03%);
-    background-clip: text;
-    color: transparent;
-}
+// .star-half {
+//     background: linear-gradient(138.87deg,
+//             #f84119 10.08%,
+//             rgba(248, 159, 25, 0.68) 94.03%);
+//     background-clip: text;
+//     color: transparent;
+// }
 
 @media screen and (max-width: 767.97px) {
     .movie-rating {
@@ -303,10 +303,10 @@ img {
         margin: 0 4px;
         cursor: pointer;
         border-radius: 50%;
-        border: 1px solid $pagination-number-color;
+        border: 1px solid $button-black-text;
         background: transparent;
         color: $pagination-number-color;
-        color: var(--footerTxtColor);
+        color: var(--mainDarkColor);
     }
 
     @include tablet {
@@ -318,7 +318,6 @@ img {
     &.active {
         background: $pagination-color;
         color: $mainLightColor;
-        // color: var(--footerTxtColor);
     }
 }
 
