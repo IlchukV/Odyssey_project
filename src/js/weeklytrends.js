@@ -39,6 +39,9 @@ function createWeeklyGalery({ results }) {
     const randomIndex = Math.floor(Math.random() * results.length);
     const randomElement = results[randomIndex];
 
+    if (randomResults.includes(randomElement)) {
+      continue;
+    }
     randomResults.push(randomElement);
   }
   return randomResults;

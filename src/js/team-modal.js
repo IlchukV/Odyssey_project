@@ -2,10 +2,6 @@ import { refs } from './refs';
 
 let backdropTeam = document.querySelectorAll('.backdrop')[1];
 
-if (window.location.pathname.includes('library')) {
-  backdropTeam = document.querySelector('.backdrop');
-}
-
 refs.open.addEventListener('click', onTeamModalClick);
 refs.close.addEventListener('click', onCloseModalClick);
 backdropTeam.addEventListener('click', onBackdropClick);
