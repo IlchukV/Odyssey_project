@@ -11,9 +11,8 @@ let currentPage = 1;
 let totalPages = 0;
 let currentQuery = '';
 let isCatalogHomePage = true;
-
 let isSearchActive = false;
-let observer = null; // Будем инициализировать позже
+let observer = null;
 
 const searchForm = document.getElementById('search-form');
 const searchInput = document.getElementById('search-input');
@@ -25,15 +24,14 @@ const localPageIndicator = document.querySelector('.page-indicator');
 if (searchForm === null) {
   return;
 }
-// * Отправляет асинхронный запрос по переданному URL и возвращает полученный ответ в виде JSON-объекта.
 
+// * Отправляет асинхронный запрос по переданному URL и возвращает полученный ответ в виде JSON-объекта.
 async function fetchMovies(url) {
   const response = await fetch(url);
   return response.json();
 }
 
 // * Вызывает функцию fetchMovies для получения данных о популярных фильмах на текущей странице.
-
 async function getTrendingMovies() {
   await fetchMovies(currentPage);
 }
@@ -45,7 +43,6 @@ async function searchMovies(query) {
 }
 
 // * Код для списка фильмов и добавляется на страницу. Доп. данные о фильмах
-
 async function displayMovies(movies) {
   const movieItems = [];
 
@@ -112,7 +109,6 @@ export function createRatingStars(rating) {
 }
 
 // *Функция запрашивает популярные фильмы и отображает их, обновляя пагинацию.
-
 function assignPageButtonClickHandlers() {
   const pageButtons = document.querySelectorAll('.page-number');
   pageButtons.forEach((button) => {
@@ -123,8 +119,11 @@ function assignPageButtonClickHandlers() {
   });
 }
 
+// ** Функция для получения списка популярных фильмов
 async function getTrendingMovies() {
   try {
+
+    // ** Отправляем запрос на сервер для получения данных о популярных фильмах
     const response = await fetch(
       `${BASE_URL}trending/movie/day?api_key=${apiKey}&page=${currentPage}`
     );
@@ -140,7 +139,6 @@ async function getTrendingMovies() {
 }
 
 // *Функция отправляет запрос к API для получения списка фильмов по запросу
-
 export async function searchMovies(query, closeModal) {
   const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}&page=${currentPage}`;
   const data = await fetchMovies(url);
@@ -165,28 +163,28 @@ export async function searchMovies(query, closeModal) {
   return searchSuccess;
 }
 
-// *Слушатель событий для формы поиска
-
+// *Обработчик события отправки формы поиска
 searchForm.addEventListener('submit', async event => {
   event.preventDefault();
   const query = searchInput.value.trim();
   if (!query) {
     return;
   }
-  showLoadingIndicator(); // Показать индикатор загрузки
+  showLoadingIndicator();
   currentPage = 1;
   currentQuery = query;
   await searchMovies(query);
-  hideLoadingIndicator(); // Скрыть индикатор загрузки
+  hideLoadingIndicator();
 });
 
+// **Обработчик события ввода в поле поиска
 searchInput.addEventListener('input', async () => {
   if (!searchInput.value.trim()) {
-    showLoadingIndicator(); // Показать индикатор загрузки
+    showLoadingIndicator();
     currentPage = 1;
     currentQuery = '';
     await getTrendingMovies();
-    hideLoadingIndicator(); // Скрыть индикатор загрузки
+    hideLoadingIndicator();
   }
 });
 
@@ -225,6 +223,7 @@ function createArrowButton(direction, currentPage, totalPages) {
   return arrowButton;
 }
 
+// ** Функция для обновления информации о пагинации
 function updatePaginationInfo() {
   localPageIndicator.innerHTML = '';
 
@@ -244,7 +243,7 @@ function updatePaginationInfo() {
     firstVisiblePage + maxVisiblePages - 1
   );
 
-  // *проверяет, находится ли первая страница в пагинации на первом месте,
+  // *Проверяет, находится ли первая страница в пагинации на первом месте,
   // *и если нет, то создает кнопку "1" и добавляет ее в пагинацию.
   if (firstVisiblePage > 1) {
     const firstPageButton = document.createElement('button');
@@ -296,7 +295,7 @@ function updatePaginationInfo() {
 
 }
 
-// * проверяет наличие кнопки "предыдущая страница"
+// * Проверяет наличие кнопки "предыдущая страница"
 if (prevPageBtn) {
   prevPageBtn.addEventListener('click', async () => {
     currentPage--;
@@ -308,7 +307,7 @@ if (prevPageBtn) {
   });
 }
 
-// * проверяет наличие кнопки "следующая страница"
+// * Проверяет наличие кнопки "следующая страница"
 if (nextPageBtn) {
   nextPageBtn.addEventListener('click', async () => {
     currentPage++;
@@ -334,7 +333,7 @@ async function goToPage(pageNumber) {
   localStorage.setItem('currentPage', currentPage);
   localStorage.setItem('currentQuery', currentQuery);
 
-  // проверяем, является ли поиск активным и если да, то проверяем, был ли запрос выполнен из модального окна
+  // * Проверяем, является ли поиск активным и если да, то проверяем, был ли запрос выполнен из модального окна
   if (currentQuery && isSearchActive) {
     if (modalIsOpen()) {
       await searchMovies(currentQuery, closeModal);
@@ -358,15 +357,19 @@ async function goToPage(pageNumber) {
 //   getTrendingMovies();
 // }
 
+// ** Функция, отображающая индикатор загрузки
 function showLoadingIndicator() {
   const loadingIndicator = document.getElementById('search-loading');
   loadingIndicator.style.display = 'block';
 }
 
+// ** Функция, скрывающая индикатор загрузки
 function hideLoadingIndicator() {
   const loadingIndicator = document.getElementById('search-loading');
   loadingIndicator.style.display = 'none';
 }
+
+// ** Функция, инициализирующая "ленивую" загрузку контента
 function initLazyLoading() {
   observer = new IntersectionObserver(async (entries) => {
     entries.forEach(async (entry) => {
@@ -386,6 +389,8 @@ function initLazyLoading() {
 
   observeLastMovieElement();
 }
+
+// ** Функция, начинающая наблюдение за последним элементом списка фильмов
 function observeLastMovieElement() {
   let lastMovieElement = document.querySelector('.movie:last-child');
   if (lastMovieElement) {
