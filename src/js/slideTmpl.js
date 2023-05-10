@@ -2,12 +2,12 @@ function ratingPercent(voites) {
   return (voites * 100) / 10;
 }
 
-import url from '../images/raiting_contour.png';
-import urlRetina from '../images/raiting_contour@2x.png';
-import urlTab from '../images/raiting_contour_tablet.png';
-import urlTabRetina from '../images/raiting_contour_tablet@2x.png';
-import urlMob from '../images/raiting_contour_mobile.png';
-import urlRetinaMob from '../images/raiting_contour_mobile@2x.png';
+import url from '../images/hero/raiting_contour.png';
+import urlRetina from '../images/hero/raiting_contour@2x.png';
+import urlTab from '../images/hero/raiting_contour_tablet.png';
+import urlTabRetina from '../images/hero/raiting_contour_tablet@2x.png';
+import urlMob from '../images/hero/raiting_contour_mobile.png';
+import urlRetinaMob from '../images/hero/raiting_contour_mobile@2x.png';
 
 export default function (data) {
   return data.results
