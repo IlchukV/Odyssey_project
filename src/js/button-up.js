@@ -1,5 +1,4 @@
 import { refs } from './refs';
-// const buttonUp = document.querySelector('.up');
 refs.buttonUp.style.display = 'none';
 
 refs.buttonUp.addEventListener('click', topFunction);
