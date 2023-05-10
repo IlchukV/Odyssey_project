@@ -32,9 +32,10 @@
   transform: translate(-50%, -50%);
   width: 280px;
   height: 847px;
+  overflow-y: scroll;
   padding: 52px 16px;
   background: $button-black-text;
-  box-shadow: 1px 1px 14px 4px rgba(255, 107, 8, 0.42);
+  box-shadow: 1px 1px 14px 4px rgba(4, 3, 3, 0.42);
   border-radius: 20px;
 
   @include tablet {
