@@ -1,4 +1,4 @@
-if (!window.location.pathname.includes('catalog')){
+if (!window.location.pathname.includes('catalog')) {
   return
 }
 
@@ -358,10 +358,27 @@ async function goToPage(pageNumber) {
   if (pageNumber < 1 || pageNumber > totalPages) {
     return;
   }
+  // * С задержкой (500 миллисекунд), для прокрутки страницы вверх после пагинации до определённого места (находи по id, в данном случае до строки поиска)
+  setTimeout(() => {
+    let elementPosition = document.getElementById('search-block-id').offsetTop;
+    window.scrollTo({
+      top: elementPosition,
+      behavior: "smooth"
+    });
+  }, 500);
+  // * Для прокрутки страницы вверх после пагинации до определённого места (находи по id, в данном случае до строки поиска)
+  // let elementPosition = document.getElementById('search-block-id').offsetTop;
+  // window.scrollTo({
+  //   top: elementPosition,
+  //   behavior: "smooth"
+  // });
+
+  // * Для прокрутки страницы вверх после пагинации (до самого верха страницы)
   // window.scrollTo({
   //   top: 0,
   //   behavior: "smooth"
   // });
+
   currentPage = pageNumber;
   localStorage.setItem('currentPage', currentPage);
   localStorage.setItem('currentQuery', currentQuery);
@@ -427,4 +444,4 @@ initLazyLoading();
 // !!!!!!!!!!!!Привет
 
 
-////!/!!!!!!!!!!!!!**/*/
+////!/!!!!!!!!!!!!!**/*/КУКУКУКУКУКУКУ

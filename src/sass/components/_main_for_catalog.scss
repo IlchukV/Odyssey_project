@@ -8,6 +8,11 @@ img {
 
 .section-catalog {
     background-color: var(--background-catalog);
+
+    &_hidden {
+        display: none;
+        visibility: hidden;
+    }
 }
 
 .search-block {
