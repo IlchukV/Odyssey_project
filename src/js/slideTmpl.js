@@ -27,7 +27,7 @@ export default function (data) {
           type="image/png" />
         <source srcset="${urlMob} 1x, ${urlRetinaMob} 2x" media="(max-width: 767px)"
           type="image/png" />
-        <img class="raiting__image" src="${urlMob}" alt="hero">
+        <img class="raiting__image" src="${urlMob}" alt="hero" loading="lazy">
       </picture>
       </div>
       <p class="hero__description">${overview}</p>
