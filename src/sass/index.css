@@ -30,7 +30,7 @@
 
 :root[data-theme=dark] {
   --body-and-modals-bgc: #000000;
-  --before-postionX: 30px;
+  --before-postionX: 28px;
   --before-postionY: 2px;
   --footerBgColor: #000000;
   --footerTxtColor: #B7B7B7;
@@ -384,8 +384,6 @@ button {
   }
 }
 .menu-button {
-  margin-left: 93px;
-  margin-right: 84px;
   color: var(--header-nav-color);
   background-color: transparent;
   border: none;
@@ -454,7 +452,7 @@ button {
 }
 
 .weeklytrends_seeAll_link:hover {
-  color: var(--mainDarColor);
+  color: #ff001b;
 }
 
 .weeklytrends_gallery_list {
@@ -485,6 +483,12 @@ div.weekly-trends--rating {
 @media screen and (max-width: 767px) {
   div.weekly-trends--card:nth-child(-n+2) {
     display: none;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .container--weekly-trends {
+    width: 320px;
   }
 }
 
@@ -1871,6 +1875,10 @@ img {
 .section-catalog {
   background-color: var(--background-catalog);
 }
+.section-catalog_hidden {
+  display: none;
+  visibility: hidden;
+}
 
 .search-block {
   display: flex;
@@ -2714,9 +2722,15 @@ img {
     left: 20px;
   }
 }
+@media screen and (min-width: 768px) {
+  .swiper-control {
+    left: 32px;
+  }
+}
 @media screen and (min-width: 1280px) {
   .swiper-control {
     bottom: 20px;
+    left: 100px;
   }
 }
 
