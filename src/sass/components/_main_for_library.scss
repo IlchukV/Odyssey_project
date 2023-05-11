@@ -290,7 +290,7 @@
     height: 576px;
   }
 
-  &:nth-child(9) {
+  &:nth-child(n + 7) {
     display: none;
   }
 
