@@ -32,37 +32,24 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 280px;
-  height: 847px;
+  height: auto;
   padding: 52px 16px;
   background: $button-black-text;
   box-shadow: 1px 1px 14px 4px rgba(4, 3, 3, 0.42);
   border-radius: 20px;
 
-  // :root[data-theme='light'] {
-  //   background: var(--body-and-modals-bgc);
-  // }
-  // :root[data-theme='dark'] {
-  //   background: var(--body-and-modals-bgc);
-  // }
-
   @include tablet {
     width: 704px;
-    height: 488px;
+    min-height: 488px;
+    height: auto;
     padding: 44px;
   }
 
   @include desktop {
     width: 846px;
-    height: 598px;
+    min-height: 598px;
+    height: auto;
     padding: 60px;
-
-    // :root[data-theme='light'] {
-    //   background: var(--body-and-modals-bgc);
-    // }
-    // :root[data-theme='dark'] {
-    //   background-color: black;
-    //   color: white;
-    // }
   }
 }
 
