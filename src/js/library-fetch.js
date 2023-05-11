@@ -65,7 +65,7 @@ async function displayMovies(movies) {
                         https://image.tmdb.org/t/p/w500${movie.poster_path} 500w
                     "
                     sizes="(max-width: 768px) 200px, (max-width: 1280px) 300px, 500px"
-                    alt="${movie.title}"
+                    alt="${movie.title}" loading="lazy"
                     >
                     <div class="catalog-library__details">
                         <h3>${movie.title}</h3>
