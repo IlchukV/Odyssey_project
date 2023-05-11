@@ -5,6 +5,8 @@ import { handleMovieClick } from '../js/details-modal';
 
 const weeklyGallery = document.querySelector('.weeklytrends_gallery_list');
 
+
+
 if (weeklyGallery === null) {
   return;
 }
@@ -65,6 +67,8 @@ function cardsMarkup(cards, genreList) {
 
       const releaseDate = new Date(card.release_date).getFullYear();
       const ratingStars = createRatingStars(card.vote_average);
+weekly-fix-mobile
+
       return `<div class="movie-item movie-card weekly-trends--card" id=${card.id}>
                     <img class="weeklytrends_gallery_image"
                     src="https://image.tmdb.org/t/p/w200${card.poster_path}" 
@@ -93,4 +97,15 @@ function cardsMarkup(cards, genreList) {
     })
     .join('');
 }
+
+// function addDynamicClass() {
+  
+//   const elements = document.querySelectorAll(".card");
+//   console.log(elements);
+//     elements.forEach((element, index) => {
+//     const dynamicClass = `movie-item-${index + 1}`;
+//     element.classList.add(dynamicClass);
+//   });
+// }
 getMovies();
+// addDynamicClass();

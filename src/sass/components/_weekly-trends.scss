@@ -46,7 +46,7 @@
 }
 
 .weeklytrends_seeAll_link:hover {
- color: $informationColor;
+  color: $informationColor;
 }
 
 .weeklytrends_gallery_list {
@@ -54,7 +54,9 @@
   justify-content: center;
   gap: 16px;
 }
-
+.weeklytrends_gallery_image{
+  border-radius: 5px;
+}
 .weekly-trends--flex {
   flex-direction: column;
 }
@@ -74,8 +76,14 @@ div.weekly-trends--card {
   }
 }
 
-div.weekly-trends--card:nth-child(-n+2){
+div.weekly-trends--card:nth-child(-n + 2) {
   @media screen and (max-width: 767px) {
     display: none;
+  }
+}
+
+.container--weekly-trends {
+  @media screen and (max-width: 767px) {
+    width: 320px;
   }
 }
