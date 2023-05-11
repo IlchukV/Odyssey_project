@@ -2,9 +2,6 @@ if (!window.location.pathname.includes('catalog')) {
   return
 }
 
-// !! Пробная заглушка для поиска фильма
-import { showModal } from './catalog-modal-close';
-
 import { showModal } from './catalog-modal-close';
 
 const apiKey = 'e1aeaa11db3ac22382c707ccfcac931e';
@@ -192,7 +189,7 @@ searchInput.addEventListener('input', async () => {
   }
 });
 
-// * Автоматически (через 5 секунд) выполняет поиск фильмов, когда пользователь вводит текст в поле поиска
+// * Автоматически (через 500 миллисекунд) выполняет поиск фильмов, когда пользователь вводит текст в поле поиска
 function debounce(func, timeout = 500) {
   let timer;
   return (...args) => {
