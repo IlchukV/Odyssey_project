@@ -70,6 +70,10 @@ $film-release-date-color: #f87719;
   --upcomind-film-df-color: #282828;
   --upcoming-film-bulb-color: #f8f8f8;
   --upcoming-film-descr-text-color: #282828;
+  --modal-trailer-bgc: #ffffff;
+  --close-btn-fill: #282828;
+  --modal-trailer-text-color: #111111;
+  --modal-trailer-box-shadow-color: rgba(0, 0, 0, 0.22);
 }
 
 :root[data-theme='dark'] {
@@ -94,5 +98,9 @@ $film-release-date-color: #f87719;
   --upcoming-film-bulb-color: #ffffff;
   --upcoming-film-descr-text-color: #f8f8f8;
   --mainDarkColor: #ffffff;
+  --modal-trailer-bgc: #111111;
+  --close-btn-fill: #FFFFFF;
+  --modal-trailer-text-color: #FFFFFF;
+  --modal-trailer-box-shadow-color: rgba(255, 107, 8, 0.42);
 }
 
