@@ -33,6 +33,7 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 18.75px;
+  transition: all $duration cubic-bezier(0.4, 0, 0.2, 1);
   @include tablet {
     font-size: 24px;
     line-height: 28.13px;
@@ -42,6 +43,10 @@
     font-size: 28px;
     line-height: 32.81px;
   }
+}
+
+.weeklytrends_seeAll_link:hover {
+  color: $mainLightColor;
 }
 
 .weeklytrends_gallery_list {
