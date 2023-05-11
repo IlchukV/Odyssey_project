@@ -34,7 +34,11 @@ export default function (data) {
       <button class="hero__btn js-hero-trailer" type="button" data-id="${id}">Watch trailer</button>
       </div>
       <div class="hero__image-wrap">
-      <img class="hero__image" src="https://image.tmdb.org/t/p/original${backdrop_path}" alt="hero" loading="lazy">
+      <picture>
+        <source srcset="https://image.tmdb.org/t/p/original${backdrop_path}" media="(min-width: 768px)" />
+        <source srcset="https://image.tmdb.org/t/p/w500${backdrop_path}" media="(max-width: 767px)" />
+        <img class="hero__image" src="https://image.tmdb.org/t/p/original${backdrop_path}" alt="hero" loading="lazy">
+      </picture>
       </div>
       </div>`;
     })
