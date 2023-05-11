@@ -46,7 +46,7 @@
 }
 
 .weeklytrends_seeAll_link:hover {
- color: $informationColor;
+  color: $informationColor;
 }
 
 .weeklytrends_gallery_list {
@@ -74,8 +74,14 @@ div.weekly-trends--card {
   }
 }
 
-div.weekly-trends--card:nth-child(-n+2){
+div.weekly-trends--card:nth-child(-n + 2) {
   @media screen and (max-width: 767px) {
     display: none;
+  }
+}
+
+.container--weekly-trends {
+  @media screen and (max-width: 767px) {
+    width: 320px;
   }
 }
