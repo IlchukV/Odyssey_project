@@ -1,6 +1,7 @@
 import axios from 'axios';
 const KEY = 'e1aeaa11db3ac22382c707ccfcac931e';
 import { createRatingStars } from './catalog';
+import { handleMovieClick } from '../js/details-modal';
 
 const weeklyGallery = document.querySelector('.weeklytrends_gallery_list');
 
@@ -30,6 +31,7 @@ async function getMovies() {
     const genres = genreList.data.genres;
 
     weeklyGallery.innerHTML = cardsMarkup(trendMovieList, genres);
+    weeklyGallery.addEventListener('click', handleMovieClick);
   } catch (error) {
     console.log(error);
   }

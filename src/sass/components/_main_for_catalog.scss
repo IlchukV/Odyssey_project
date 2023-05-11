@@ -138,6 +138,7 @@ img {
     position: relative;
     margin-bottom: 16px;
     border-radius: 5px;
+    width: 100%;
 
     @include mobile {
         transition: transform 0.3s ease;

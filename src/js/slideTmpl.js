@@ -27,14 +27,14 @@ export default function (data) {
           type="image/png" />
         <source srcset="${urlMob} 1x, ${urlRetinaMob} 2x" media="(max-width: 767px)"
           type="image/png" />
-        <img class="raiting__image" src="${urlMob}" alt="hero">
+        <img class="raiting__image" src="${urlMob}" alt="hero" loading="lazy">
       </picture>
       </div>
       <p class="hero__description">${overview}</p>
       <button class="hero__btn js-hero-trailer" type="button" data-id="${id}">Watch trailer</button>
       </div>
       <div class="hero__image-wrap">
-      <img class="hero__image" src="https://image.tmdb.org/t/p/original${backdrop_path}" alt="hero">
+      <img class="hero__image" src="https://image.tmdb.org/t/p/original${backdrop_path}" alt="hero" loading="lazy">
       </div>
       </div>`;
     })
