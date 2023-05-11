@@ -21,6 +21,7 @@
 
   openMenuBtn.addEventListener('click', toggleMenu);
   openMenuBtn.addEventListener('click', toggleBackdrop);
+  backdrop.addEventListener('click', onBackdropClose);
 
   mobileMenu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
@@ -28,6 +29,13 @@
       backdrop.classList.remove('is-open');
     });
   });
+
+  function onBackdropClose(e) {
+    if (e.target === e.currentTarget) {
+      mobileMenu.classList.remove('is-open');
+      backdrop.classList.remove('is-open');
+    }
+  }
 
   window.matchMedia('(min-width: 768px)').addEventListener('change', e => {
     if (!e.matches) return;
