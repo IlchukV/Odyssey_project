@@ -11,6 +11,7 @@ const refs = {
   modalCloseBtn: document.querySelector('[data-modal-movie-close]'),
   backdrop: document.querySelector('.modal-movie-backdrop'),
   movieList: document.querySelector('.movies-list'),
+  bodyRef: document.querySelector('body'),
 };
 
 if (refs.movieList === null) {
@@ -29,6 +30,7 @@ refs.backdrop.addEventListener('click', closeModalBackdropClick);
 function handleMovieClick(e) {
   fetchMovieInfo(e.target.id).then(data => {
     refs.modalWindow.innerHTML = markupMovieCard(data);
+    refs.bodyRef.classList.add('no-scroll');
     refs.backdrop.classList.remove('is-hidden');
     addBtnRef = document.querySelector('.addBtn');
     addBtnTextRef = document.querySelector('.textBtn');
@@ -50,6 +52,7 @@ function handleCloseModalEsc(evt) {
 }
 function handleModalClose() {
   refs.backdrop.classList.add('is-hidden');
+  refs.bodyRef.classList.remove('no-scroll');
   window.removeEventListener('keydown', handleCloseModalEsc);
 }
 
@@ -108,10 +111,16 @@ function handleBtnClick(e) {
   if (dataActionStatus === 'add') {
     addToMyLibrary(chosenMovie);
     makeRemoveFromMyLibrary();
+    Notiflix.Notify.success('Movie is added to your library', {
+      timeout: 1500,
+    });
   }
   if (dataActionStatus === 'remove') {
     removeFromMyLibrary(chosenMovie);
     makeAddToMyLibrary();
+    Notiflix.Notify.success('Movie is removed from your library', {
+      timeout: 1500,
+    });
   }
 }
 function checkBtnStatus() {
@@ -152,8 +161,7 @@ async function fetchMovieInfo(id) {
     Notiflix.Loading.remove();
   }
 }
-
-const markupMovieCard = ({
+function markupMovieCard({
   poster_path,
   title,
   vote_average,
@@ -162,7 +170,7 @@ const markupMovieCard = ({
   genres,
   overview,
   id,
-}) => {
+}) {
   const normalizedVote = vote_average.toFixed(1);
   const normalizedPopularity = popularity.toFixed(1);
   const normalizedGenres = genres.map(genre => genre.name).join(' ');
@@ -175,11 +183,11 @@ const markupMovieCard = ({
               <svg
                 height="110"
                 width="150"
+                style="fill: #f61c0d"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 461.001 461.001"
                 xml:space="preserve">
               <path
-              style="fill: #f61c0d"
               d="M365.257 67.393H95.744C42.866 67.393 0 110.259 0 163.137v134.728c0 52.878 42.866 95.744 95.744 95.744h269.513c52.878 0 95.744-42.866 95.744-95.744V163.137c0-52.878-42.866-95.744-95.744-95.744zm-64.751 169.663-126.06 60.123c-3.359 1.602-7.239-.847-7.239-4.568V168.607c0-3.774 3.982-6.22 7.348-4.514l126.06 63.881c3.748 1.899 3.683 7.274-.109 9.082z"/>
               </svg>
             </button>
@@ -211,7 +219,7 @@ const markupMovieCard = ({
         <svg
           width="140"
           height="40"
-          fill="none"
+          class='modal-movie-svg-btn'
           xmlns="http://www.w3.org/2000/svg"
         >
           <rect
@@ -241,4 +249,13 @@ const markupMovieCard = ({
         </div>
     </div>
     `;
-};
+}
+
+Notiflix.Notify.init({
+  width: '320px',
+  fontSize: '16px',
+  success: {
+    background: 'orange',
+    textColor: '#fff',
+  },
+});

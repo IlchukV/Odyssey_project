@@ -1,8 +1,3 @@
-// weeklyTreds
-.weeklytrends {
-  display: block;
-}
-
 .weeklytrends_nav {
   display: flex;
   justify-content: space-between;
@@ -38,6 +33,7 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 18.75px;
+  transition: all $duration cubic-bezier(0.4, 0, 0.2, 1);
   @include tablet {
     font-size: 24px;
     line-height: 28.13px;
@@ -49,32 +45,14 @@
   }
 }
 
+.weeklytrends_seeAll_link:hover {
+  color: $mainLightColor;
+}
+
 .weeklytrends_gallery_list {
   display: flex;
   justify-content: center;
   gap: 16px;
-}
-
-.weeklytrends_gallery_item:nth-last-child(-n + 2) {
-  display: none;
-  @include tablet {
-    display: block;
-  }
-}
-
-.weeklytrends_gallery_image {
-  width: 280px;
-  height: 406px;
-
-  @include tablet {
-    width: 224px;
-    height: 325px;
-  }
-
-  @include desktop {
-    width: 395px;
-    height: 574px;
-  }
 }
 
 .weekly-trends--flex {

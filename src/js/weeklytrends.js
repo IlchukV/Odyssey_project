@@ -8,6 +8,8 @@ if (weeklyGallery === null) {
   return;
 }
 
+//отримує від API трендс response та жанри в genreList.
+
 async function getMovies() {
   try {
     const response = await axios.get(
@@ -33,6 +35,8 @@ async function getMovies() {
   }
 }
 
+// рандомні 3 фільми за результатами запиту API
+
 function createWeeklyGalery({ results }) {
   const randomResults = [];
   while (randomResults.length < 3) {
@@ -46,6 +50,8 @@ function createWeeklyGalery({ results }) {
   }
   return randomResults;
 }
+
+// рендер картки
 
 function cardsMarkup(cards, genreList) {
   return cards

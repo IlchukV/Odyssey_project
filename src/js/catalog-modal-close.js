@@ -48,7 +48,7 @@ export function showModal() {
   return modal;
 }
 
-
+//!!!Модальное окно при активном инпуте в модальном окне
 // export function showModal() {
 //   const modal = document.querySelector(".search-modal");
 

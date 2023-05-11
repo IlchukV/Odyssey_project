@@ -9,6 +9,8 @@ const refs = {
 
 refs.closeBtn.addEventListener('click', onCloseTraier);
 
+// Викликається по кліку на кнопку "watch trailer"
+
 function onWatchTrailerBtnClick(evt) {  
   const filmId = evt.currentTarget.dataset.id; 
   refs.backdropTrailer.classList.remove('visually-hidden');
@@ -25,11 +27,15 @@ function onWatchTrailerBtnClick(evt) {
 }
 export {onWatchTrailerBtnClick, refs};
 
+// рендерить розмітку плеєра
+
 function makeMarkupIframe(key) {
     refs.playerBox.innerHTML = `<iframe id="ytplayer" type="text/html" width="720" height="405"
     src="https://www.youtube.com/embed/${key}"
     frameborder="0" allowfullscreen>`;
 }
+
+// закриває модальне вікно з трейлером
 
 function onCloseTraier(evt) {
   document.removeEventListener('keydown', onEscCloseTraier);
@@ -38,6 +44,8 @@ function onCloseTraier(evt) {
   refs.backdropTrailer.removeEventListener('click', onBackdropClick); 
   refs.playerBox.classList.remove('visually-hidden'); 
 }
+
+// закриває модальне вікно з трейлером при натисканні на клавішу Esc
 
 function onEscCloseTraier(evt) {  
   console.log(evt.code);
@@ -50,6 +58,8 @@ function onEscCloseTraier(evt) {
   document.removeEventListener('keydown', onEscCloseTraier);
   refs.playerBox.classList.remove('visually-hidden');
 }
+
+// закриває модальне вікно при кліку на бекдроп
 
 function onBackdropClick(evt) {
     if(evt.target === refs.backdropTrailer) {

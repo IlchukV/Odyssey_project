@@ -19,8 +19,8 @@
   border-radius: 16px;
   padding: 39px 33px 185px;
 
-  box-shadow: 1px 1px 14px 4px rgba(255, 107, 8, 0.42);
-  background-color: #111111;
+  box-shadow: 1px 1px 14px 4px var(--modal-trailer-box-shadow-color);
+  background-color: var(--modal-trailer-bgc);
 
   @include tablet {
     width: 609px;
@@ -43,7 +43,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 118.75%; /* 19/16 */
-  color: $mainLightColor;
+  color: var(--modal-trailer-text-color);
   @include tablet {
     font-weight: 400;
     font-size: 24px;
@@ -77,20 +77,10 @@
   }
 }
 
-.close-icon {
-  width: 16px;
-  height: 16px;
-  @include tablet {
-    width: 24px;
-    height: 24px;
-  }
-  fill: $mainLightColor;
-}
-
 .close-btn {
   position: absolute;
   top: 20px;
-  right: 20px;
+  right: 20px;  
   @include tablet {
     top: 24px;
     right: 24px;
@@ -104,7 +94,23 @@
   border: none;
   outline: transparent;
   background-color: inherit;
+  fill: var(--close-btn-fill);
+  transition: fill .25s cubic-bezier(.4,0,.2,1);
+  &:hover {
+    fill: $accentColor;
+  }
 }
+
+.close-icon {
+  width: 16px;
+  height: 16px;
+  @include tablet {
+    width: 24px;
+    height: 24px;
+  }   
+}
+
+
 
 .player-container {
   overflow: hidden;

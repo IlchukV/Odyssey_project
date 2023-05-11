@@ -2,11 +2,21 @@ img {
     width: 100%;
 }
 
+.search-on-homepage {
+    cursor: pointer;
+}
+
 .section-catalog {
     background-color: var(--background-catalog);
 }
 
 .search-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 16px;
+
     @include mobile {
         display: flex;
         justify-content: center;
@@ -26,6 +36,11 @@ img {
     }
 
     &_search-form {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        display: contents;
 
         @include mobile {
             display: inline-flex;
@@ -37,13 +52,20 @@ img {
     }
 
     &_search-input {
+        width: 100%;
+        height: 44px;
+        padding-left: 20;
+        font-size: 14px;
+        border-radius: 8px;
+        line-height: 1.14;
+
         @include mobile {
-            width: 100%;
-            height: 44px;
-            padding-left: 20;
-            font-size: 14px;
-            border-radius: 8px;
-            line-height: 1.14;
+            // width: 100%;
+            // height: 44px;
+            // padding-left: 20;
+            // font-size: 14px;
+            // border-radius: 8px;
+            // line-height: 1.14;
         }
 
         @include tablet {
@@ -59,16 +81,13 @@ img {
     }
 
     &_submit-btn {
-
-        @include mobile {
-            width: 40px;
-            height: 40px;
-            background-color: $mainLightColor;
-            border-radius: 100%;
-            cursor: auto;
-            background: $submit-btn-catalog;
-            border: none;
-        }
+        width: 40px;
+        height: 40px;
+        background-color: $mainLightColor;
+        border-radius: 100%;
+        cursor: pointer;
+        background: $submit-btn-catalog;
+        border: none;
 
         @include tablet {
             width: 44px;
@@ -101,6 +120,10 @@ img {
     }
 }
 
+.search-block_submit-btn:hover {
+    background: linear-gradient(141.22deg, rgba(246, 178, 7, 0.612) 9.4%, rgba(248, 65, 25, 0.5) 91.91%);
+}
+
 .movies-list {
 
     @include mobile {
@@ -111,17 +134,21 @@ img {
     @include tablet {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: space-around;
     }
 
 }
 
 .movie-item {
+    position: relative;
+    margin-bottom: 16px;
+    border-radius: 5px;
+
     @include mobile {
-        position: relative;
-        margin-bottom: 16px;
+        // position: relative;
+        // margin-bottom: 16px;
         transition: transform 0.3s ease;
-        border-radius: 5px;
+        // border-radius: 5px;
         overflow: hidden;
     }
 
@@ -136,11 +163,11 @@ img {
         border-radius: 5px;
     }
 
-    &:nth-child(10) {
+    &:nth-child(21) {
         margin-bottom: 0;
     }
 
-    &:nth-of-type(n+11) {
+    &:nth-of-type(n+22) {
         display: none;
     }
 
@@ -153,27 +180,27 @@ img {
         height: 100%;
         background: linear-gradient(180deg, rgba(0, 0, 0, 0) 63.48%, rgba(0, 0, 0, 0.9) 92.16%);
         transition: transform 0.01s ease-in-out;
+        cursor: pointer;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
     }
 
     &:hover {
-        transform: rotateY(30deg);
-        transition: transform 0.5s ease-in-out;
+        transform: scale(1.05);
+        transition: transform 0.35s ease-in-out;
     }
 }
 
 .movie-details {
-    @include mobile {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        padding: 0 12px 12px 12px;
-        box-sizing: border-box;
-        color: $mainLightColor;
-        display: block;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0 12px 12px 12px;
+    box-sizing: border-box;
+    color: $mainLightColor;
+    display: block;
+    flex-wrap: wrap;
+    justify-content: space-between;
 
     @include tablet {
         padding: 0 0 12px 12px;
@@ -205,12 +232,13 @@ img {
     }
 }
 
-@media screen and (max-width: 767.97px) {
+@media screen and (min-width:480px)and (max-width: 767.97px) {
 
     .movie-details h3,
     .movie-info {
         transform: translateY(110%);
     }
+
 }
 
 .movie-genres-and-rating {
@@ -247,40 +275,30 @@ img {
 
 // ! Звезды рейтинга
 .star-full {
-    @include mobile {
-        width: 18px;
-        // background: linear-gradient(141.22deg,
-        //         #f84119 9.4%,
-        //         rgba(248, 157, 25, 0.8876) 89.96%,
-        //         rgba(248, 159, 25, 0.68) 91.91%);
-        // background-clip: text;
-        color: darkorange;
-    }
+    width: 18px;
+    color: darkorange;
 }
 
-// .star-half {
-//     background: linear-gradient(138.87deg,
-//             #f84119 10.08%,
-//             rgba(248, 159, 25, 0.68) 94.03%);
-//     background-clip: text;
-//     color: transparent;
-// }
-
-@media screen and (max-width: 767.97px) {
+@media screen and (min-width:480px) and (max-width: 767.97px) {
     .movie-rating {
         transform: translateX(79%);
     }
 }
 
+@media screen and (max-width: 479.97px) {
+    .movie-rating {
+        transform: translateX(69%);
+    }
+}
+
 // !Пагинация
 .page-indicator {
-    @include mobile {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 20px;
-        padding-bottom: 12px;
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    padding-bottom: 12px;
+
 
     @include tablet {
         margin-top: 44px;
@@ -294,15 +312,16 @@ img {
 }
 
 .page-number {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    line-height: 32px;
+    text-align: center;
+    margin: 0 4px;
+    cursor: pointer;
+    border-radius: 50%;
+
     @include mobile {
-        display: inline-block;
-        width: 24px;
-        height: 24px;
-        line-height: 32px;
-        text-align: center;
-        margin: 0 4px;
-        cursor: pointer;
-        border-radius: 50%;
         border: 1px solid $button-black-text;
         background: transparent;
         color: $pagination-number-color;
@@ -319,6 +338,10 @@ img {
         background: $pagination-color;
         color: $mainLightColor;
     }
+}
+
+.page-number:hover {
+    border-color: var(--footerBgColor);
 }
 
 .arrow-button {
@@ -346,41 +369,41 @@ img {
     align-items: center;
 }
 
-// ! Стили под заглушку при нажатии на карточку фильма "Наслаждайтесь просмотром"
-.found-modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 80%;
-    max-width: 400px;
-    display: none;
-}
+// // ! Стили под заглушку при нажатии на карточку фильма "Наслаждайтесь просмотром"
+// .found-modal {
+//     position: fixed;
+//     top: 50%;
+//     left: 50%;
+//     transform: translate(-50%, -50%);
+//     background-color: white;
+//     border-radius: 5px;
+//     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+//     padding: 20px;
+//     width: 80%;
+//     max-width: 400px;
+//     display: none;
+// }
 
-.found-modal-content {
-    text-align: center;
-    font-size: 1.2rem;
-    font-weight: 500;
-    color: #333;
-}
+// .found-modal-content {
+//     text-align: center;
+//     font-size: 1.2rem;
+//     font-weight: 500;
+//     color: #333;
+// }
 
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: none;
-}
+// .modal-overlay {
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     background-color: rgba(0, 0, 0, 0.5);
+//     display: none;
+// }
 
-.visible {
-    display: block;
-}
+// .visible {
+//     display: block;
+// }
 
 // !! Стили модалки
 .input-search-input {
@@ -474,6 +497,7 @@ img {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        box-shadow: 1px 1px 14px 4px #ff6b086b;
     }
 
     @include tablet {

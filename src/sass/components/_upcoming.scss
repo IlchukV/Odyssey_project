@@ -22,6 +22,7 @@
   font-size: 16px;
   font-weight: 500;
   line-height: 118.75%;
+  text-transform: uppercase;
   /* 19/16 */
 
   color: var(--title-color);
@@ -220,6 +221,10 @@
   background-image: $submit-btn-catalog;
 
   border-radius: 74px;
+
+  opacity: 1;
+
+  transition: opacity $duration cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .movie__btn-fill {
@@ -235,10 +240,16 @@
 
   color: $button-black-text;
   background-color: transparent;
-  transition: all $duration cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color $duration cubic-bezier(0.4, 0, 0.2, 1),
+    background-color $duration cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
     background-color: $mainLightColor;
     color: $buttonBgAccent;
   }
+}
+
+.movie__btn.hidden {
+  opacity: 0;
+  pointer-events: none;
 }
