@@ -24,9 +24,9 @@ async function getMovies() {
     let galleryCardsList = createWeeklyGalery(response.data);
     let trendMovieList = galleryCardsList;
 
-    if (window.screen.width < 767) {
-      trendMovieList = galleryCardsList.filter((el, index) => index < 1);
-    }
+    // if (window.screen.width < 767) {
+    //   trendMovieList = galleryCardsList.filter((el, index) => index < 1);
+    // }
 
     const genres = genreList.data.genres;
 
@@ -65,7 +65,7 @@ function cardsMarkup(cards, genreList) {
 
       const releaseDate = new Date(card.release_date).getFullYear();
       const ratingStars = createRatingStars(card.vote_average);
-      return `<div class="movie-item movie-card" id=${card.id}>
+      return `<div class="movie-item movie-card weekly-trends--card" id=${card.id}>
                     <img class="weeklytrends_gallery_image"
                     src="https://image.tmdb.org/t/p/w200${card.poster_path}" 
                     srcset="
@@ -84,7 +84,7 @@ function cardsMarkup(cards, genreList) {
                         <span class="movie-separator">|</span>
                         <span class="movie-year">${releaseDate}</span>
                     </div>
-                    <div class="movie-rating">
+                    <div class="movie-rating weekly-trends--rating">
                         ${ratingStars}
                     </div>
                     </div>
