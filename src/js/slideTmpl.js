@@ -15,7 +15,7 @@ export default function (data) {
     .map(({ backdrop_path, original_title, vote_average, overview, id }) => {
       return `<div class="hero__card swiper-slide">
       <div class="hero__info">
-      <h1 class="hero__title">${original_title}</h1>
+      <h2 class="hero__title">${original_title}</h2>
       <div class="raiting">
       <div class="raiting__fill-image" style="width:${ratingPercent(
         vote_average

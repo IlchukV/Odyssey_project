@@ -49,7 +49,7 @@ const page = window.location.pathname;
     
   } catch (error) {
     Notify.failure(`Error ${error.message}`);
-    sliderWrapRefs.innerHTML = page.includes('library')
+    sliderWrapRefs.innerHTML = page.includes('my-library')
       ? defaultLibarySlideTmpl
       : defaultSlideTmpl;
     swipeControlRefs.classList.remove('swiper-control--show');

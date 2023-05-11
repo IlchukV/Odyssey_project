@@ -7,7 +7,7 @@ import mobile2xUrl from '../images/hero/Hero-Lib_mobile@2x.png';
 
 export default `<div class="hero__card swiper-slide">
           <div class="hero__info hero__info--library">
-            <h1 class="hero__title">Create Your<br> Dream Cinema</h1>
+            <h2 class="hero__title">Create Your<br> Dream Cinema</h2>
 
             <p class="hero__description">Is a guide to designing a personalized movie theater experience with the right equipment, customized decor, and favorite films. This guide helps you bring the cinema experience into your own home with cozy seating, dim lighting, and movie theater snacks.</p>
           </div>

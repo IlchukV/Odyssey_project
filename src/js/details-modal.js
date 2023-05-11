@@ -88,6 +88,10 @@ function removeFromMyLibrary(item) {
   const parsedMovies = getFilmsFromLocalStorage();
   const newArray = removeMovie(item, parsedMovies);
   putToMyLibrary(newArray);
+
+  if (isMyLibraryPage()) {
+    removeMovieFromDOM(chosenMovie);
+  }
 }
 function makeRemoveFromMyLibrary() {
   addBtnTextRef.innerHTML = 'Remove from my library';
@@ -112,6 +116,18 @@ function handleBtnClick(e) {
 }
 function checkBtnStatus() {
   return addBtnRef.getAttribute('data-action');
+}
+
+function isMyLibraryPage() {
+  return window.location.pathname.includes('my-library');
+}
+
+function removeMovieFromDOM({id}) {
+  try {
+    document.querySelector(`[id="${id}"]`).remove();
+  } catch (err) {
+    throw err;
+  }
 }
 
 const checkLocalStorage = currentMovie => {
