@@ -1,9 +1,6 @@
-if (!window.location.pathname.includes('catalog')){
+if (!window.location.pathname.includes('catalog')) {
   return
 }
-
-// !! Пробная заглушка для поиска фильма
-import { showModal } from './catalog-modal-close';
 
 import { showModal } from './catalog-modal-close';
 
@@ -192,7 +189,7 @@ searchInput.addEventListener('input', async () => {
   }
 });
 
-// * Автоматически (через 5 секунд) выполняет поиск фильмов, когда пользователь вводит текст в поле поиска
+// * Автоматически (через 500 миллисекунд) выполняет поиск фильмов, когда пользователь вводит текст в поле поиска
 function debounce(func, timeout = 500) {
   let timer;
   return (...args) => {
@@ -358,10 +355,27 @@ async function goToPage(pageNumber) {
   if (pageNumber < 1 || pageNumber > totalPages) {
     return;
   }
+  // * С задержкой (500 миллисекунд), для прокрутки страницы вверх после пагинации до определённого места (находи по id, в данном случае до строки поиска)
+  setTimeout(() => {
+    let elementPosition = document.getElementById('search-block-id').offsetTop;
+    window.scrollTo({
+      top: elementPosition,
+      behavior: "smooth"
+    });
+  }, 500);
+  // * Для прокрутки страницы вверх после пагинации до определённого места (находи по id, в данном случае до строки поиска)
+  // let elementPosition = document.getElementById('search-block-id').offsetTop;
+  // window.scrollTo({
+  //   top: elementPosition,
+  //   behavior: "smooth"
+  // });
+
+  // * Для прокрутки страницы вверх после пагинации (до самого верха страницы)
   // window.scrollTo({
   //   top: 0,
   //   behavior: "smooth"
   // });
+
   currentPage = pageNumber;
   localStorage.setItem('currentPage', currentPage);
   localStorage.setItem('currentQuery', currentQuery);
@@ -427,4 +441,4 @@ initLazyLoading();
 // !!!!!!!!!!!!Привет
 
 
-////!/!!!!!!!!!!!!!**/*/
+////!/!!!!!!!!!!!!!**/*/КУКУКУКУКУКУКУ
