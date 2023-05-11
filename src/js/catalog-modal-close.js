@@ -1,6 +1,6 @@
 
 import { searchMovies } from './catalog';
-// ! ЭТОТ КОД В РАБОТЕ
+
 export function showModal() {
   const modal = document.querySelector(".search-modal");
 
