@@ -57,7 +57,7 @@ async function displayMovies(movies) {
 
       const movieItem = `
 
-                <div class="catalog-library__item movie-item movie-card" id=${movie.id}>
+                <div class="catalog-library__item movie-card" id=${movie.id}>
                 <img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" 
                     srcset="
                         https://image.tmdb.org/t/p/w200${movie.poster_path} 200w,
@@ -93,7 +93,9 @@ if (addedMovies.length < 6) {
 } else {
   let currentItems = 6;
   loadMoreBtn.addEventListener('click', e => {
-    const elementList = [...document.querySelectorAll('.movie-item')];
+    const elementList = [
+      ...document.querySelectorAll('.catalog-library__item'),
+    ];
     e.target.classList.add('show-loader');
 
     for (let i = currentItems; i < currentItems + 6; i++) {
