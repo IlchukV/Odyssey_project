@@ -67,7 +67,6 @@ function cardsMarkup(cards, genreList) {
 
       const releaseDate = new Date(card.release_date).getFullYear();
       const ratingStars = createRatingStars(card.vote_average);
-weekly-fix-mobile
 
       return `<div class="movie-item movie-card weekly-trends--card" id=${card.id}>
                     <img class="weeklytrends_gallery_image"
