@@ -88,7 +88,7 @@ async function displayMovies(movies) {
   }
 }
 
-if (addedMovies.length < 7) {
+if (addedMovies.length < 6) {
   loadMoreBtn.classList.add('visually-hidden');
 } else {
   let currentItems = 6;
