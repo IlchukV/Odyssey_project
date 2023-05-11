@@ -4,7 +4,11 @@ import { createRatingStars } from './catalog';
 
 const weeklyGallery = document.querySelector('.weeklytrends_gallery_list');
 
-//отримує від API трендс response та жанр в genreList.
+if (weeklyGallery === null) {
+  return;
+}
+
+//отримує від API трендс response та жанри в genreList.
 
 async function getMovies() {
   try {
@@ -31,7 +35,7 @@ async function getMovies() {
   }
 }
 
-// рандом отриманих результатів запиту API
+// рандомні 3 фільми за результатами запиту API
 
 function createWeeklyGalery({ results }) {
   const randomResults = [];

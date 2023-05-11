@@ -14,23 +14,6 @@ if (refs.upcomingMoviesSection === null) {
   return;
 }
 
-async function fetchUpcomingMovieAndGenre() {
-  const searchParams = new URLSearchParams({
-    api_key: `${API_KEY}`,
-    region: 'UA',
-  });
-
-  const response = await axios.get(
-    `${BASE_URL}/movie/upcoming?${searchParams}`
-  );
-
-  const genres = await axios.get(
-    `${BASE_URL}/genre/movie/list?${searchParams}&release_date.gte=2023-05-01&release_date.lte=2023-05-31&with_release_type=1`
-  );
-
-  return { response, genres };
-}
-
 fetchUpcomingMovieAndGenre()
   .then(({ response, genres }) => {
     const movie =
@@ -42,13 +25,13 @@ fetchUpcomingMovieAndGenre()
 
     let date = dateFormate(movie);
 
-    refs.upcomingMoviesSection.innerHTML = UpcomingMovieMarkup(
-      movie,
-      genreList,
-      date
+    refs.upcomingMoviesSection.insertAdjacentHTML(
+      'beforeend',
+      UpcomingMovieMarkup(movie, genreList, date)
     );
 
     getPositionOfRemindMeBtn().addEventListener('click', () => {
+      getPositionOfRemindMeBtn().classList.add('hidden');
       save('my library', JSON.stringify(movie));
     });
 
@@ -76,10 +59,27 @@ fetchUpcomingMovieAndGenre()
   })
   .catch(console.log);
 
+// запит на нові фільми і список жанрів
+async function fetchUpcomingMovieAndGenre() {
+  const searchParams = new URLSearchParams({
+    api_key: `${API_KEY}`,
+    region: 'UA',
+  });
+
+  const response = await axios.get(
+    `${BASE_URL}/movie/upcoming?${searchParams}`
+  );
+
+  const genres = await axios.get(
+    `${BASE_URL}/genre/movie/list?${searchParams}&release_date.gte=2023-05-01&release_date.lte=2023-05-31&with_release_type=1`
+  );
+
+  return { response, genres };
+}
+
+// рендер блоку upcoming-film
 function UpcomingMovieMarkup(el, genres, date) {
-  return `
-                <h2 class="section-title">UPCOMING THIS MONTH</h2>
-                <div class="movie">
+  return `      <div class="movie">
                     <img class="movie__poster" src="" alt="">
                     <div class="movie__info">
                         <h3 class="movie__title">${el.original_title}</h3>
@@ -119,17 +119,19 @@ function UpcomingMovieMarkup(el, genres, date) {
                         ${el.overview}
                         </p>
                         <div class="movie__btn">
-                            <button class="movie__btn-fill" data-action="remind" type="button">Remind me</button>
+                            <button class="movie__btn-fill" type="button">Remind me</button>
                         </div>
                     </div>
                 </div>
             `;
 }
 
+// позиція зображення у DOM
 function getPositionOfPosterInDom() {
   return document.querySelector('.movie__poster');
 }
 
+// фільтрація жанрів фільму
 function getGenres(movie, genres) {
   return genres.data.genres
     .filter(el => movie.genre_ids.includes(el.id))
@@ -137,6 +139,7 @@ function getGenres(movie, genres) {
     .map(el => el.name);
 }
 
+// форматування дати
 function dateFormate(movie) {
   let date = movie.release_date.replaceAll('-', '.').split('.');
   date.reverse();
@@ -144,6 +147,7 @@ function dateFormate(movie) {
   return date;
 }
 
+// позиція кнопки у DOM
 function getPositionOfRemindMeBtn() {
-  return document.querySelector('button[data-action="remind"]');
+  return document.querySelector('.movie__btn');
 }
