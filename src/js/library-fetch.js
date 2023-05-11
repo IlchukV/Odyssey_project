@@ -88,15 +88,15 @@ async function displayMovies(movies) {
   }
 }
 
-if (addedMovies.length < 10) {
+if (addedMovies.length < 6) {
   loadMoreBtn.classList.add('visually-hidden');
 } else {
-  let currentItems = 9;
+  let currentItems = 6;
   loadMoreBtn.addEventListener('click', e => {
     const elementList = [...document.querySelectorAll('.movie-item')];
     e.target.classList.add('show-loader');
 
-    for (let i = currentItems; i < currentItems + 9; i++) {
+    for (let i = currentItems; i < currentItems + 6; i++) {
       setTimeout(function () {
         e.target.classList.remove('show-loader');
         if (elementList[i]) {
@@ -104,6 +104,6 @@ if (addedMovies.length < 10) {
         }
       }, 3000);
     }
-    currentItems += 9;
+    currentItems += 6;
   });
 }
