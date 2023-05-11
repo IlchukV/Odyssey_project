@@ -7,7 +7,7 @@ import mobile2xUrl from '../images/hero/hero_mobile@2x.png';
 
 export default `        <div class="hero__card swiper-slide">
           <div class="hero__info hero__info--default">
-            <h1 class="hero__title">Let’s Make Your Own Cinema</h1>
+            <h2 class="hero__title">Let’s Make Your Own Cinema</h2>
 
             <p class="hero__description">Is a guide to creating a personalized movie theater experience. You'll need a
               projector, screen, and speakers. <span class="not-mobile">Decorate your space, choose your films, and
