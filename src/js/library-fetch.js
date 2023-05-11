@@ -8,16 +8,14 @@ const BASE_URL = 'https://api.themoviedb.org/3/';
 const emptyLibrary = document.querySelector('.empty-library');
 const catalogLibrary = document.querySelector('.catalog-library');
 const catalogLibraryList = document.querySelector('.catalog-library__list');
-let movieCardRef;
-
 const loadMoreBtn = document.querySelector('.load-more');
+let movieCardRef;
 
 const addedMovies = load('my library');
 
 if (emptyLibrary === null) {
   return;
 }
-
 checkLibrary();
 
 function checkLibrary() {
@@ -60,10 +58,15 @@ async function displayMovies(movies) {
       const movieItem = `
 
                 <div class="catalog-library__item movie-item movie-card" id=${movie.id}>
-
-                                  <img
-                    src="https://image.tmdb.org/t/p/w500${movie.poster_path}"
-                   alt="${movie.title}"/>
+                <img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" 
+                    srcset="
+                        https://image.tmdb.org/t/p/w200${movie.poster_path} 200w,
+                        https://image.tmdb.org/t/p/w300${movie.poster_path} 300w,
+                        https://image.tmdb.org/t/p/w500${movie.poster_path} 500w
+                    "
+                    sizes="(max-width: 768px) 200px, (max-width: 1280px) 300px, 500px"
+                    alt="${movie.title}"
+                    >
                     <div class="catalog-library__details">
                         <h3>${movie.title}</h3>
                         <div class="catalog-library__info-wrap">
@@ -85,19 +88,22 @@ async function displayMovies(movies) {
   }
 }
 
-loadMoreBtn.classList.remove('visually-hidden');
-let currentItems = 9;
-loadMoreBtn.addEventListener('click', e => {
-  const elementList = [...document.querySelectorAll('.movie-item')];
-  e.target.classList.add('show-loader');
+if (addedMovies.length < 10) {
+  loadMoreBtn.classList.add('visually-hidden');
+} else {
+  let currentItems = 9;
+  loadMoreBtn.addEventListener('click', e => {
+    const elementList = [...document.querySelectorAll('.movie-item')];
+    e.target.classList.add('show-loader');
 
-  for (let i = currentItems; i < currentItems + 9; i++) {
-    setTimeout(function () {
-      e.target.classList.remove('show-loader');
-      if (elementList[i]) {
-        elementList[i].style.display = 'flex';
-      }
-    }, 3000);
-  }
-  currentItems += 9;
-});
+    for (let i = currentItems; i < currentItems + 9; i++) {
+      setTimeout(function () {
+        e.target.classList.remove('show-loader');
+        if (elementList[i]) {
+          elementList[i].style.display = 'flex';
+        }
+      }, 3000);
+    }
+    currentItems += 9;
+  });
+}
