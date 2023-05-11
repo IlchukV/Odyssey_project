@@ -135,6 +135,7 @@
 
 .team-modal__svg {
   fill: var(--mainDarkColor);
+  transition: fill $duration cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .team-modal__svg:hover,
