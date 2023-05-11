@@ -132,10 +132,9 @@ function isMyLibraryPage() {
 }
 
 function removeMovieFromDOM({id}) {
-  try {
-    document.querySelector(`[id="${id}"]`).remove();
-  } catch (err) {
-    throw err;
+  const card = document.querySelector(`[id="${id}"]`);
+  if (card) {
+    card.remove();
   }
 }
 
