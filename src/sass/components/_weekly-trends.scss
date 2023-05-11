@@ -33,6 +33,7 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 18.75px;
+  transition: all $duration cubic-bezier(0.4, 0, 0.2, 1);
   @include tablet {
     font-size: 24px;
     line-height: 28.13px;
@@ -42,6 +43,10 @@
     font-size: 28px;
     line-height: 32.81px;
   }
+}
+
+.weeklytrends_seeAll_link:hover {
+ color: $informationColor;
 }
 
 .weeklytrends_gallery_list {
@@ -56,4 +61,21 @@
 
 div.weekly-trends--start {
   justify-content: flex-start;
+}
+
+div.weekly-trends--rating {
+  text-align: end;
+  transform: translateX(0);
+}
+
+div.weekly-trends--card {
+  @media screen and (max-width: 767px) {
+    width: 280px;
+  }
+}
+
+div.weekly-trends--card:nth-child(-n+2){
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
 }

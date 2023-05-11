@@ -1,10 +1,15 @@
 import axios from 'axios';
 const KEY = 'e1aeaa11db3ac22382c707ccfcac931e';
 import { createRatingStars } from './catalog';
+import { handleMovieClick } from '../js/details-modal';
 
 const weeklyGallery = document.querySelector('.weeklytrends_gallery_list');
 
-//отримує від API трендс response та жанр в genreList.
+if (weeklyGallery === null) {
+  return;
+}
+
+//отримує від API трендс response та жанри в genreList.
 
 async function getMovies() {
   try {
@@ -19,19 +24,20 @@ async function getMovies() {
     let galleryCardsList = createWeeklyGalery(response.data);
     let trendMovieList = galleryCardsList;
 
-    if (window.screen.width < 767) {
-      trendMovieList = galleryCardsList.filter((el, index) => index < 1);
-    }
+    // if (window.screen.width < 767) {
+    //   trendMovieList = galleryCardsList.filter((el, index) => index < 1);
+    // }
 
     const genres = genreList.data.genres;
 
     weeklyGallery.innerHTML = cardsMarkup(trendMovieList, genres);
+    weeklyGallery.addEventListener('click', handleMovieClick);
   } catch (error) {
     console.log(error);
   }
 }
 
-// рандом отриманих результатів запиту API
+// рандомні 3 фільми за результатами запиту API
 
 function createWeeklyGalery({ results }) {
   const randomResults = [];
@@ -59,7 +65,7 @@ function cardsMarkup(cards, genreList) {
 
       const releaseDate = new Date(card.release_date).getFullYear();
       const ratingStars = createRatingStars(card.vote_average);
-      return `<div class="movie-item movie-card" id=${card.id}>
+      return `<div class="movie-item movie-card weekly-trends--card" id=${card.id}>
                     <img class="weeklytrends_gallery_image"
                     src="https://image.tmdb.org/t/p/w200${card.poster_path}" 
                     srcset="
@@ -78,7 +84,7 @@ function cardsMarkup(cards, genreList) {
                         <span class="movie-separator">|</span>
                         <span class="movie-year">${releaseDate}</span>
                     </div>
-                    <div class="movie-rating">
+                    <div class="movie-rating weekly-trends--rating">
                         ${ratingStars}
                     </div>
                     </div>

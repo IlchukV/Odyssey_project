@@ -5,7 +5,6 @@
   padding-top: 12px;
   padding-bottom: 12px;
   margin: 0 auto;
-  background-color: var(--body-and-modals-bgc);
 
   position: relative;
   background-size: cover;
@@ -112,7 +111,6 @@
 .mobile-menu.is-open {
   opacity: 1;
   transform: translateX(0%);
-  
 }
 
 .menu-logo {

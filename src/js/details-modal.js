@@ -6,32 +6,43 @@ const API_KEY = 'e1aeaa11db3ac22382c707ccfcac931e';
 const BASE_URL = 'https://api.themoviedb.org/3';
 const IMG_URL = 'https://image.tmdb.org/t/p/original';
 
+Notiflix.Notify.init({
+  width: '320px',
+  fontSize: '16px',
+  success: {
+    background: 'orange',
+    textColor: '#fff',
+  },
+});
+
 const refs = {
   modalWindow: document.querySelector('.modal-body'),
   modalCloseBtn: document.querySelector('[data-modal-movie-close]'),
   backdrop: document.querySelector('.modal-movie-backdrop'),
+  movieOverlay: document.querySelector('.modal-overlay-movie'),
   movieList: document.querySelector('.movies-list'),
   bodyRef: document.querySelector('body'),
 };
-
-if (refs.movieList === null) {
-  return;
-}
 
 let addBtnRef;
 let addBtnTextRef;
 let chosenMovie;
 let trailerBtnRef;
 
+if (refs.movieList === null) {
+  return;
+}
+
 refs.movieList.addEventListener('click', handleMovieClick);
 refs.modalCloseBtn.addEventListener('click', handleModalClose);
+console.log('refs.modalCloseBtn: ', refs.modalCloseBtn);
 refs.backdrop.addEventListener('click', closeModalBackdropClick);
 
 function handleMovieClick(e) {
   fetchMovieInfo(e.target.id).then(data => {
     refs.modalWindow.innerHTML = markupMovieCard(data);
     refs.bodyRef.classList.add('no-scroll');
-    refs.backdrop.classList.remove('is-hidden');
+    refs.backdrop.classList.toggle('is-hidden');
     addBtnRef = document.querySelector('.addBtn');
     addBtnTextRef = document.querySelector('.textBtn');
     addBtnRef.addEventListener('click', handleBtnClick);
@@ -44,23 +55,31 @@ function handleMovieClick(e) {
 }
 export { handleMovieClick };
 
+// закриває модальне вікно при натисканні на клавішу Esc
+
 function handleCloseModalEsc(evt) {
+  console.log('evt: ', evt);
   if (evt.code === 'Escape') {
     handleModalClose();
   }
-  return;
-}
-function handleModalClose() {
-  refs.backdrop.classList.add('is-hidden');
-  refs.bodyRef.classList.remove('no-scroll');
-  window.removeEventListener('keydown', handleCloseModalEsc);
 }
 
+// закриває модальне вікно
+
+function handleModalClose() {
+  refs.backdrop.classList.toggle('is-hidden');
+  window.removeEventListener('keydown', handleCloseModalEsc);
+  refs.bodyRef.classList.remove('no-scroll');
+}
+
+// закриває модальне вікно при кліку на бекдроп
+
 function closeModalBackdropClick(evt) {
-  if (evt.target.classList.contains('modal-movie-backdrop')) {
-    refs.backdrop.classList.add('is-hidden');
+  console.log('evt: ', evt);
+  if (evt.target === refs.movieOverlay) {
+    refs.backdrop.classList.toggle('is-hidden');
+    refs.bodyRef.classList.remove('no-scroll');
   }
-  return;
 }
 
 function getFilmsFromLocalStorage() {
@@ -72,10 +91,10 @@ function putToMyLibrary(array) {
   localStorage.setItem('my library', JSON.stringify(array));
 }
 
-const addItem = (currentMovie, array) => {
+function addItem(currentMovie, array) {
   const filtered = array.filter(item => item !== currentMovie.id);
   return [...filtered, currentMovie];
-};
+}
 
 function addToMyLibrary(item) {
   const parsedMovies = getFilmsFromLocalStorage();
@@ -83,14 +102,18 @@ function addToMyLibrary(item) {
   putToMyLibrary(newArray);
 }
 
-const removeMovie = (currentMovie, array) => {
+function removeMovie(currentMovie, array) {
   return array.filter(item => item.id !== currentMovie.id);
-};
+}
 
 function removeFromMyLibrary(item) {
   const parsedMovies = getFilmsFromLocalStorage();
   const newArray = removeMovie(item, parsedMovies);
   putToMyLibrary(newArray);
+
+  if (isMyLibraryPage()) {
+    removeMovieFromDOM(chosenMovie);
+  }
 }
 function makeRemoveFromMyLibrary() {
   addBtnTextRef.innerHTML = 'Remove from my library';
@@ -123,6 +146,17 @@ function checkBtnStatus() {
   return addBtnRef.getAttribute('data-action');
 }
 
+function isMyLibraryPage() {
+  return window.location.pathname.includes('my-library');
+}
+
+function removeMovieFromDOM({id}) {
+  const card = document.querySelector(`[id="${id}"]`);
+  if (card) {
+    card.remove();
+  }
+}
+
 const checkLocalStorage = currentMovie => {
   const myLibrary = getFilmsFromLocalStorage();
   const isInMyLibrary = myLibrary.some(item => item.id === currentMovie.id);
@@ -131,7 +165,7 @@ const checkLocalStorage = currentMovie => {
   } else {
     makeAddToMyLibrary();
   }
-};
+}
 
 async function fetchMovieInfo(id) {
   const url = `${BASE_URL}/movie/${id}?api_key=${API_KEY}&language=en-US`;
@@ -234,12 +268,11 @@ function markupMovieCard({
     </div>
     `;
 }
-
-Notiflix.Notify.init({
-  width: '320px',
-  fontSize: '16px',
-  success: {
-    background: 'orange',
-    textColor: '#fff',
-  },
-});
+// Notiflix.Notify.init({
+//   width: '320px',
+//   fontSize: '16px',
+//   success: {
+//     background: 'orange',
+//     textColor: '#fff',
+//   },
+// });

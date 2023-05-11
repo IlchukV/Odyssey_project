@@ -15,7 +15,7 @@ export default function (data) {
     .map(({ backdrop_path, original_title, vote_average, overview, id }) => {
       return `<div class="hero__card swiper-slide">
       <div class="hero__info">
-      <h1 class="hero__title">${original_title}</h1>
+      <h2 class="hero__title">${original_title}</h2>
       <div class="raiting">
       <div class="raiting__fill-image" style="width:${ratingPercent(
         vote_average
@@ -27,14 +27,14 @@ export default function (data) {
           type="image/png" />
         <source srcset="${urlMob} 1x, ${urlRetinaMob} 2x" media="(max-width: 767px)"
           type="image/png" />
-        <img class="raiting__image" src="${urlMob}" alt="hero">
+        <img class="raiting__image" src="${urlMob}" alt="hero" loading="lazy">
       </picture>
       </div>
       <p class="hero__description">${overview}</p>
       <button class="hero__btn js-hero-trailer" type="button" data-id="${id}">Watch trailer</button>
       </div>
       <div class="hero__image-wrap">
-      <img class="hero__image" src="https://image.tmdb.org/t/p/original${backdrop_path}" alt="hero">
+      <img class="hero__image" src="https://image.tmdb.org/t/p/original${backdrop_path}" alt="hero" loading="lazy">
       </div>
       </div>`;
     })
