@@ -265,11 +265,3 @@ function markupMovieCard({
     </div>
     `;
 }
-// Notiflix.Notify.init({
-//   width: '320px',
-//   fontSize: '16px',
-//   success: {
-//     background: 'orange',
-//     textColor: '#fff',
-//   },
-// });
