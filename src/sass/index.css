@@ -461,17 +461,16 @@ button {
   gap: 16px;
 }
 
+.weeklytrends_gallery_image {
+  border-radius: 5px;
+}
+
 .weekly-trends--flex {
   flex-direction: column;
 }
 
 div.weekly-trends--start {
   justify-content: flex-start;
-}
-
-div.weekly-trends--rating {
-  text-align: end;
-  transform: translateX(0);
 }
 
 @media screen and (max-width: 767px) {
@@ -2031,7 +2030,7 @@ img {
 .movie-item:nth-child(21) {
   margin-bottom: 0;
 }
-.movie-item:nth-of-type(n+22) {
+.movie-item:nth-of-type(n + 22) {
   display: none;
 }
 .movie-item::before {
@@ -2141,16 +2140,10 @@ img {
   color: darkorange;
 }
 
-@media screen and (min-width: 480px) and (max-width: 767.97px) {
-  .movie-rating {
-    transform: translateX(79%);
-  }
+.movie-rating {
+  text-align: end;
 }
-@media screen and (max-width: 479.97px) {
-  .movie-rating {
-    transform: translateX(69%);
-  }
-}
+
 .page-indicator {
   display: flex;
   justify-content: center;

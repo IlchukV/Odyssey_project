@@ -1,3 +1,4 @@
+// завантаження в LS
 export const load = key => {
   try {
     const serializedState = localStorage.getItem(key);
@@ -6,7 +7,7 @@ export const load = key => {
     console.error('Get state error: ', error.message);
   }
 };
-
+// збереження в LS
 export const save = (key, value) => {
   try {
     const storage = load(key);
@@ -22,6 +23,7 @@ export const save = (key, value) => {
   }
 };
 
+// видалення з LS
 export const removeStore = key => {
   try {
     localStorage.removeItem(key);

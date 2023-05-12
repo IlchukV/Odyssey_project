@@ -1,11 +1,12 @@
 import fetchVideoKey from './fetch-video-key';
+import { refs } from './refs';
 
-const refs = {
-  backdropTrailer: document.querySelector('.js-backdrop-trailer'),
-  trailer: document.querySelector('.trailer'),
-  closeBtn: document.querySelector('.js-close-btn'),
-  playerBox: document.querySelector('.js-player'),
-};
+// const refs = {
+//   backdropTrailer: document.querySelector('.js-backdrop-trailer'),
+//   trailer: document.querySelector('.trailer'),
+//   closeBtn: document.querySelector('.js-close-btn'),
+//   playerBox: document.querySelector('.js-player'),
+// };
 
 refs.closeBtn.addEventListener('click', onCloseTraier);
 
