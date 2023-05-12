@@ -1,3 +1,4 @@
+import { refs } from './refs';
 import axios from 'axios';
 import { save } from './local-storage';
 import noPoster from '../images/noposter.jpg';
@@ -6,9 +7,9 @@ const BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = 'e1aeaa11db3ac22382c707ccfcac931e';
 const IMG_URL = 'https://image.tmdb.org/t/p/original';
 
-const refs = {
-  upcomingMoviesSection: document.querySelector('.container--upcoming'),
-};
+// const refs = {
+//   upcomingMoviesSection: document.querySelector('.container--upcoming'),
+// };
 
 if (refs.upcomingMoviesSection === null) {
   return;
