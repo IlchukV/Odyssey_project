@@ -18,9 +18,9 @@
     position: absolute;
     z-index: 1;
     top: calc(50% - 20px);
-    left: 8px;
+    left: 13px;
     transform: translateY(-50%);
-    width: 48%;
+    width: 46%;
 
     &--library {
       width: 65%;
@@ -41,6 +41,10 @@
     font-size: 12px;
     line-height: 1.14;
     margin-bottom: 16px;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
   }
 
   &__info--library &__title {
@@ -158,6 +162,7 @@
     &__info {
       width: 36%;
       left: 32px;
+      top: calc(50% - 60px);
 
       &--library {
         width: 46%;
@@ -201,6 +206,7 @@
     &__info {
       width: 32%;
       left: 100px;
+      top: calc(50% - 80px);
 
       &--library {
         left: 117px;
@@ -223,6 +229,7 @@
       font-size: 16px;
       line-height: 1.19;
       margin-bottom: 36px;
+      -webkit-line-clamp: 10;
     }
 
     &__btn {
@@ -304,9 +311,9 @@
   justify-content: center;
   align-items: center;
   position: absolute;
-  bottom: 5px;
+  bottom: 20px;
   z-index: 2;
-  left: 8px;
+  left: 13px;
 
   &--show {
     display: flex;
@@ -318,10 +325,11 @@
 
   @include tablet {
     left: 32px;
+    bottom: 30px;
   }
 
   @include desktop {
-    bottom: 20px;
+    bottom: 50px;
     left: 100px;
   }
 }
