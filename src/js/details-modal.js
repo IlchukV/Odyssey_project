@@ -35,7 +35,6 @@ if (refs.movieList === null) {
 
 refs.movieList.addEventListener('click', handleMovieClick);
 refs.modalCloseBtn.addEventListener('click', handleModalClose);
-console.log('refs.modalCloseBtn: ', refs.modalCloseBtn);
 refs.backdrop.addEventListener('click', closeModalBackdropClick);
 
 function handleMovieClick(e) {
@@ -58,7 +57,6 @@ export { handleMovieClick };
 // закриває модальне вікно при натисканні на клавішу Esc
 
 function handleCloseModalEsc(evt) {
-  console.log('evt: ', evt);
   if (evt.code === 'Escape') {
     handleModalClose();
   }
@@ -75,7 +73,6 @@ function handleModalClose() {
 // закриває модальне вікно при кліку на бекдроп
 
 function closeModalBackdropClick(evt) {
-  console.log('evt: ', evt);
   if (evt.target === refs.movieOverlay) {
     refs.backdrop.classList.toggle('is-hidden');
     refs.bodyRef.classList.remove('no-scroll');
@@ -150,7 +147,7 @@ function isMyLibraryPage() {
   return window.location.pathname.includes('my-library');
 }
 
-function removeMovieFromDOM({id}) {
+function removeMovieFromDOM({ id }) {
   const card = document.querySelector(`[id="${id}"]`);
   if (card) {
     card.remove();
@@ -165,7 +162,7 @@ const checkLocalStorage = currentMovie => {
   } else {
     makeAddToMyLibrary();
   }
-}
+};
 
 async function fetchMovieInfo(id) {
   const url = `${BASE_URL}/movie/${id}?api_key=${API_KEY}&language=en-US`;

@@ -75,13 +75,12 @@
     right: 40px;
   }
   > svg path {
-    stroke: white;
-    fill: white;
+    stroke: $mainLightColor;
+    fill: $mainLightColor;
   }
 }
 .modal-close-btn:hover > svg path {
-  fill: orange;
-  stroke: orange;
+  stroke: $button-text-hover;
 }
 
 .movie-wraper {
@@ -134,21 +133,21 @@
   width: 248px;
   font-weight: 500;
   font-size: 20px;
-  line-height: 23px;
+  line-height: 1.15;
   color: $mainLightColor;
   margin-bottom: 29px;
 
   @include tablet {
     width: 301px;
     font-size: 24px;
-    line-height: 28px;
+    line-height: 1.17;
     margin-bottom: 26px;
   }
 
   @include desktop {
     width: 340px;
     font-size: 24px;
-    line-height: 32px;
+    line-height: 1.3;
     margin-bottom: 28px;
   }
 }
@@ -170,36 +169,36 @@
   width: 95px;
   font-weight: 500;
   font-size: 14px;
-  line-height: 16px;
+  line-height: 1.14;
   color: var(--footerTxtColor);
 
   @include tablet {
     font-size: 14px;
-    line-height: 16px;
+    line-height: 1.14;
   }
 
   @include desktop {
     font-size: 16px;
-    line-height: 19px;
+    line-height: 1.19;
   }
 }
 
 .movie-characteristics-results {
   font-weight: 500;
   font-size: 12px;
-  line-height: 14px;
+  line-height: 1.17;
   color: $mainLightColor;
   margin-left: 62px;
 
   @include tablet {
     font-size: 12px;
-    line-height: 14px;
+    line-height: 1.17;
     margin-left: 62px;
   }
 
   @include desktop {
     font-size: 16px;
-    line-height: 19px;
+    line-height: 1.19;
     margin-left: 62px;
   }
 }
@@ -235,7 +234,7 @@
 .movie-vote-wrapper {
   width: 40px;
   text-align: center;
-  color: #111111;
+  color: $button-text;
   background-color: $mainLightColor;
   border-radius: 5px;
 }
@@ -267,20 +266,20 @@
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
-  line-height: 16px;
+  line-height: 1.14;
   text-transform: uppercase;
   color: var(--footerTxtColor);
   margin-bottom: 12px;
 
   @include tablet {
     font-size: 14px;
-    line-height: 16px;
+    line-height: 1.14;
     margin-bottom: 16px;
   }
 
   @include desktop {
     font-size: 16px;
-    line-height: 16px;
+    line-height: 1;
     margin-bottom: 16px;
   }
 }
@@ -290,21 +289,21 @@
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
-  line-height: 20px;
-  color: #f8f8f8;
+  line-height: 1.7;
+  color: var(--upcoming-film-bulb-color);
   margin-bottom: 16px;
 
   @include tablet {
     width: 301px;
     font-size: 12px;
-    line-height: 20px;
+    line-height: 1.7;
     margin-bottom: 24px;
   }
 
   @include desktop {
     width: 331px;
     font-size: 14px;
-    line-height: 20px;
+    line-height: 1.4;
     margin-bottom: 24px;
   }
 }
@@ -321,13 +320,13 @@
 
   @include tablet {
     font-size: 12px;
-    line-height: 16px;
+    line-height: 1.33;
     height: 40px;
   }
 
   @include desktop {
     font-size: 12px;
-    line-height: 16px;
+    line-height: 1.33;
     height: 40px;
   }
 }
@@ -341,13 +340,13 @@
   transform: translate(-50%, -50%);
   font-weight: 500;
   font-size: 12px;
-  line-height: 14px;
+  line-height: 1.7;
   width: inherit;
   margin: 0 auto;
   color: $mainLightColor;
 }
 .textBtn:hover {
-  color: orange;
+  color: $film-release-date-color;
 }
 .no-scroll {
   overflow: hidden;
