@@ -54,7 +54,7 @@
   justify-content: center;
   gap: 16px;
 }
-.weeklytrends_gallery_image{
+.weeklytrends_gallery_image {
   border-radius: 5px;
 }
 .weekly-trends--flex {
@@ -63,11 +63,6 @@
 
 div.weekly-trends--start {
   justify-content: flex-start;
-}
-
-div.weekly-trends--rating {
-  text-align: end;
-  transform: translateX(0);
 }
 
 div.weekly-trends--card {
