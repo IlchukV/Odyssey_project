@@ -1,50 +1,51 @@
+import { refs } from './refs';
 (() => {
-  const mobileMenu = document.querySelector('.js-menu-container');
-  const openMenuBtn = document.querySelector('.js-open-menu');
-  const closeMenuBtn = document.querySelector('.js-close-menu');
-  const backdrop = document.querySelector('.backdrop');
-  const bodyScrollLock = require('body-scroll-lock');
-  const disableBodyScroll = bodyScrollLock.disableBodyScroll;
-  const enableBodyScroll = bodyScrollLock.enableBodyScroll;
+  // const refs.mobileMenu = document.querySelector('.js-menu-container');
+  // const refs.openMenuBtn = document.querySelector('.js-open-menu');
+  // const closeMenuBtn = document.querySelector('.js-close-menu');
+//  refs.backdrop.document.querySelector('.backdrop');
+  // const bodyScrollLock = require('body-scroll-lock');
+  // const disableBodyScroll = bodyScrollLock.disableBodyScroll;
+  // const enableBodyScroll = bodyScrollLock.enableBodyScroll;
   const toggleMenu = () => {
     console.log('');
     const isMenuOpen =
-      openMenuBtn.getAttribute('aria-expanded') === 'true' || false;
-    openMenuBtn.setAttribute('aria-expanded', !isMenuOpen);
-    mobileMenu.classList.toggle('is-open');
+      refs.openMenuBtn.getAttribute('aria-expanded') === 'true' || false;
+    refs.openMenuBtn.setAttribute('aria-expanded', !isMenuOpen);
+    refs.mobileMenu.classList.toggle('is-open');
 
     const scrollLockMethod = !isMenuOpen
       ? 'disableBodyScroll'
       : 'enableBodyScroll';
-    bodyScrollLock[scrollLockMethod](document.body);
+    refs.bodyScrollLock[scrollLockMethod](document.body);
   };
 
   const toggleBackdrop = () => {
-    backdrop.classList.toggle('is-open');
+    refs.backdrop.classList.toggle('is-open');
   };
 
-  openMenuBtn.addEventListener('click', toggleMenu);
-  openMenuBtn.addEventListener('click', toggleBackdrop);
-  backdrop.addEventListener('click', onBackdropClose);
+  refs.openMenuBtn.addEventListener('click', toggleMenu);
+  refs.openMenuBtn.addEventListener('click', toggleBackdrop);
+  refs.backdrop.addEventListener('click', onBackdropClose);
 
-  mobileMenu.querySelectorAll('a').forEach(link => {
+  refs.mobileMenu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
-      mobileMenu.classList.remove('is-open');
-      backdrop.classList.remove('is-open');
+      refs.mobileMenu.classList.remove('is-open');
+      refs.backdrop.classList.remove('is-open');
     });
   });
 
   function onBackdropClose(e) {
     if (e.target === e.currentTarget) {
-      mobileMenu.classList.remove('is-open');
-      backdrop.classList.remove('is-open');
+      refs.mobileMenu.classList.remove('is-open');
+      refs.backdrop.classList.remove('is-open');
     }
   }
 
   window.matchMedia('(min-width: 768px)').addEventListener('change', e => {
     if (!e.matches) return;
-    mobileMenu.classList.remove('is-open');
-    openMenuBtn.setAttribute('aria-expanded', false);
-    bodyScrollLock.enableBodyScroll(document.body);
+    refs.mobileMenu.classList.remove('is-open');
+    refs.openMenuBtn.setAttribute('aria-expanded', false);
+    refs.bodyScrollLock.enableBodyScroll(document.body);
   });
 })();
