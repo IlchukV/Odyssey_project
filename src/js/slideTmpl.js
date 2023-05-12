@@ -35,8 +35,8 @@ export default function (data) {
       </div>
       <div class="hero__image-wrap">
       <picture>
-        <!-- <source srcset="https://image.tmdb.org/t/p/original${backdrop_path}" media="(min-width: 768px)" />
-        <source srcset="https://image.tmdb.org/t/p/w200${backdrop_path}" media="(max-width: 767px)" /> -->
+         <source srcset="https://image.tmdb.org/t/p/original${backdrop_path}" media="(min-width: 768px)" />
+        <source srcset="https://image.tmdb.org/t/p/w500${backdrop_path}" media="(max-width: 767px)" />
         <img class="hero__image" src="https://image.tmdb.org/t/p/original${backdrop_path}" alt="hero" loading="lazy">
       </picture>
       </div>

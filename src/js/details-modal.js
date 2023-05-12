@@ -147,7 +147,7 @@ function isMyLibraryPage() {
 }
 
 function removeMovieFromDOM({ id }) {
-  const card = document.querySelector([(id = '${id}')]);
+  const card = document.querySelector(`[id = '${id}']`);
   if (card) {
     card.remove();
   }
