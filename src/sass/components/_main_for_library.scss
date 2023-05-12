@@ -251,6 +251,13 @@
 .load-more.show-loader .loading {
   display: block;
 }
+.load-more.loaded {
+  visibility: hidden;
+  opacity: 0;
+  height: 0;
+  transition: visibility 0.3s 3s, opacity 0.3s 3s, height 0.3s 3s;
+  text-indent: -9999px;
+}
 
 .catalog-library {
   padding: 40px 0px;
@@ -310,8 +317,8 @@
   }
 
   &:hover {
-    transform: rotateY(30deg);
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.35s ease-in-out;
+    transform: scale(1.05);
   }
 
   & > img {
@@ -357,11 +364,13 @@
 
   & > .movie-rating {
     transform: translate(0);
+    width: 130px;
   }
 }
-// .catalog-library__info {
-//   display: flex;
-// }
+.catalog-library__info {
+  width: 140px;
+}
+
 .catalog-library__text {
   color: #b7b7b7;
   font-size: 12px;
