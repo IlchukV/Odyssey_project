@@ -5,13 +5,13 @@ function ratingPercent(voites) {
 import url from '../images/hero/raiting_contour.png';
 import urlRetina from '../images/hero/raiting_contour@2x.png';
 import urlTab from '../images/hero/raiting_contour_tablet.png';
-import urlTabRetina from '../images/hero/raiting_contour_tablet@2x.png';
+import urlTabRetina from '../images/hero/raiting_contour-tablet@2x.png';
 import urlMob from '../images/hero/raiting_contour_mobile.png';
 import urlRetinaMob from '../images/hero/raiting_contour_mobile@2x.png';
 
 export default function (data) {
   return data.results
-    .slice(0, 5)
+    .slice(1, 6)
     .map(({ backdrop_path, original_title, vote_average, overview, id }) => {
       return `<div class="hero__card swiper-slide">
       <div class="hero__info">
@@ -21,9 +21,9 @@ export default function (data) {
         vote_average
       )}%"></div>
       <picture>
-        <source srcset="${url} 1x, .${urlRetina} 2x" media="(min-width: 1280px)"
+        <source srcset="${url} 1x, ${urlRetina} 2x" media="(min-width: 1280px)"
           type="image/png" />
-          <source srcset="${urlTab} 1x, .${urlTabRetina} 2x" media="(min-width: 768px)"
+          <source srcset="${urlTab} 1x, ${urlTabRetina} 2x" media="(min-width: 768px)"
           type="image/png" />
         <source srcset="${urlMob} 1x, ${urlRetinaMob} 2x" media="(max-width: 767px)"
           type="image/png" />
@@ -35,8 +35,8 @@ export default function (data) {
       </div>
       <div class="hero__image-wrap">
       <picture>
-        <source srcset="https://image.tmdb.org/t/p/original${backdrop_path}" media="(min-width: 768px)" />
-        <source srcset="https://image.tmdb.org/t/p/w500${backdrop_path}" media="(max-width: 767px)" />
+        <!-- <source srcset="https://image.tmdb.org/t/p/original${backdrop_path}" media="(min-width: 768px)" />
+        <source srcset="https://image.tmdb.org/t/p/w200${backdrop_path}" media="(max-width: 767px)" /> -->
         <img class="hero__image" src="https://image.tmdb.org/t/p/original${backdrop_path}" alt="hero" loading="lazy">
       </picture>
       </div>

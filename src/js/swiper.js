@@ -3,10 +3,10 @@ import 'swiper/swiper.min.css';
 
 const swiper = new Swiper('.swiper', {
   modules: [Pagination, Autoplay, Navigation],
-  autoplay: {
-    delay: 7000,
-    disableOnInteraction: false,
-  },
+  // autoplay: {
+  //   delay: 7000,
+  //   disableOnInteraction: false,
+  // },
   pagination: {
     el: '.swiper-pagination',
     clickable: true,
