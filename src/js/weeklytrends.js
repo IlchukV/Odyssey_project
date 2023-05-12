@@ -87,7 +87,7 @@ function cardsMarkup(cards, genreList) {
                         <span class="movie-separator">|</span>
                         <span class="movie-year">${releaseDate}</span>
                     </div>
-                    <div class="movie-rating weekly-trends--rating">
+                    <div class="movie-rating">
                         ${ratingStars}
                     </div>
                     </div>
