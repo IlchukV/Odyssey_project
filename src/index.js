@@ -15,3 +15,4 @@ import './js/catalog-modal-close';
 import './js/movie-found';
 import './js/catalog';
 import './js/mobile-menu';
+import './js/loader';
