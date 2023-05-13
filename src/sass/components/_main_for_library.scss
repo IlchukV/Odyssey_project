@@ -245,7 +245,7 @@
 }
 .load-more.show-loader {
   width: 52px;
-  background-color: $mainLightColor;
+  background-color: inherit;
   text-indent: -9999px;
 }
 .load-more.show-loader .loading {
