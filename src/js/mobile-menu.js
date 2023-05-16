@@ -7,6 +7,7 @@ import { refs } from './refs';
   // const bodyScrollLock = require('body-scroll-lock');
   // const disableBodyScroll = bodyScrollLock.disableBodyScroll;
   // const enableBodyScroll = bodyScrollLock.enableBodyScroll;
+
   const toggleMenu = () => {
     console.log('');
     const isMenuOpen =

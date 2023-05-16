@@ -6,11 +6,8 @@ export function showModal() {
 
   const modalSearchInput = modal.querySelector(".search-block_search-input");
   const modalSearchButton = modal.querySelector(".search-block_submit-btn");
-
-  modalSearchInput.disabled = true;
-  modalSearchButton.style.pointerEvents = "none";
-
   const modalCloseButton = modal.querySelector(".search-modal-close");
+
   modalCloseButton.addEventListener("click", () => {
     modal.style.display = "none";
     document.body.style.overflow = "";
@@ -29,7 +26,7 @@ export function showModal() {
     const searchTerm = modalSearchInput.value.trim();
 
     if (searchTerm) {
-      searchFromModal = true; // Установите переменную в true перед выполнением поиска
+      searchFromModal = true;
       const searchSuccess = await searchMovies(searchTerm, true);
       if (searchSuccess) {
         modal.style.display = "none";
@@ -40,10 +37,33 @@ export function showModal() {
     }
   });
 
+  const executeSearch = debounce(async () => {
+    const searchTerm = modalSearchInput.value.trim();
+    if (searchTerm.length >= 3) {
+      searchFromModal = true;
+      const searchSuccess = await searchMovies(searchTerm, true);
+      if (searchSuccess) {
+        modal.style.display = "none";
+        document.body.style.overflow = "";
+        modalSearchInput.value = "";
+      }
+    }
+  });
+  modalSearchInput.addEventListener("input", executeSearch);
+
   modalSearchInput.value = '';
 
   modal.style.display = "block";
   document.body.style.overflow = "hidden";
 
   return modal;
+}
+
+// * Автоматически (через 500 миллисекунд) выполняет поиск фильмов, когда пользователь вводит текст в поле поиска
+function debounce(func, timeout = 500) {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => { func.apply(this, args); }, timeout);
+  };
 }
