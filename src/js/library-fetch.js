@@ -107,5 +107,9 @@ if (addedMovies.length < 6) {
       }, 3000);
     }
     currentItems += 6;
+
+    if (currentItems >= elementList.length) {
+      e.target.classList.add('loaded');
+    }
   });
 }

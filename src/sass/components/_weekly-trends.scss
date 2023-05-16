@@ -54,11 +54,31 @@
   justify-content: center;
   gap: 16px;
 }
-
+.weeklytrends_gallery_image {
+  border-radius: 5px;
+}
 .weekly-trends--flex {
   flex-direction: column;
 }
 
 div.weekly-trends--start {
   justify-content: flex-start;
+}
+
+div.weekly-trends--card {
+  @media screen and (max-width: 767px) {
+    width: 280px;
+  }
+}
+
+div.weekly-trends--card:nth-child(-n + 2) {
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+}
+
+.container--weekly-trends {
+  @media screen and (max-width: 767px) {
+    width: 320px;
+  }
 }

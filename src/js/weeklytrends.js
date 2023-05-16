@@ -1,11 +1,12 @@
 import axios from 'axios';
+import { refs } from './refs';
 const KEY = 'e1aeaa11db3ac22382c707ccfcac931e';
 import { createRatingStars } from './catalog';
 import { handleMovieClick } from '../js/details-modal';
 
-const weeklyGallery = document.querySelector('.weeklytrends_gallery_list');
+// const refs.upcomingMoviesSection = document.querySelector('.weeklytrends_gallery_list');
 
-if (weeklyGallery === null) {
+if (refs.weeklyGallery === null) {
   return;
 }
 
@@ -24,14 +25,14 @@ async function getMovies() {
     let galleryCardsList = createWeeklyGalery(response.data);
     let trendMovieList = galleryCardsList;
 
-    if (window.screen.width < 767) {
-      trendMovieList = galleryCardsList.filter((el, index) => index < 1);
-    }
+    // if (window.screen.width < 767) {
+    //   trendMovieList = galleryCardsList.filter((el, index) => index < 1);
+    // }
 
     const genres = genreList.data.genres;
 
-    weeklyGallery.innerHTML = cardsMarkup(trendMovieList, genres);
-    weeklyGallery.addEventListener('click', handleMovieClick);
+    refs.weeklyGallery.innerHTML = cardsMarkup(trendMovieList, genres);
+    refs.weeklyGallery.addEventListener('click', handleMovieClick);
   } catch (error) {
     console.log(error);
   }
@@ -65,7 +66,8 @@ function cardsMarkup(cards, genreList) {
 
       const releaseDate = new Date(card.release_date).getFullYear();
       const ratingStars = createRatingStars(card.vote_average);
-      return `<div class="movie-item movie-card" id=${card.id}>
+
+      return `<div class="movie-item movie-card weekly-trends--card" id=${card.id}>
                     <img class="weeklytrends_gallery_image"
                     src="https://image.tmdb.org/t/p/w200${card.poster_path}" 
                     srcset="
@@ -93,4 +95,15 @@ function cardsMarkup(cards, genreList) {
     })
     .join('');
 }
+
+// function addDynamicClass() {
+  
+//   const elements = document.querySelectorAll(".card");
+//   console.log(elements);
+//     elements.forEach((element, index) => {
+//     const dynamicClass = `movie-item-${index + 1}`;
+//     element.classList.add(dynamicClass);
+//   });
+// }
 getMovies();
+// addDynamicClass();
