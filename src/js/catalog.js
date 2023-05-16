@@ -139,17 +139,20 @@ async function getTrendingMovies() {
 }
 
 // *Функция отправляет запрос к API для получения списка фильмов по запросу
-export async function searchMovies(query, closeModal) {
+export async function searchMovies(query, closeModal, currentPage = 1, fromPagination = false) {
+  currentQuery = query;
   const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}&page=${currentPage}`;
   const data = await fetchMovies(url);
-  totalPages = data.total_pages;
 
   let searchSuccess = false;
 
   if (data.results.length === 0) {
-    showModal(' ');
+    if (!fromPagination) {
+      showModal(' ');
+    }
     searchInput.value = "";
   } else {
+    totalPages = data.total_pages;
     displayMovies(data.results);
     observeLastMovieElement();
     updatePaginationInfo();
@@ -351,11 +354,12 @@ if (nextPageBtn) {
 function modalIsOpen() {
   return document.querySelector('.modal').style.display === 'block';
 }
+
 async function goToPage(pageNumber) {
   if (pageNumber < 1 || pageNumber > totalPages) {
     return;
   }
-  // * С задержкой (500 миллисекунд), для прокрутки страницы вверх после пагинации до определённого места (находи по id, в данном случае до строки поиска)
+
   setTimeout(() => {
     let elementPosition = document.getElementById('search-block-id').offsetTop;
     window.scrollTo({
@@ -363,29 +367,14 @@ async function goToPage(pageNumber) {
       behavior: "smooth"
     });
   }, 500);
-  // * Для прокрутки страницы вверх после пагинации до определённого места (находи по id, в данном случае до строки поиска)
-  // let elementPosition = document.getElementById('search-block-id').offsetTop;
-  // window.scrollTo({
-  //   top: elementPosition,
-  //   behavior: "smooth"
-  // });
-
-  // * Для прокрутки страницы вверх после пагинации (до самого верха страницы)
-  // window.scrollTo({
-  //   top: 0,
-  //   behavior: "smooth"
-  // });
 
   currentPage = pageNumber;
-  localStorage.setItem('currentPage', currentPage);
-  localStorage.setItem('currentQuery', currentQuery);
 
-  // * Проверяем, является ли поиск активным и если да, то проверяем, был ли запрос выполнен из модального окна
   if (currentQuery && isSearchActive) {
     if (modalIsOpen()) {
-      await searchMovies(currentQuery, closeModal);
+      await searchMovies(currentQuery, closeModal, currentPage, true);
     } else {
-      await searchMovies(currentQuery);
+      await searchMovies(currentQuery, false, currentPage, true);
     }
   } else {
     await getTrendingMovies();
@@ -437,8 +426,3 @@ function observeLastMovieElement() {
 
 getTrendingMovies();
 initLazyLoading();
-
-// !!!!!!!!!!!!Привет
-
-
-////!/!!!!!!!!!!!!!**/*/КУКУКУКУКУКУКУ
