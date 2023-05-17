@@ -35,24 +35,25 @@
   }
 }
 
-.trailer.visibily {
-  display: block;
-}
-
 .notification {
   font-weight: 400;
   font-size: 16px;
-  line-height: 118.75%; /* 19/16 */
+  line-height: 118.75%;
+  /* 19/16 */
   color: var(--modal-trailer-text-color);
+
   @include tablet {
     font-weight: 400;
     font-size: 24px;
-    line-height: 116.666667%; /* 28/24 */
+    line-height: 116.666667%;
+    /* 28/24 */
   }
+
   @include desktop {
     font-weight: 400;
     font-size: 24px;
-    line-height: 116.666667%; /* 28/24 */
+    line-height: 116.666667%;
+    /* 28/24 */
   }
 }
 
@@ -62,6 +63,7 @@
   bottom: 8px;
   width: 159px;
   height: 153px;
+
   @include tablet {
     bottom: 16px;
     left: 303px;
@@ -80,22 +82,27 @@
 .close-btn {
   position: absolute;
   top: 20px;
-  right: 20px;  
+  right: 20px;
+  z-index: 100;
+
   @include tablet {
     top: 24px;
     right: 24px;
   }
+
   @include desktop {
     top: 28px;
     right: 28px;
   }
+
   display: flex;
   padding: 0;
   border: none;
   outline: transparent;
-  background-color: inherit;
+  background-color: transparent;
   fill: var(--close-btn-fill);
-  transition: fill .25s cubic-bezier(.4,0,.2,1);
+  transition: fill 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
   &:hover {
     fill: $accentColor;
   }
@@ -104,23 +111,41 @@
 .close-icon {
   width: 16px;
   height: 16px;
+
   @include tablet {
     width: 24px;
     height: 24px;
-  }   
+  }
 }
 
-
-
-.player-container {
+.player-wrapper {
   overflow: hidden;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  min-height: 560px;
-  width: 80%;
-  margin: 0 auto;
+
+  width: 280px;
+  height: 289px;
+  border-radius: 16px;
+
+  box-shadow: 1px 1px 14px 4px var(--modal-trailer-box-shadow-color);
+  background-color: var(--modal-trailer-bgc);
+
+  @include tablet {
+    width: 609px;
+    height: 400px;
+  }
+
+  @include desktop {
+    width: 700px;
+    height: 400px;
+  }
+}
+
+.player-container {
+  height: 100%;
+  width: 100%;
 }
 
 .player-container iframe {
@@ -130,18 +155,14 @@
   left: 0;
   top: 0;
   width: 100%;
-}
 
-@media screen and (max-width: 65.9375em) {
-  .player-container {
-    min-height: 460px;
-    width: 90%;
+  @include tablet {
+    width: 609px;
+    height: 400px;
   }
-}
 
-@media screen and (max-width: 39.9375em) {
-  .player-container {
-    min-height: 240px;
-    width: 100%;
+  @include desktop {
+    width: 700px;
+    height: 400px;
   }
 }
